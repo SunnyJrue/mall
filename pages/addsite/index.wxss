@@ -1,0 +1,65 @@
+
+page{
+    background:#fff;
+}
+.space{
+    height:17rpx;
+    background:#F7F7F7;
+}
+form{
+    margin-top:17rpx;
+}
+label{
+    font-size:32rpx;
+    display:inline-block;
+}
+.name{
+    padding:0 20rpx;
+    height:90rpx;
+    border-bottom:2rpx solid #F7F7F7;
+    line-height:90rpx;
+}
+input{
+    display:inline-block;
+    vertical-align:middle;
+    padding-left:100rpx;
+    font-size:32rpx;
+    width:70%;
+}
+.phone{
+    padding:0 20rpx;
+    height:90rpx;
+    line-height:90rpx;
+    
+}
+picker{
+    display:inline-block;
+}
+.adress{
+    padding:0 20rpx;
+    
+
+}
+.adress_details{
+    height:90rpx;
+    border-bottom:2rpx solid #F7F7F7; 
+    line-height:90rpx;
+
+}
+
+.adress_details input{
+    padding-left:75rpx;
+    width:100%;
+   
+}
+.btn{
+    padding:0 20rpx;
+    margin-top:120rpx;
+}
+button{
+    background:#FD4A5F;
+    color:#fff;
+}
+.inputholders{
+    font-size:28rpx;
+}

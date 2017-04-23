@@ -1,0 +1,46 @@
+<!--index.wxml-->
+<view class="container">
+  <view  bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="../../images/details/logo.png" background-size="cover"></image>
+    <text class="userinfo-nickname">dragon</text>
+  </view>
+
+  <view class="weui_cell">
+      <view class="weui_cell_bd">
+          <view class="weui_cell_bd_p"> 查看订单 </view>
+      </view>
+      <view class="with_arrow"></view>
+  </view>
+  <view class="info_list">
+        <view class="weui_cell">
+            <view class="weui_cell_bd">
+                <view class="weui_cell_bd_p"> 优惠券 </view>
+            </view>
+            <view class="with_arrow"></view>
+        </view>
+        <view class="weui_cell">
+            <view class="weui_cell_bd">
+                <view class="weui_cell_bd_p"> 我的收藏 </view>
+            </view>
+            <view class="with_arrow"></view>
+        </view>
+        <view class="weui_cell">
+            <view class="weui_cell_bd">
+                <view class="weui_cell_bd_p"> 地址管理 </view>
+            </view>
+            <view class="with_arrow"></view>
+        </view>
+        <view class="weui_cell">
+            <view class="weui_cell_bd">
+                <view class="weui_cell_bd_p"> 绑定手机 </view>
+            </view>
+            <view class="with_arrow"></view>
+        </view>
+        <view class="weui_cell">
+            <view class="weui_cell_bd">
+                <view class="weui_cell_bd_p"> 申请店铺入驻 </view>
+            </view>
+            <view class="with_arrow"></view>
+        </view>
+  </view>
+</view>

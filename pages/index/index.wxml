@@ -1,0 +1,36 @@
+<view class="container">
+
+
+    <view class='goods-box'>
+        <navigator url='/pages/details/index?id=111' class='goods-item' wx:for="{{obj}}">
+            <view class='item-image'>
+                <image src='../../images/index/test.png'></image>
+            </view>
+            <view class='item-msg'>
+                <view class='item-name'>啊啊阿斯蒂芬啥地方手动阀手动阀撒旦发生</view>
+                <view class='item-shop'>总店</view>
+                <view style='height:45rpx;line-height:45rpx;'>
+                    <text class='item-newprice'>￥75.00</text> <text class='item-oldprice'>￥155.00</text>
+                </view>
+                <view class='item-tips'>
+                    <text>新上架</text><text class='item-num'>库存：<text>3786</text></text>
+                </view>
+            </view>
+        </navigator>
+
+
+ 
+
+        
+    </view>
+
+
+
+
+
+
+  <!--   <loading hidden="{{loadingHidden}}">
+        加载中...
+    </loading> -->
+
+</view>
