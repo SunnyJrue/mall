@@ -63,16 +63,16 @@
             <view class='join_shopcar'>
                 加入购物车
             </view>
-            <view class='buy_now'>
+            <view class='buy_now' bindtap='openWindow'>
                 立即购买
             </view>
         </view>
     </view>
 
-    <view class='modal' wx:if='{{true}}'>
+    <view class='modal' wx:if='{{switchWindow}}'>
         
         <view class='box'>
-            <view class='icon_close'>
+            <view class='icon_close' bindtap='closeWindow'>
                 <image src='../../images/icon-close.png'></image>
             </view>
 
@@ -112,7 +112,7 @@
             <view class='total_money'>
                 ￥75.00
             </view>
-            <view class='pay_btn'>立即购买</view>
+            <view  class='pay_btn'>立即购买</view>
         </view>
     </view>
 
