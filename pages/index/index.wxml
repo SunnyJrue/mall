@@ -1,6 +1,96 @@
-<view class="container">
+<scroll-view class="container" scroll-y="true" bindscroll="scroll">
+    <!-- 轮播 -->
+    <view class='search'>
+        <view class='floatEle'>
+            <view class='position' >
+                深圳
+                <image src='../../images/icon-location.png'></image>
+            </view>
+            <view class='infotext'>
+                <input type="text" placeholder='输入搜索' placeholder-class='infotext_plac'/>
+                <image src='../../images/icon-search.png'></image>
+            </view>
+        </view>
+    </view>
+    <swiper indicator-dots='true'  class='swiper'>
+        <block>
+            <swiper-item>
+                <image src='../../images/scroll.png'></image>
+            </swiper-item>
+            <swiper-item>
+                <image src='../../images/scroll.png'></image>
+            </swiper-item>
+        </block>
+    </swiper >
 
+    <view class='search' >
+       
 
+<!--         <view class='floatEle' wx:if="{{scrollTops >100}}">
+            <view class='position' >
+                深圳
+                <image src='../../images/icon-location.png'></image>
+            </view>
+            <view class='infotext'>
+                <input type="text" placeholder='输入搜索' placeholder-class='infotext_plac'/>
+                <image src='../../images/icon-search.png'></image>
+            </view>
+        </view> -->
+
+        <view class='category'>
+            <view class='list'>
+                <image src='../../images/index-logo.png'></image>
+                <view class='cate_text'>限时抢购</view>
+            </view>
+            <view class='list'>
+                <image src='../../images/index-logo.png'></image>
+                <view class='cate_text'>限时抢购</view>
+            </view>
+            <view class='list'>
+                <image src='../../images/index-logo.png'></image>
+                <view class='cate_text'>限时抢购</view>
+            </view>
+
+            <view class='list'>
+                <image src='../../images/index-logo.png'></image>
+                <view class='cate_text'>限时抢购</view>
+            </view>
+
+            <view class='list'>
+                <image src='../../images/index-logo.png'></image>
+                <view class='cate_text'>限时抢购</view>
+            </view>
+            <view class='list'>
+                <image src='../../images/index-logo.png'></image>
+                <view class='cate_text'>限时抢购</view>
+            </view>
+            <view class='list'>
+                <image src='../../images/index-logo.png'></image>
+                <view class='cate_text'>限时抢购</view>
+            </view>
+            <view class='list'>
+                <image src='../../images/index-logo.png'></image>
+                <view class='cate_text'>限时抢购</view>
+            </view>
+        </view>
+
+    </view>
+
+    <view class='space'></view>
+    
+    <view class='brand'>
+        <view class='brand-title'>品牌街</view>
+        <view class='brand-image'>
+            <image src='../../images/bran-img.png'></image>
+            <image src='../../images/bran-img.png'></image>
+            <image src='../../images/bran-img.png'></image>
+            <image src='../../images/bran-img.png'></image>
+        </view>
+
+    </view>
+
+    <view class='space'></view>
+    
     <view class='goods-box'>
         <navigator url='/pages/details/index?id=111' class='goods-item' wx:for="{{obj}}">
             <view class='item-image'>
@@ -33,4 +123,4 @@
         加载中...
     </loading> -->
 
-</view>
+</scroll-view>

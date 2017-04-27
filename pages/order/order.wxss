@@ -1,0 +1,148 @@
+
+page{
+    background:#fff;
+}
+.space{
+    background:#f5f5f5;
+}
+.add_adress{
+    height:90rpx;
+    width:100%;
+    background:#fff;
+    font-size:32rpx;
+    text-align:center;
+    line-height:90rpx;
+    font-weight:bold;
+}
+
+.rev_adress{
+    font-size:28rpx;
+    padding:20rpx 20rpx 0 80rpx;
+    position:relative;
+}
+.rev_adress view{
+    height:56rpx;
+}
+.rev_adress  navigator{
+    display:inline-block;
+    margin-right:40rpx;
+    padding:10rpx 15rpx;
+    border:2rpx solid #eee;
+    border-radius:12rpx;
+    margin:10rpx 40rpx 10rpx 0 ;
+    color:#b1b1b1;
+
+}
+.rev_adress image{
+    width:40rpx;
+    height:40rpx;
+    position:absolute;
+    top:50rpx;
+    left:20rpx;
+}
+
+
+.good_msg{
+    height:175rpx;
+    width:100%;
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    padding-left:20rpx;
+    padding-top:20rpx;
+}
+.good_msg image{
+    width:135rpx;
+    height:135rpx;
+}
+
+.description{
+    font-size:28rpx;
+    margin-left:30rpx;
+}
+.num_price{
+    display:inline-block;
+    width:20%;
+    vertical-align:top;
+    font-size:28rpx;
+    color:#a2a0a9;
+    text-align:right;
+    padding-right:20rpx;
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}
+
+
+.discount_coupon{
+    height:70rpx;
+    line-height:70rpx;
+    padding-left:20rpx;
+    background:#fff;
+    font-size:32rpx;
+    font-weight:bold;
+
+
+}
+.discount_result{
+    font-size:28rpx;
+    font-weight:normal;
+    margin-left:72rpx;
+}
+.leave_message{
+    line-height:100rpx;
+    width:100%;
+}
+.leave_message input{
+    display:inline-block;
+    font-size:24rpx;
+    padding:25rpx 20rpx;
+}
+.input_message{
+    font-size:28rpx;
+}
+.count_price{
+    padding:30rpx 20rpx;
+    font-size:32rpx;
+    position:relative
+}
+.count_price text{
+    position:absolute;
+    right:20rpx;
+    top:35rpx;
+    color:#ff758f;
+}
+
+.footer{
+    height:105rpx;
+    width:100%;
+    border:2rpx solid #f5f5f7;
+    position:fixed;
+    bottom:0;
+}
+.submit_btn{
+    width:240rpx;
+    height:105rpx;
+    background:#fd544a;
+    color:#fff;
+    text-align:center;
+    line-height:105rpx;
+    position:absolute;
+    right:0;
+    font-size:32rpx;
+}
+.total_price{
+    height:100%;
+    margin-left:200rpx;
+    line-height:105rpx;
+    color:#fd544a;
+    font-size:32rpx;
+
+}
+
+
+
+
+
+
+
+
+

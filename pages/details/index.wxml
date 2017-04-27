@@ -8,6 +8,9 @@
         </swiper>
     </view>
 
+  
+
+
     <view class="shopping_box">
         <view class="title">啊发生发生发射点发啥地方啥都发士大夫阿斯顿法撒旦飞洒地方啥发士大夫</view>
         <view class="desc">{{detail.desc}}</view>
@@ -63,6 +66,53 @@
             <view class='buy_now'>
                 立即购买
             </view>
+        </view>
+    </view>
+
+    <view class='modal' wx:if='{{true}}'>
+        
+        <view class='box'>
+            <view class='icon_close'>
+                <image src='../../images/icon-close.png'></image>
+            </view>
+
+            <view class='goods_msg'>
+                <image src='../../images/details/details.png'></image>
+            </view>
+            <view class='good_text'>
+                <view class='good_title'>
+                    正品包邮苹果夫人化妆品正品包邮苹果夫人化妆品正品包邮苹果夫人化妆品
+                </view>
+                <view style='padding:6rpx 0;'>
+                    <text class='good_price'>￥75.00</text><text class='goods_num'>库存:3786</text>
+                </view>
+                <view class='select_num'>
+                    已选<text style='margin-left:24rpx;'>数量:1</text>
+                </view>
+
+            </view>
+            <view class='select_num'>
+                <text style='font-size:28rpx;'>数量</text>
+                <view class='num_box'>
+                    <view>
+                        -
+                    </view>
+                    <text style='font-size:28rpx;'>7</text>
+                    <view>
+                        +
+                    </view>
+                </view>
+            </view>
+
+            
+            
+        </view>
+        <view class='footer'>
+            总价：
+            <view class='total_money'>
+                ￥75.00
+            </view>
+            <view class='pay_btn'>立即购买</view>
         </view>
     </view>
 

@@ -1,0 +1,15 @@
+<view class='container'>
+    <view class='tap'>
+        <view class='active'>未使用</view>
+        <view>已使用</view>
+        <view>已过期</view>
+    </view>
+
+    <view class='ticket'>
+        <view class='noticket'>
+            暂时没有可用优惠券
+        </view>
+    </view>
+    
+
+</view>

@@ -1,0 +1,80 @@
+<view class='container'>
+    <!-- 未选择收货地址 -->
+   <view class='add_adress' wx:if="{{false}}">
+       +添加收货地址
+   </view>
+   <!-- 有收货地址 -->
+   <view class='rev_adress'>
+       <view>
+           收货人：吴填生 13539608514
+       </view>
+       <view style='border-bottom:2px solid #f7f7f7'>
+           收货地址：广东省深圳市宝安区固戍下围园4巷
+       </view>
+       <navigator>管理</navigator>
+       <navigator>重选</navigator>
+       <image src='../../images/icon-location.png'></image>
+   </view>
+
+   <view class='space' style='height:20rpx'></view>
+    <!-- 商品信息 -->
+
+    <view class='good_msg'>
+        <image src='../../images/index/test.png'></image>
+        <view style='display:inline-block;width:60%;vertical-align:top;'>
+            <view class='description'>
+                正品包邮苹果夫人化妆品啊打发是地方啥地方扫地发扫地发射
+            </view>
+        </view>
+        <view  class='num_price'>
+            <view>￥75.00</view>
+            <viwe>X1</viwe>
+        </view>
+    </view>
+    
+    <view class='space' style='height:20rpx'></view>
+    
+
+
+    <view class='discount_coupon'>
+        <text>我的优惠券</text><text class='discount_result'>暂无可用优惠券</text>
+    </view>
+   <view class='space' style='height:20rpx'></view>
+
+
+    <view class='leave_message'>
+        <input type="text" placeholder-class='input_message' placeholder='选填：买家留言（50字以内）' />
+    </view>
+   <view class='space' style='height:10rpx'></view>
+
+   <view class='count_price'>
+       商品总价<text>￥</text>
+   </view>
+   <view class='count_price'>
+       打折减<text>-￥</text>
+   </view>
+   <view class='count_price'>
+       打折减<text>-￥</text>
+   </view>
+   <view class='count_price'>
+       邮费<text>+￥</text>
+   </view>
+    
+   <view class='footer'>
+        <view>
+            
+        </view>
+        <view class='submit_btn'>
+            提交订单
+        </view>
+        <view class='total_price'>
+            实付款：￥
+        </view>
+
+       
+   </view>
+
+
+
+    
+</view>

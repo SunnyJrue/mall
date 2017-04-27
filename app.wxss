@@ -2,7 +2,7 @@
 @import "./style/layout.wxss";
 
 .container {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif' ,'microsoft Yahei';
     display: flex;
     flex-direction: column;
     justify-content: space-between;

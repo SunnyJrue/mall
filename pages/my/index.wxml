@@ -6,30 +6,88 @@
   </view>
 
   <view class="weui_cell">
+    
       <view class="weui_cell_bd">
           <view class="weui_cell_bd_p"> 查看订单 </view>
       </view>
-      <view class="with_arrow"></view>
+      <navigator url='/pages/allorder/allorder'>
+        <view class="with_arrow">全部订单</view>
+      </navigator>
+
+      
   </view>
+  <view class='program'>
+    <view class='content'>
+      <navigator url='/pages/userstatus/userstatus?status=1'>
+        <view>
+          <image src='../../images/icon-purse.png'></image>
+          <view>
+            待付款
+          </view>
+        </view>
+      </navigator>
+
+      <navigator url='/pages/userstatus/userstatus?status=2'>
+        <view>
+          <image src='../../images/icon-send.png'></image>
+          <view>
+            待发货
+          </view>
+        </view>
+      </navigator>
+
+      <navigator url='/pages/userstatus/userstatus?status=3'>
+        <view>
+          <image src='../../images/icon-receive.png'></image>
+          <view>
+            待收货
+          </view>
+        </view>
+      </navigator>
+
+      <navigator url='/pages/userstatus/userstatus?status=4'>
+        <view>
+          <image src='../../images/icon-estimate.png'></image>
+          <view>
+            待评价
+          </view>
+        </view>
+      </navigator>
+
+      <navigator url='/pages/userstatus/userstatus?status=5'>
+        <view>
+          <image src='../../images/icon-note.png'></image>
+          <view>
+            退换/售后
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+
+
+
+  
   <view class="info_list">
-        <view class="weui_cell">
+        <navigator url='/pages/disticket/disticket' class="weui_cell">
             <view class="weui_cell_bd">
                 <view class="weui_cell_bd_p"> 优惠券 </view>
             </view>
             <view class="with_arrow"></view>
-        </view>
+        </navigator>
         <view class="weui_cell">
             <view class="weui_cell_bd">
                 <view class="weui_cell_bd_p"> 我的收藏 </view>
             </view>
             <view class="with_arrow"></view>
         </view>
-        <view class="weui_cell">
+        <navigator url='/pages/adress/adress'  class="weui_cell">
             <view class="weui_cell_bd">
                 <view class="weui_cell_bd_p"> 地址管理 </view>
             </view>
             <view class="with_arrow"></view>
-        </view>
+        </navigator>
         <view class="weui_cell">
             <view class="weui_cell_bd">
                 <view class="weui_cell_bd_p"> 绑定手机 </view>

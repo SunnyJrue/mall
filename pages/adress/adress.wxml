@@ -1,0 +1,14 @@
+<view class='container'>
+    
+    <view class='adress'>
+        <view>朱阳 <text>18575585953</text></view>
+        <view>广东省深圳市福田区</view>
+        <view>上沙村龙湫</view>
+    </view>
+
+    <navigator url='/pages/addsite/index' class='btn'>
+        添加收货信息
+    </navigator>
+
+    
+</view>

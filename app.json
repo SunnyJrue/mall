@@ -1,9 +1,15 @@
 {
   "pages":[
+    "pages/index/index",
     "pages/my/index",
+    "pages/adress/adress",
+    "pages/disticket/disticket",
+    "pages/userstatus/userstatus",
+    "pages/allorder/allorder",
+    "pages/index/searchgoods",
+    "pages/order/order",
     "pages/details/index",
     "pages/addsite/index",
-    "pages/index/index",
     "pages/classify/index",
     "pages/cart/index",
     "pages/brand/index",
