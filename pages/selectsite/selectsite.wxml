@@ -1,0 +1,28 @@
+<view class='container'  >
+    
+    <radio-group class="radio-group" bindchange="radioChange">
+
+        <view class='adress'  wx:for='{{datas}}' wx:for-index='list'>
+            <view  class='name'>{{item.userName}} <text class='phone_num'>{{item.userMobile}}</text></view>
+            <view class='details_adress'>{{item.provinceName}}{{item.cityName}}{{item.regionName}}{{item.addres}}
+            </view>
+            <view class='opration'>
+                <view class='radios'> 
+                    <view wx:if='{{item.defaultFlag ==1}}' style='color:#FD4A5F'>默认地址</view>
+                </view>
+                <view class='alter-btn' >
+                    <view data-id='{{item.id}}' bindtap='selectAddress'>选择</view>
+                </view>
+            </view>
+        </view>
+
+    </radio-group>
+
+    <navigator bindtap='operateAdress' class='operate' >
+        管理
+    </navigator>
+
+
+
+    
+</view>

@@ -1,11 +1,41 @@
 <view class="container">
+
+  <view class='search'>
+      <view class='floatEle'>
+          <view class='position' >
+              深圳
+              <image src='../../images/icon-location.png'></image>
+          </view>
+          <view class='infotext'>
+              <input type="text" placeholder='输入搜索' placeholder-class='infotext_plac' confirm-type='search' bindconfirm='searchGoods' value='{{default}}'/>
+              <image src='../../images/icon-search.png'></image>
+          </view>
+      </view>
+  </view>
+
+  排序
+  <view class='filter_goods' bindtap='showTap'>
+      <view class='{{modalindex ==1?"hoverd":""}}' data-index='1'>品牌</view>
+      <view class='{{modalindex ==2?"hoverd":""}}' data-index='2'>综合</view>
+      <view class='{{modalindex ==3?"hoverd":""}}' data-index='3'>评价</view>
+      <view class='{{modalindex ==4?"hoverd":""}}' data-index='4'>价格</view>
+  </view>
+  
+
+
+
+
+
+
+
   <view class="nav_left">
     <block wx:for="{{navLeftItems}}">
       <view class="nav_left_items {{curNav == item.id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.id}}">{{item.tree.desc}}</view>
     </block>
   </view>
-  <view class="nav_right">
-    <view wx:if="{{navRightItems[curIndex].tree.nodes[1].tree.nodes}}">
+  <scroll-view class="nav_right" scroll-y='true' bindscrolltolower="pullUpLoad" style="height: {{windowHeight}}px;">
+
+   <!--  <view wx:if="{{navRightItems[curIndex].tree.nodes[1].tree.nodes}}">
       <block wx:for="{{navRightItems[curIndex].tree.nodes[1].tree.nodes}}">
         <view class="nav_right_items">
           <navigator url="../list/index?brand={{item.tree.id}}&typeid={{navRightItems[curIndex].id}}">
@@ -27,6 +57,78 @@
         </view>
       </block>
     </view>
-    <view wx:else>暂无数据</view>
+    <view wx:else>暂无数据</view> -->
+
+
+
+    <view class='goods-box'>
+        <navigator url='/pages/details/index?id=111' class='goods-item' wx:for="{{obj}}">
+            <view class='item-image'>
+                <image src='../../images/index/test.png'></image>
+            </view>
+            <view class='item-msg'>
+                <view class='item-name'>啊啊阿斯蒂芬啥地方手动阀手动阀撒旦发生</view>
+                <view class='item-shop'>总店</view>
+                <view >
+                    <view class='item-newprice'>￥75.00</view> <view class='item-oldprice'>￥155.00</view>
+                </view>
+                <view class='item-tips'>
+                    <view>新上架</view>
+                    <view class='item-num'>
+                    库存：  <text>3786</text>
+                    </view>
+                </view>
+            </view>
+        </navigator>
+        
+    </view>
+
+
+  </scroll-view>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- 遮罩层和对应的筛选 -->
+  <view class='modal' wx:if='{{modalShow}}' bindtap='closeModal'></view>
+  <view class='select_list' bindtap='listIndex' wx:if='{{modalShow}}' >
+      <block wx:if="{{modalindex ==1}}" >
+          <view class='{{sublist ==1?"list-selected":""}}' data-list='1'>总店</view>
+      </block>
+      
+
+      <block wx:if='{{modalindex ==2}}'>
+          <view class='{{sublist ==1?"list-selected":""}}' data-list='1'>购买数量最多</view>
+          <view class='{{sublist ==2?"list-selected":""}}' data-list='2'>价格从低到高</view>
+          <view class='{{sublist ==3?"list-selected":""}}' data-list='3'>价格从高到低</view>
+          <view class='{{sublist ==4?"list-selected":""}}' data-list='4'>上架时间</view>
+          <view class='{{sublist ==5?"list-selected":""}}' data-list='5'>销量最多</view>
+      </block>
+
+      <block wx:if='{{modalindex ==3}}'>
+          <view class='{{sublist ==1?"list-selected":""}}' data-list='1'>好评最多</view>
+          <view class='{{sublist ==2?"list-selected":""}}' data-list='2'>好评最低</view>
+      </block>
+      
+      <block wx:if='{{modalindex ==4}}'>
+          <view class='{{sublist ==1?"list-selected":""}}' data-list='1'>0-100</view>
+          <view class='{{sublist ==2?"list-selected":""}}' data-list='2'>100-300</view>
+          <view class='{{sublist ==3?"list-selected":""}}' data-list='3'>300-600</view>
+          <view class='{{sublist ==4?"list-selected":""}}' data-list='4'>600-100</view>
+          <view class='{{sublist ==5?"list-selected":""}}' data-list='5'>1000-2000</view>
+      </block>
+
+
+      <view class='btn'>
+          <view class='left' bindtap='resetOptions'>重置</view>
+          <view class='right' bindtap='submits'>确定</view>
+      </view>
   </view>
 </view>

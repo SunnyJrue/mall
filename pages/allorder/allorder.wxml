@@ -3,13 +3,13 @@
 <view class='container'>
     <!-- 搜索
          -->    
-    <view class='search'>
+  <!--   <view class='search'>
 
         <view class='seareh_order'>
             <image src='../../images/icon-search.png'></image>
             <input type="text" placeholder='搜索所有订单' placeholder-class='input_order' />
         </view>
-    </view>
+    </view> -->
     
     <view class='item_list'>
         <view style='background:#fff'>

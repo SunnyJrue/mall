@@ -1,23 +1,114 @@
 //获取应用实例
-var app = getApp()
+var app = getApp();
 Page({
     data: {
         obj:[1,2,3,4,5,6,7],
-        scrollTops:0
+        scrollTops:0,
+        location:'深圳',
+        windowHeight:'',
+        userInfo:'',
+        id:''
     },
 
     onLoad: function() {
- 
-    },
-    scroll:function(e){
-        var scrollTop = e.detail.scrollTop;
-        this.setData({
-            scrollTops:scrollTop
-        })
-        
-    }
+      
+      console.log(22222222)
+       var that = this;
 
+       wx.getSystemInfo({
+         success: function(res) {
+           that.setData({
+              windowHeight:res.windowHeight
+           })
+         }
+
+       });
+
+
+       app.getUserInfo(function(userInfo){
+         that.setData({
+           userInfo:userInfo
+         })
+       })
+
+
+       wx.login({
+           success:function(login){
+               //获取openid
+               var code = login.code;
+               console.log(code)
+
+               wx.request({
+                   url:"http://119.23.216.161:8080/open/getOpenId.do?code="+code,
+                   method:'post',
+                   success:function(res){
+
+                       var data =JSON.parse(res.data.data) ;
+                       var  open= data.openid;
+
+                       wx.request({
+                           url:"http://119.23.216.161:8080/member/insert.do?userAppName=吴填生&wxOpenId="+open,
+                           method:'post',
+                           header: {
+                                 'content-type': 'application/json'
+                             },
+                           dataType:'json',
+                           success:function(res){
+                               console.log(res)
+                               wx.setStorage({
+                                   key:'userMsg',
+                                   data:{
+                                       userAppName:'吴填生',
+                                       memberId:res.data.data.id
+                                   }
+                               });
+                       
+                           }
+                       })
+
+                   }
+               })
+
+
+              
+           }
+       })
+      
+    },
+    onShow:function(){
+      var id = '11';
+      console.log(id);
+    },
+    onReady:function(){
+      var id= '22';
+      console.log(id)
+    },
+    searchConfirm:function(e){
+        var value = e.detail.value;
+        console.log(value);
+        var location = this.data.location;
+        if(e.detail.value){
+            wx.navigateTo({
+              url:'/pages/index/searchgoods?kw='+value+'&location='+location
+            })
+        }else{
+          wx.showToast({
+            title:'请填入搜索内容',
+            icon:'loading',
+            duration:1000
+          })
+        }
+        
+    },
+    //下拉刷新
+    onPullDownRefresh:function(){
+      console.log(111)
+    },
+    //上拉加载
+    onReachBottom:function(){
+      console.log(222)
+
+    }
+    
 })
 
-function getHeight (){
-}

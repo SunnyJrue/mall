@@ -2,32 +2,48 @@
     <view class='space'></view>
     <form bindsubmit="formSubmit">
         <view class='name'>
-            <label >收货人</label><input type="text" name='username' placeholder='请输入收货人姓名' placeholder-class='inputholders' />
+            <input type="text" name='username' placeholder='请输入收货人姓名' placeholder-class='inputholders' value='{{userMsg.userName}}' />
         </view>
 
         <view class='phone'>
-            <label >手机号</label><input type="text" name='phonenum' placeholder='请输入收货人联系电话' placeholder-class='inputholders' />
+            <input type="number" name='phonenum' placeholder='请输入收货人联系电话' value='{{userMsg.userMobile}}' placeholder-class='inputholders' />
         </view>
-        <view class='space'></view>
+      
         <view class='adress'>
     
-            <view class='adress_details'>
-                <label>所在地区</label>
-                <picker bindchange="bindPickerChange" value='{{index}}' range='{{array}}'>    <view wx:if='{{index == -1}}'>请选择</view>
-                      <view wx:if='{{index != -1}}'>{{array[index]}}</view>
-                </picker>
+            <view class='adress_details' bindtap='showCitys'>
+                <div class='region'  >
+                    <text>{{address}}</text>
+                    <picker-view class='picker_style' indicator-style="height: 50px;" style="width: 100%;z-index:100; height: 300px; ;position:absolute;bottom:0rpx"  bindchange='bindchange' wx:if='{{condition}}'>
+                        <view class="cityheader">
+                          <view catchtap="open" class="city-cancel">取消</view>
+                          <view catchtap="open" class="city-true">确定</view>
+                        </view>
+                        <picker-view-column >
+                            <view  wx:for="{{province}}"  style="line-height: 50px;text-align:center;z-index:102">{{item.regionNameZh}}</view>
+                        </picker-view-column>
+                        <picker-view-column>
+                          <view  wx:for="{{city}}"  style="line-height: 50px;text-align:center">{{item.regionNameZh}}</view>
+                        </picker-view-column>
+                        <picker-view-column>
+                          <view  wx:for="{{area}}"  style="line-height: 50px;text-align:center">{{item.regionNameZh}}</view>
+                        </picker-view-column>
+                    </picker-view>
+
+
+                </div >
+
             </view>
    
             <view class='adress_details'>
-                <label>详细地址</label> 
                 <view style='display:inline-block;width:72%'>
-                    <input type="text" placeholder='请输入您的详细地址' name='address_det' placeholder-class='inputholders' />
+                    <input type="text" placeholder='请输入您的详细地址' name='address_det' placeholder-class='inputholders' value='{{userMsg.addres}}'/>
                 </view>
             </view>
 
         </view>
         <view class='btn'>
-            <button style='background:#FD4A5F' formType="submit">
+            <button style='background:#FD4A5F' formType="submit" >
                 保存
             </button>
         </view>

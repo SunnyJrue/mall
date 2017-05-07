@@ -36,6 +36,7 @@ page{
 .price {
     color: #CC4E40;
     font-size: 28rpx;
+    padding-bottom:20rpx;
 }
 
 .price text {
@@ -81,6 +82,116 @@ page{
     font-weight:bold;
 
 }
+
+
+.goodsIntroduce{
+    display:flex;
+    display:-webkit-flex;
+    justify-content:space-around;
+    background:#fff;
+    height:200rpx;
+    padding:50rpx 0 0 20rpx;
+}
+.items{
+    display:inline-block;
+    text-align:center;
+    width:120rpx;
+}
+.score{
+    position:relative;
+    margin-top:10rpx;
+}
+.items_title{
+    text-align:center;
+    font-size:28rpx;
+}
+.score .inner{
+    width:80rpx;
+    height:80rpx;
+    border-radius:50%;
+    background:#96CA6F;
+    position:absolute;
+    z-index:0;
+    top:50%;
+    left:50%;
+    margin-top:-40rpx;
+    margin-left:-40rpx;
+    text-align:center;
+    line-height:80rpx;
+    color:#fff;
+    font-size:36rpx;
+}
+.score .outter{
+    width:100rpx;
+    height:100rpx;
+    border-radius:50%;
+    background:#fff;
+    position:absolute;
+    border:6rpx solid #96CA6F;
+
+
+}
+
+
+
+.delivery{
+    background:#fff;
+    padding:20rpx 28rpx;
+}
+.delivery view{
+    display:inline-block;
+}
+.delivery view:nth-child(1){
+    color:#B9B9B9;
+}
+.delivery view:nth-child(2){
+    width:85%;
+    vertical-align:top;
+    margin-left:40rpx;
+}
+
+
+.estimate{
+    padding:28rpx;
+    background:#fff;
+    margin-top:20rpx;
+    border-bottom:2rpx solid #e3e3e3;
+
+}
+.estimate view{
+    display:inline-block;
+
+}
+.estimate view:nth-child(1){
+    color:#B9B9B9
+}
+.estimate view:nth-child(2){
+    margin-left:40rpx;
+}
+.estimate view:nth-child(3){
+    text-align:right;
+    width:60%;
+}
+
+.goodsDetails{
+    background:#fff;
+    padding:40rpx 28rpx 40rpx;
+}
+.goodsDetails view:nth-child(1){
+    color:#B9B9B9;
+    padding:0rpx 0 30rpx;
+
+}
+.goodsDetails image{
+    width:100%;
+    margin-bottom:10rpx;
+}
+
+
+
+
+
+
 
 .add_shopcar{
     background:#fff;
@@ -136,9 +247,13 @@ page{
     position:fixed;
     width:100%;
     height:100%;
+    left:0;
+    top:0;
     background:rgba(0,0,0,0.5);
 }
 .icon_close{
+    width:40rpx;
+    height:40rpx;
     position:absolute;
     top:8rpx;
     right:65rpx;
@@ -182,6 +297,7 @@ page{
 .good_price{
     color:#e95a6c;
 
+
 }
 .goods_num{
     color:#6A6A6A;
@@ -224,6 +340,7 @@ page{
     height:100rpx;
     line-height:100rpx;
     padding-left:28rpx;
+    border-top:2rpx solid #F2F2F2;
 }
 .total_money{
     display:inline-block;

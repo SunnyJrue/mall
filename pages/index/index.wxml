@@ -1,18 +1,21 @@
-<scroll-view class="container" scroll-y="true" bindscroll="scroll">
+<view class="container" scroll-y="true"  bindscrolltolower="pullUpLoad" style=""  >
     <!-- 轮播 -->
     <view class='search'>
         <view class='floatEle'>
             <view class='position' >
-                深圳
+                {{location}}
                 <image src='../../images/icon-location.png'></image>
             </view>
             <view class='infotext'>
-                <input type="text" placeholder='输入搜索' placeholder-class='infotext_plac'/>
+                <input type="text" placeholder='输入搜索' placeholder-class='infotext_plac' bindconfirm='searchConfirm' />
                 <image src='../../images/icon-search.png'></image>
             </view>
         </view>
     </view>
-    <swiper indicator-dots='true'  class='swiper'>
+
+    
+    <!-- 轮播 -->
+    <swiper indicator-dots='true'  class='swiper' autoplay='true' >
         <block>
             <swiper-item>
                 <image src='../../images/scroll.png'></image>
@@ -24,19 +27,6 @@
     </swiper >
 
     <view class='search' >
-       
-
-<!--         <view class='floatEle' wx:if="{{scrollTops >100}}">
-            <view class='position' >
-                深圳
-                <image src='../../images/icon-location.png'></image>
-            </view>
-            <view class='infotext'>
-                <input type="text" placeholder='输入搜索' placeholder-class='infotext_plac'/>
-                <image src='../../images/icon-search.png'></image>
-            </view>
-        </view> -->
-
         <view class='category'>
             <view class='list'>
                 <image src='../../images/index-logo.png'></image>
@@ -107,10 +97,6 @@
                 </view>
             </view>
         </navigator>
-
-
- 
-
         
     </view>
 
@@ -119,8 +105,6 @@
 
 
 
-  <!--   <loading hidden="{{loadingHidden}}">
-        加载中...
-    </loading> -->
 
-</scroll-view>
+
+</view>

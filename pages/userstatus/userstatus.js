@@ -42,5 +42,34 @@ Page({
             title:title
 
         })
+    },
+    //取消订单
+    cancelOrder:function(){
+        wx.showModal({
+            title:'提示',
+            content:'是否取消订单？',
+            success:function(res){
+                if(res.confirm){
+                    console.log(111);
+
+                }else{
+                    console.log(22)
+                }
+            }
+        })
+    },
+    //确认收货
+    confirmRev:function(){
+        wx.showModal({
+            title:'提示',
+            content:'是否确认收货？',
+            success:function(res){
+                if(res.confirm){
+                    
+                }else{
+
+                }
+            }
+        })
     }
 })

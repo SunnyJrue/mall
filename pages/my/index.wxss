@@ -1,7 +1,8 @@
 /**index.wxss**/
-.container {
-  background-color: #EFEFF4;
-}
+
+/* .container {
+  background-color: #fff;
+} */
 .userinfo {
   display:flex;
   display:-webkit-flex;
@@ -24,7 +25,7 @@
 .weui_cell{
     position: relative;
     display: flex;
-    padding: 15px;
+    padding: 40rpx 45rpx;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -45,7 +46,7 @@
   display: inline-block;
 }
 .weui_cell_bd_p{
-  font-size: 28rpx;
+  font-size: 32rpx;
   color: #000;
 }
 .badge{
@@ -63,8 +64,8 @@
 }
 .with_arrow{
   position: absolute;
-  top: 18px;
-  right: 15px;
+  top: 22px;
+  right: 30px;
   width: 70px;
   height: 15px;
   background-image: url(../../images/icon-arrowdown.png);
@@ -84,12 +85,14 @@
   background:#fff;
   padding-top:2rpx;
   padding:0 36rpx;
+
   
   
 }
 .content{
   padding: 25rpx 0;
   border-top:1px solid #e7e7e7;
+
   font-size:24rpx;
   display:flex;
   display:-webkit-flex;

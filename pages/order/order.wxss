@@ -1,4 +1,6 @@
-
+.container{
+    position:relative;
+}
 page{
     background:#fff;
 }
@@ -21,9 +23,23 @@ page{
     position:relative;
 }
 .rev_adress view{
-    height:56rpx;
+    padding:8rpx 0;
 }
-.rev_adress  navigator{
+.rev_adress .adress_details {
+    border-bottom:2rpx solid #f7f7f7;
+    height:auto;
+    padding-bottom:8rpx;
+
+
+}
+.rev_adress .adress_details  view{
+    display:inline-block;
+}
+.address_content{
+    width:77%;
+    vertical-align:middle;
+}
+.rev_adress  .add_btn{
     display:inline-block;
     margin-right:40rpx;
     padding:10rpx 15rpx;
@@ -92,8 +108,9 @@ page{
     width:100%;
 }
 .leave_message input{
+    width:90%;
     display:inline-block;
-    font-size:24rpx;
+    font-size:28rpx;
     padding:25rpx 20rpx;
 }
 .input_message{
@@ -137,6 +154,90 @@ page{
     font-size:32rpx;
 
 }
+
+
+
+
+
+
+
+
+
+
+.selectAddress{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#F5F5F5;
+    z-index:100;
+    left:0;
+    top:0;
+}
+
+
+.container{
+   
+}
+.adress{
+    background:#fff;
+    font-size:32rpx;
+    margin-top:20rpx;
+    padding:20rpx 36rpx ;
+}
+.btn{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    height:110rpx;
+    line-height:110rpx;
+    background:#fd4a5f;
+    color:#fff;
+    text-align:center;
+    font-size:32rpx;
+
+}
+.name{
+    position:relative;
+    font-size:40rpx;
+    height:60rpx;
+    line-height:60rpx;
+}
+.phone_num{
+    position:absolute;
+    right:0;
+    font-size:40rpx;
+
+}
+.details_adress{
+    
+    border-bottom:2rpx dashed #ccc;
+    padding:10rpx 0 30rpx;
+}
+.opration{
+    padding:30rpx 0 20rpx;
+    position:relative;
+}
+
+.radios {
+    display:inline-block;
+}
+.alter-btn{
+    position:absolute;
+    top:18rpx;
+    right:0;
+}
+.alter-btn view{
+    margin-right:20rpx;
+    border:2rpx solid #ccc;
+    padding:10rpx 30rpx;
+    display:inline-block;
+}
+
+
+
+
+
+
 
 
 

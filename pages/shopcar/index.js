@@ -7,22 +7,11 @@ Page( {
     goodsSUm:0,
     arr:[false,false,false],
     eachPrice:[69,69,69],
-    allChecked:false,
-    windowHeight:''
+    allChecked:false
 
   },
   onLoad:function(){
-    //获取窗口的高度
-    var that = this;
 
-    wx.getSystemInfo({
-      success: function(res) {
-       console.log(res.windowHeight)
-        that.setData({
-           windowHeight:res.windowHeight
-        })
-      }
-    })
   },
   checkboxChange:function(e){
     console.log(e.detail)
@@ -70,38 +59,6 @@ Page( {
 
 
     }
-  },
-  //上拉刷新
-  onPullDownRefresh:function(){
-    wx.showToast({
-        title:'加载中...',
-        icon:'loading',
-        duration:1000
-    })
-    wx.stopPullDownRefresh();
-  },
-
-  //下拉加载
-  onReachBottom:function(){
-    wx.showToast({
-        title:'加载中...',
-        icon:'loading',
-        duration:1000
-    })
-  },
-  //删除订单
-  deleteOrder:function(){
-      wx.showModal({
-        title:'提示',
-        content:'确定删除该商品吗？',
-        success:function(res){
-          if(res.confirm){
-
-          }else{
-            
-          }
-        }
-      })
   }
 })
 

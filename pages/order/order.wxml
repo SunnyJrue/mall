@@ -1,25 +1,26 @@
 <view class='container'>
     <!-- 未选择收货地址 -->
-   <view class='add_adress' wx:if="{{false}}">
+   <view bindtap='showSubPage'  class='add_adress' wx:if= "{{address == 1}}">
        +添加收货地址
    </view>
    <!-- 有收货地址 -->
-   <view class='rev_adress'>
+   <view class='rev_adress' wx:if='{{address != 1}}'>
        <view>
-           收货人：吴填生 13539608514
+           收货人：{{userName}} {{userMobile}}
        </view>
-       <view style='border-bottom:2px solid #f7f7f7'>
-           收货地址：广东省深圳市宝安区固戍下围园4巷
+       <view class='adress_details'>
+           <view>收货地址：</view>
+           <view class='address_content'>{{adrdatas}}{{detailName}}</view>
        </view>
-       <navigator>管理</navigator>
-       <navigator>重选</navigator>
+       <!-- <navigator>管理</navigator> -->
+       <view class='add_btn' bindtap='showSubPage'>重选</view>
        <image src='../../images/icon-location.png'></image>
    </view>
 
    <view class='space' style='height:20rpx'></view>
     <!-- 商品信息 -->
 
-    <view class='good_msg'>
+    <navigator url='/pages/details/index' class='good_msg'>
         <image src='../../images/index/test.png'></image>
         <view style='display:inline-block;width:60%;vertical-align:top;'>
             <view class='description'>
@@ -30,15 +31,15 @@
             <view>￥75.00</view>
             <viwe>X1</viwe>
         </view>
-    </view>
+    </navigator>
     
     <view class='space' style='height:20rpx'></view>
     
 
 
-    <view class='discount_coupon'>
+<!--     <view class='discount_coupon'>
         <text>我的优惠券</text><text class='discount_result'>暂无可用优惠券</text>
-    </view>
+    </view> -->
    <view class='space' style='height:20rpx'></view>
 
 
@@ -64,7 +65,7 @@
         <view>
             
         </view>
-        <view class='submit_btn'>
+        <view class='submit_btn' bindtap='submitOrder'>
             提交订单
         </view>
         <view class='total_price'>
@@ -73,6 +74,69 @@
 
        
    </view>
+
+
+<!-- 
+   <view class='selectAddress' wx:if='{{showSelectAdd}}'> 
+   
+          <view class='adress' data-name='朱阳' data-phone='18575585953' data-city='广东省深圳市福田区'  data-country='上沙村龙湫bbbbb' bindtap='selectAddress'>
+              <view  class='name'>朱阳 <text class='phone_num'>18575585953</text></view>
+              <view class='details_adress'>广东省深圳市福田区 上沙村龙湫aaaaaaaaaaa上沙村龙湫aaaaaaaaaaa上沙村龙湫aaaaaaaaaaa上沙村龙湫aaaaaaaaaaa
+              </view>
+              <view class='opration'>
+                  <view class='radios'> 
+                      <radio />设为默认地址
+                      
+                  </view>
+                  <view class='alter-btn'>
+                      <view>编辑</view>
+                      <view>删除</view>
+                  </view>
+              </view>
+          </view>
+
+
+          <view class='adress' data-name='朱阳' data-phone='18575585953' data-city='广东省深圳市福田区'  data-country='上沙村龙湫bbbbb' bindtap='selectAddress'>
+              <view  class='name'>朱阳 <text class='phone_num'>18575585953</text></view>
+              <view class='details_adress'>广东省深圳市福田区 上沙村龙湫aaaaaaaaaaa上沙村龙湫aaaaaaaaaaa上沙村龙湫aaaaaaaaaaa上沙村龙湫aaaaaaaaaaa
+              </view>
+              <view class='opration'>
+                  <view class='radios'> 
+                      <radio />设为默认地址
+                      
+                  </view>
+                  <view class='alter-btn'>
+                      <view>编辑</view>
+                      <view>删除</view>
+                  </view>
+              </view>
+          </view>
+
+
+
+         <view class='adress' data-name='{{userName}}' data-phone='{{telNumber}}' data-city='{{provinceName+cityName}}'  data-country='{{countyName}}' bindtap='selectAddress'>
+             <view  class='name'>{{userName}} <text class='phone_num'>{{telNumber}}</text></view>
+             <view class='details_adress'>{{provinceName+cityName+countyName}}
+             </view>
+             <view class='opration'>
+                 <view class='radios'> 
+                     <radio />设为默认地址
+                     
+                 </view>
+                 <view class='alter-btn'>
+                     <view>编辑</view>
+                     <view>删除</view>
+                 </view>
+             </view>
+         </view>
+
+
+          <view bindtap='infoAddress' class='btn'>
+              添加收货信息
+          </view>
+
+          
+      </view> -->
 
 
 

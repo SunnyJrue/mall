@@ -1,14 +1,33 @@
-<view class='container'>
-    
-    <view class='adress'>
-        <view>朱阳 <text>18575585953</text></view>
-        <view>广东省深圳市福田区</view>
-        <view>上沙村龙湫</view>
-    </view>
+<view class='container'  >
+    <radio-group class="radio-group" bindchange="radioChange">
 
-    <navigator url='/pages/addsite/index' class='btn'>
+        <view class='adress'  wx:for='{{datas}}' wx:for-index='list'>
+            <view  class='name'>{{item.userName}} <text class='phone_num'>{{item.userMobile}}</text></view>
+            <view class='details_adress'>{{item.provinceName}}{{item.cityName}}{{item.regionName}}{{item.addres}}
+            </view>
+            <view class='opration'>
+                <view class='radios'> 
+                    <radio checked='{{item.defaultFlag == 1}}' data-list='{{list}}' bindtap='defaultFlag' />设为默认地址
+                    
+                </view>
+                <view class='alter-btn' wx:if='{{model==1}}'>
+                    <view data-list='{{list}}'  bindtap='alterAddress'>编辑</view>
+                    <view data-list='{{list}}' bindtap='deleteAddress'>删除</view>
+                </view>
+
+                <view class='alter-btn' wx:if='{{model==2}}'>
+                    <view data-index='{{index}}' bindtap='selectAddress'>选择</view>
+                </view>
+            </view>
+        </view>
+
+
+    </radio-group>
+
+    <navigator url='/pages/addsite/index?status=1'  class='btn'>
         添加收货信息
     </navigator>
+
 
     
 </view>

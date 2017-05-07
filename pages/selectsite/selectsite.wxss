@@ -2,6 +2,19 @@
 .container{
     padding-bottom:120rpx;
 }
+.operate{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    height:95rpx;
+    background:#FD4A5F;
+    
+    text-align:center;
+    line-height:95rpx;
+    font-size:32rpx;
+    color:#fff;
+
+}
 .adress{
     background:#fff;
     font-size:32rpx;

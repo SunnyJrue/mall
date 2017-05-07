@@ -1,18 +1,18 @@
-<scroll-view class="container" scroll-y="true" bindscroll="scroll">
+<scroll-view class="container" scroll-y="true" bindscroll="scroll" bindscrolltolower="pullUpLoad" style="height: {{windowHeight}}px;">
     <view class='search'>
         <view class='floatEle'>
             <view class='position' >
-                深圳
+                {{location}}
                 <image src='../../images/icon-location.png'></image>
             </view>
             <view class='infotext'>
-                <input type="text" placeholder='输入搜索' placeholder-class='infotext_plac'/>
+                <input type="text" placeholder='输入搜索' placeholder-class='infotext_plac' bindconfirm='searchConfirm' value='{{inputInfo}}'/>
                 <image src='../../images/icon-search.png'></image>
             </view>
         </view>
     </view>
 
-    排序
+    
     <view class='filter_goods' bindtap='showTap'>
         <view class='{{modalindex ==1?"hoverd":""}}' data-index='1'>品牌</view>
         <view class='{{modalindex ==2?"hoverd":""}}' data-index='2'>综合</view>
@@ -45,8 +45,8 @@
     
 
     <!-- 遮罩层和对应的筛选 -->
-    <view class='modal'></view>
-    <view class='select_list' bindtap='listIndex' >
+    <view class='modal' wx:if='{{modalShow}}' bindtap='closeModal'></view>
+    <view class='select_list' bindtap='listIndex' wx:if='{{modalShow}}' >
         <block wx:if="{{modalindex ==1}}" >
             <view class='{{sublist ==1?"list-selected":""}}' data-list='1'>总店</view>
         </block>

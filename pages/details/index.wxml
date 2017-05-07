@@ -1,7 +1,7 @@
 <view class="container">
 
     <view>
-         <swiper class="swiper_box" indicator-dots="true">
+         <swiper class="swiper_box" indicator-dots="true" autoplay='true' interval='4000'>
             <swiper-item wx:for="{{imgs}}">
                 <image src="{{item}}" class="slide-image"/>
             </swiper-item>
@@ -22,7 +22,7 @@
         </view> -->
     </view>
 
-    <view class='select_item'>
+    <view class='select_item' bindtap='openWindow'>
         规格选择
         <view>...</view>
     </view>
@@ -33,9 +33,77 @@
             <view>阿斯顿发生发送发送的</view>
         </view>
     </view>
+    
+    <view class='goodsIntroduce'>
+        <view class='items' >
+            <view class='items_title'>实物外观</view>
+            <view class='score'>
+                
+                <view class='outter'>
+                    <view class='inner'>9</view>
+                </view>
+
+            </view>
+
+        </view>
+        <view class='items'>
+            <view class='items_title'>配送效率</view>
+            <view class='score'>
+                
+                <view class='outter'>
+                    <view class='inner'>9</view>
+                </view>
+
+            </view>
+
+        </view>
+
+        <view class='items'>
+            <view class='items_title'>服务质量</view>
+            <view class='score'>
+                
+                <view class='outter'>
+                    <view class='inner'>9</view>
+                </view>
+
+            </view>
+
+        </view>
+
+
+    </view>
+
+
+    <view class='delivery'>
+        <view>配送</view>
+        <view>免邮费免邮费免邮费免邮费免邮费免邮费免邮费免邮费免邮费</view>
+    </view>
+
+    <view class='estimate'>
+
+            <view>评价</view>
+            <view>
+                综合评分<text style='color:#F01616'>0</text>
+            </view>
+            <view>查看全部0条评价</view>
+    </view>
+
+    <view class='goodsDetails'>
+        <view>图文详情</view>
+        <image src='../../images/index/test.png'></image>
+        <image src='../../images/index/test.png'></image>
+        <image src='../../images/index/test.png'></image>
+        <image src='../../images/index/test.png'></image>
+        <image src='../../images/index/test.png'></image>
+    </view>
+
+
+
+
+
 
     <view class='add_shopcar'>
-        <view class='shop_icon'>
+        <!-- <view class='shop_icon'>
             <view>
                 <view>
                     <image src='../../images/details-shop-chat.png'></image>
@@ -50,17 +118,17 @@
                 </view>
                 <view>收藏</view>
             </view>
-        </view>
+        </view> -->
         <view class='shop_icon'>
-            <view>
+            <navigator url='/pages/shopcar/index'>
                 <view>
                     <image src='../../images/details-shop-car.png'></image>
                 </view>
                 <view>购物车</view>
-            </view>
+            </navigator>
         </view>
         <view class='shop_buy'>
-            <view class='join_shopcar'>
+            <view class='join_shopcar' bindtap='addShopCar'>
                 加入购物车
             </view>
             <view class='buy_now' bindtap='openWindow'>
@@ -87,18 +155,19 @@
                     <text class='good_price'>￥75.00</text><text class='goods_num'>库存:3786</text>
                 </view>
                 <view class='select_num'>
-                    已选<text style='margin-left:24rpx;'>数量:1</text>
+                    已选<text style='margin-left:24rpx;'>数量：{{goodNums}}</text>
                 </view>
 
             </view>
+         
             <view class='select_num'>
                 <text style='font-size:28rpx;'>数量</text>
                 <view class='num_box'>
-                    <view>
+                    <view bindtap='reduceNum'>
                         -
                     </view>
-                    <text style='font-size:28rpx;'>7</text>
-                    <view>
+                    <text style='font-size:28rpx;'>{{goodNums}}</text>
+                    <view bindtap='increaseNum'>
                         +
                     </view>
                 </view>
@@ -110,9 +179,11 @@
         <view class='footer'>
             总价：
             <view class='total_money'>
-                ￥75.00
+                ￥{{goodNums*75}}
             </view>
-            <view  class='pay_btn'>立即购买</view>
+            <view wx:if="{{switchPay == true}}" bindtap='payForGoods' class='pay_btn'>立即购买</view>
+            <view wx:if="{{switchPay == false}}" bindtap='confirmAddShocar'  class='pay_btn'>加入购物车</view>
+            
         </view>
     </view>
 

@@ -1,0 +1,71 @@
+
+.goodsMsg{
+    background:#fff;
+    padding:40rpx 0rpx 40rpx 30rpx;
+
+}
+.goodsMsg image{
+    width:160rpx;
+    height:160rpx;
+}
+.goodsMsg .left{
+    display:inline-block;
+    
+}
+.goodsMsg .right{
+    display:inline-block;
+    font-size:28rpx;
+    vertical-align:top;
+    padding-left:30rpx;
+}
+.goodsMsg .right view{
+    padding:2rpx 0;
+    color:#C7C4C7;
+}
+.goodsMsg .right view:nth-child(1){
+    font-size:32rpx;
+    font-weight:bold;
+    padding:0;
+
+}
+.locationMsg{
+    background:#fff;
+    margin-top:30rpx;
+    font-size:28rpx;
+}
+.locationbox{
+    
+    
+}
+
+.locationbox view:nth-child(1){
+
+}
+.locationbox .list{
+    position:relative;
+    background:url('../../images/dot-gray.png') no-repeat 22rpx 40rpx;
+    background-size:38rpx;
+
+}
+.locationbox .list:nth-child(1){
+    background:url('../../images/dot-color.png') no-repeat 10rpx 10rpx;
+    background-size:60rpx;
+
+}
+.locationbox .list:last-child{
+    padding-bottom:60rpx;
+}
+.locationbox .list-item{
+    margin-left:41rpx;
+    border-left:2rpx solid #DADADA;
+    padding:40rpx 0 20rpx 40rpx;
+
+
+}
+.locationbox .list-item-first{
+    margin-left:41rpx;
+    padding:20rpx 0 0rpx 40rpx;
+    padding-left:40rpx;
+    border-left:2rpx solid #DADADA;
+    border:0;
+}

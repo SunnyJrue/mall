@@ -3,13 +3,13 @@
 <view class='container'>
     <!-- 搜索
          -->    
-    <view class='search'>
+<!--     <view class='search'>
 
         <view class='seareh_order'>
             <image src='../../images/icon-search.png'></image>
             <input type="text" placeholder='搜索所有订单' placeholder-class='input_order' />
         </view>
-    </view>
+    </view> -->
     
     <view class='item_list'>
         <view style='background:#fff'>
@@ -45,17 +45,17 @@
             </view>
 
             <view class='btn_item' wx:if="{{status==1}}">
-                <view>取消订单</view>
-                <view>付款</view>
+                <view bindtap='cancelOrder'>取消订单</view>
+                <navigator url='/pages/order/order'>付款</navigator>
             </view>
             
             <view class='btn_item' wx:if="{{status==3}}">
-                <view>查看物流</view>
-                <view>确认收货</view>
+                <navigator url='../logistics/logistics'>查看物流</navigator>
+                <view bindtap='confirmRev'>确认收货</view>
             </view>
 
             <view class='btn_item' wx:if="{{status==4}}">
-                <view>查看物流</view>
+                <view><navigator url='../logistics/logistics'>查看物流</navigator></view>
                 <view>评价</view>
             </view>
 

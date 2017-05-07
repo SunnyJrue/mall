@@ -9,20 +9,16 @@ page{
 form{
     margin-top:17rpx;
 }
-label{
-    font-size:32rpx;
-    display:inline-block;
-}
+
 .name{
     padding:0 20rpx;
     height:90rpx;
-    border-bottom:2rpx solid #F7F7F7;
+    border-bottom:2rpx solid #DFDFDF;
     line-height:90rpx;
 }
 input{
     display:inline-block;
     vertical-align:middle;
-    padding-left:100rpx;
     font-size:32rpx;
     width:70%;
 }
@@ -30,27 +26,40 @@ input{
     padding:0 20rpx;
     height:90rpx;
     line-height:90rpx;
+    border-bottom:2rpx solid #DFDFDF;
+
     
 }
 picker{
     display:inline-block;
 }
 .adress{
-    padding:0 20rpx;
     
 
 }
 .adress_details{
     height:90rpx;
-    border-bottom:2rpx solid #F7F7F7; 
+    border-bottom:2rpx solid #DFDFDF; 
     line-height:90rpx;
+    
+
+}
+.adress_details:nth-child(1){
+    background:url('../../images/icon-arrowdown.png') no-repeat 680rpx center;
+    background-size:40rpx 40rpx;
+}
+.region{
+    width:100%;
+    padding-left:20rpx;
+    font-size:32rpx;
+}
+.region{
 
 }
 
 .adress_details input{
-    padding-left:75rpx;
+    padding-left:20rpx;
     width:100%;
-   
 }
 .btn{
     padding:0 20rpx;
@@ -63,3 +72,30 @@ button{
 .inputholders{
     font-size:28rpx;
 }
+.cityheader{
+    position:absolute;
+    z-index:102;
+    width:100%;
+
+}
+.cityheader view{
+    display:inline-block;
+    position:absolute;
+}
+.city-cancel{
+    left:40rpx;
+}
+.city-true{
+    right:40rpx;
+}
+.modal{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    z-index:99
+}
+.region text{
+    font-size:32rpx;
+}
+

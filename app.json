@@ -1,19 +1,22 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/my/index",
     "pages/adress/adress",
+    "pages/order/order",
+    "pages/selectsite/selectsite",
+    "pages/addsite/index", 
+    "pages/logistics/logistics",
+    "pages/details/index",
+    "pages/classify/index",
+    "pages/index/searchgoods",
+    "pages/list/index",
+    "pages/shopcar/index",
+    "pages/my/index",
     "pages/disticket/disticket",
     "pages/userstatus/userstatus",
     "pages/allorder/allorder",
-    "pages/index/searchgoods",
-    "pages/order/order",
-    "pages/details/index",
-    "pages/addsite/index",
-    "pages/classify/index",
     "pages/cart/index",
-    "pages/brand/index",
-    "pages/list/index"
+    "pages/brand/index"
   ],
   "window":{
     "backgroundTextStyle":"white",
@@ -22,11 +25,12 @@
     "navigationBarBackgroundColor": "#E20E27",
     "backgroundColor": "#F2f2f2",
     "enablePullDownRefresh": true
+    
   },
   "tabBar": {
     "color": "#6e6d6b",
     "selectedColor": "#E30C26",
-    "borderStyle": "white",
+    "borderStyle": "black",
     "backgroundColor": "#F5F5F5",
     "list": [{
       "pagePath": "pages/index/index",
