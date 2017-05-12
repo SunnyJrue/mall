@@ -2,7 +2,8 @@
 App({
     data:{
         address:'111111',
-        userMsg:{}
+        userMsg:{},
+        userAppName:'吴填生'
     },
     onLoad:function(){
         

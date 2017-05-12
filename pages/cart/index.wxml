@@ -9,6 +9,7 @@
             <view style='background:#fff'>
                 
                 <view class='title'>
+                    <image class='icon-images' src='../../images/icon-arrowdown.png'></image>
                     <label class="radio"  >
                         <checkbox value='69'   checked="{{arr[0]}}" />{{item.value}}
                     </label>

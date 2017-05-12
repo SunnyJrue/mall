@@ -1,7 +1,7 @@
 
 swiper{
     height:280rpx;
-    margin-top:80rpx;
+    /* margin-top:80rpx; */
 }
 swiper image{
     width:100%;
@@ -85,6 +85,7 @@ swiper image{
     height:82rpx;
     margin:0 auto;
     padding-bottom:10rpx;
+    border-radius:40%;
 }
 .category .list{
     text-align:center;
@@ -100,20 +101,30 @@ swiper image{
 
 .brand{
     background:#fff;
+    position:relative;
 }
 .brand-title{
     width:100%;
     text-align:center;
     font-size:32rpx;
     font-weight:bold;
-    background:url('../../images/icon-arrowdown.png') no-repeat;
-    background-size:20rpx;
-    background-position:700rpx 45rpx;
-    padding-top:30rpx;
+    padding-top:10rpx;
+}
+.category.brand{
+    margin-top:0;
+}
+.icon-images{
+    width:30rpx !important;
+    height:30rpx !important;
+    position:absolute;
+    right:20rpx;
+    top:20rpx;
+
 }
 .brand image{
     width:120rpx;
-    height:80rpx;
+    height:120rpx;
+    border-radius:40%;
 }
 .brand-image{
     display:flex;
@@ -122,6 +133,7 @@ swiper image{
     justify-content:space-around;
     /* padding:60rpx 0 ; */
     height:120rpx;
+    margin-top:30rpx;
 }
 
 

@@ -76,67 +76,6 @@
    </view>
 
 
-<!-- 
-   <view class='selectAddress' wx:if='{{showSelectAdd}}'> 
-   
-          <view class='adress' data-name='朱阳' data-phone='18575585953' data-city='广东省深圳市福田区'  data-country='上沙村龙湫bbbbb' bindtap='selectAddress'>
-              <view  class='name'>朱阳 <text class='phone_num'>18575585953</text></view>
-              <view class='details_adress'>广东省深圳市福田区 上沙村龙湫aaaaaaaaaaa上沙村龙湫aaaaaaaaaaa上沙村龙湫aaaaaaaaaaa上沙村龙湫aaaaaaaaaaa
-              </view>
-              <view class='opration'>
-                  <view class='radios'> 
-                      <radio />设为默认地址
-                      
-                  </view>
-                  <view class='alter-btn'>
-                      <view>编辑</view>
-                      <view>删除</view>
-                  </view>
-              </view>
-          </view>
-
-
-          <view class='adress' data-name='朱阳' data-phone='18575585953' data-city='广东省深圳市福田区'  data-country='上沙村龙湫bbbbb' bindtap='selectAddress'>
-              <view  class='name'>朱阳 <text class='phone_num'>18575585953</text></view>
-              <view class='details_adress'>广东省深圳市福田区 上沙村龙湫aaaaaaaaaaa上沙村龙湫aaaaaaaaaaa上沙村龙湫aaaaaaaaaaa上沙村龙湫aaaaaaaaaaa
-              </view>
-              <view class='opration'>
-                  <view class='radios'> 
-                      <radio />设为默认地址
-                      
-                  </view>
-                  <view class='alter-btn'>
-                      <view>编辑</view>
-                      <view>删除</view>
-                  </view>
-              </view>
-          </view>
-
-
-
-         <view class='adress' data-name='{{userName}}' data-phone='{{telNumber}}' data-city='{{provinceName+cityName}}'  data-country='{{countyName}}' bindtap='selectAddress'>
-             <view  class='name'>{{userName}} <text class='phone_num'>{{telNumber}}</text></view>
-             <view class='details_adress'>{{provinceName+cityName+countyName}}
-             </view>
-             <view class='opration'>
-                 <view class='radios'> 
-                     <radio />设为默认地址
-                     
-                 </view>
-                 <view class='alter-btn'>
-                     <view>编辑</view>
-                     <view>删除</view>
-                 </view>
-             </view>
-         </view>
-
-
-          <view bindtap='infoAddress' class='btn'>
-              添加收货信息
-          </view>
-
-          
-      </view> -->
 
 
 

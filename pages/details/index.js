@@ -12,10 +12,34 @@ Page({
         ],
         goodNums:1,
         animationData:{},
-        switchPay:true
+        switchPay:true,
+        datas:'',
+        goodtap:1,
     },
-    onLoad: function(options) {
-      
+    onLoad: function(e) {
+        console.log(e)
+        var id = e.id,
+        that = this;
+        wx.showToast({
+            title:'加载中...',
+            mask:true,
+            icon:'loading',
+            duration:5000
+        })
+        wx.request({
+            url:'http://119.23.216.161:8080/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
+            method:'post',
+            success:function(res){
+                wx.hideToast();
+                console.log(res)
+                console.log(res.data.data.product[0])
+                that.setData({
+                    datas:res.data.data,
+
+                })
+
+            }
+        })
     },
     closeWindow:function(){
         this.setData({
@@ -82,6 +106,13 @@ Page({
         wx.navigateTo({
             url:'/pages/order/order',
 
+        })
+    },
+    changeTap:function(){
+        var tapnum = this.data.goodtap==1?2:1;
+
+        this.setData({
+            goodtap:tapnum,
         })
     }
 })

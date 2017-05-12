@@ -1,5 +1,5 @@
 
-
+var app = getApp();
 Page({
     data:{
         modalindex:'1',
@@ -26,21 +26,19 @@ Page({
           }
         });
 
-
-        var keywords = e.kw;
-        var location = e.location;
+        var id = e.id;
         this.setData({
             location:location,
             inputInfo:e.kw
         })
-        var that = this;
+        
         wx.request({
-            url:'',
-            dataType:'json',
+            url:'http://119.23.216.161:8080/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
+            method:'post',
             success:function(res){
                 console.log(res)
                 that.setData({
-                    goodContent:''
+
                 })
             }
         })

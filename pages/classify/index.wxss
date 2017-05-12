@@ -155,7 +155,7 @@ page{
     display:inline-block;
     font-size:28rpx;
     color:#919191;
-    background:url('../../images/down-gray.png') no-repeat;
+    background:url('http://cdn-img.easyicon.net/png/12054/1205407.gif') no-repeat;
     background-size:20rpx;
     background-position:140rpx 34rpx;
 
@@ -272,7 +272,7 @@ page{
     right:35rpx;
 }
 .list-selected{
-    background:url('../../images/icon-selected.png') no-repeat ;
+    background:url('http://cdn-img.easyicon.net/png/11847/1184723.gif') no-repeat ;
     background-size:40rpx 40rpx;
     background-position:600rpx 22rpx;
 }

@@ -1,8 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/adress/adress",
     "pages/order/order",
+    "pages/adress/adress",
     "pages/selectsite/selectsite",
     "pages/addsite/index", 
     "pages/logistics/logistics",

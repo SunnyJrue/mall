@@ -1,3 +1,4 @@
+var common = require('../../utils/md5.min.js');
 
 var app = getApp();
 Page({
@@ -136,7 +137,28 @@ Page({
         })
     },
     submitOrder:function(){
-        var address = this.data.provinceName+this.data.cityName+this.data.countyName;
-        console.log(address)
+        // var address = this.data.provinceName+this.data.cityName+this.data.countyName;
+        // console.log(address)
+        wx.getStorage({
+            key:'userMsg',
+            success:function(res){
+                console.log(res)
+                var code = res.data.opens;
+                wx.request({
+                    url:'http://119.23.216.161:8080/prepay.do?code='+code,
+                    method:'post',
+                    success:function(res){
+                        console.log(res);
+                        var data = res.data;
+
+
+
+                    }
+                })
+            }
+        })
+        
+        
+
     }
 })

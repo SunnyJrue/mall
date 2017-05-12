@@ -13,9 +13,9 @@
 
     <view class="shopping_box">
         <view class="title">啊发生发生发射点发啥地方啥都发士大夫阿斯顿法撒旦飞洒地方啥发士大夫</view>
-        <view class="desc">{{detail.desc}}</view>
+        <view class="desc">sfdfsdf</view>
         <view class="price">
-            ￥75.00<text wx:if="true">库存：<text>3565</text></text>
+            ￥{{datas.product[0].current_price}}<text wx:if="true">库存：<text>{{datas.product[0].stock}}</text></text>
         </view>
      <!--    <view class="quantity">
             <text>数量：</text><input type='number' value='1'/>
@@ -26,76 +26,98 @@
         规格选择
         <view>...</view>
     </view>
-    
-    <view class='goods_mesage'>
-        <view class='goods_title'>
-            <image src='../../images/details/logo.png'></image>
-            <view>阿斯顿发生发送发送的</view>
-        </view>
+    <view class='good_tap'>
+        <view class='good_tap_list {{goodtap == 1?"active":""}}' bindtap='changeTap'>商品详情</view>
+        <view class='good_tap_list {{goodtap == 2?"active":""}}' bindtap='changeTap'>参数</view>
     </view>
-    
-    <view class='goodsIntroduce'>
-        <view class='items' >
-            <view class='items_title'>实物外观</view>
-            <view class='score'>
-                
-                <view class='outter'>
-                    <view class='inner'>9</view>
+
+
+    <view class='good_tap_content {{goodtap == 1?"active":""}}'>
+        <view class='goods_mesage'>
+            <view class='goods_title'>
+                <image src='../../images/details/logo.png'></image>
+                <view>阿斯顿发生发送发送的</view>
+            </view>
+        </view>
+        
+        <view class='goodsIntroduce'>
+            <view class='items' >
+                <view class='items_title'>实物外观</view>
+                <view class='score'>
+                    
+                    <view class='outter'>
+                        <view class='inner'>9</view>
+                    </view>
+
+                </view>
+
+            </view>
+            <view class='items'>
+                <view class='items_title'>配送效率</view>
+                <view class='score'>
+                    
+                    <view class='outter'>
+                        <view class='inner'>9</view>
+                    </view>
+
                 </view>
 
             </view>
 
-        </view>
-        <view class='items'>
-            <view class='items_title'>配送效率</view>
-            <view class='score'>
-                
-                <view class='outter'>
-                    <view class='inner'>9</view>
+            <view class='items'>
+                <view class='items_title'>服务质量</view>
+                <view class='score'>
+                    
+                    <view class='outter'>
+                        <view class='inner'>9</view>
+                    </view>
+
                 </view>
 
             </view>
 
+
         </view>
 
-        <view class='items'>
-            <view class='items_title'>服务质量</view>
-            <view class='score'>
-                
-                <view class='outter'>
-                    <view class='inner'>9</view>
+
+        <view class='delivery'>
+            <view>配送</view>
+            <view>免邮费免邮费免邮费免邮费免邮费免邮费免邮费免邮费免邮费</view>
+        </view>
+
+        <view class='estimate'>
+
+                <view>评价</view>
+                <view>
+                    综合评分<text style='color:#F01616'>0</text>
                 </view>
+                <view>查看全部0条评价</view>
+        </view>
 
-            </view>
-
+        <view class='goodsDetails'>
+            <view>图文详情</view>
+            <image src='../../images/index/test.png'></image>
+            <image src='../../images/index/test.png'></image>
+            <image src='../../images/index/test.png'></image>
+            <image src='../../images/index/test.png'></image>
+            <image src='../../images/index/test.png'></image>
         </view>
 
 
+
     </view>
 
 
-    <view class='delivery'>
-        <view>配送</view>
-        <view>免邮费免邮费免邮费免邮费免邮费免邮费免邮费免邮费免邮费</view>
+    <view class='good_tap_content {{goodtap == 2?"active":""}}'>
+        <view class='arglist' wx:for='{{datas.arg}}'>
+            <view class='arg-title'>{{item.arg_key}}</view>
+            <view class='arg-content'>{{item.arg_value}}</view>
+        </view>
+
     </view>
 
-    <view class='estimate'>
 
-            <view>评价</view>
-            <view>
-                综合评分<text style='color:#F01616'>0</text>
-            </view>
-            <view>查看全部0条评价</view>
-    </view>
 
-    <view class='goodsDetails'>
-        <view>图文详情</view>
-        <image src='../../images/index/test.png'></image>
-        <image src='../../images/index/test.png'></image>
-        <image src='../../images/index/test.png'></image>
-        <image src='../../images/index/test.png'></image>
-        <image src='../../images/index/test.png'></image>
-    </view>
 
 
 

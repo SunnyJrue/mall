@@ -1,6 +1,6 @@
 <view class="container" scroll-y="true"  bindscrolltolower="pullUpLoad" style=""  >
     <!-- 轮播 -->
-    <view class='search'>
+<!--     <view class='search'>
         <view class='floatEle'>
             <view class='position' >
                 {{location}}
@@ -11,70 +11,62 @@
                 <image src='../../images/icon-search.png'></image>
             </view>
         </view>
-    </view>
+    </view> -->
 
     
     <!-- 轮播 -->
     <swiper indicator-dots='true'  class='swiper' autoplay='true' >
         <block>
-            <swiper-item>
-                <image src='../../images/scroll.png'></image>
+            <swiper-item wx:for='{{data.carousel}}' wx:key='' >
+                <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.imgPath}}'></image>
             </swiper-item>
-            <swiper-item>
-                <image src='../../images/scroll.png'></image>
-            </swiper-item>
+            
         </block>
     </swiper >
 
-    <view class='search' >
+    <view class='search' wx:if='{{data.species.length != 0}}'>
         <view class='category'>
-            <view class='list'>
-                <image src='../../images/index-logo.png'></image>
-                <view class='cate_text'>限时抢购</view>
-            </view>
-            <view class='list'>
-                <image src='../../images/index-logo.png'></image>
-                <view class='cate_text'>限时抢购</view>
-            </view>
-            <view class='list'>
-                <image src='../../images/index-logo.png'></image>
-                <view class='cate_text'>限时抢购</view>
-            </view>
+            <block wx:for='{{data.species}}' wx:key=''  >
+                <navigator url='/pages/index/searchgoods?id={{item.id}}' class='list'>
+                    <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.speciesImage}}'></image>
+                    <view class='cate_text'>{{item.speciesName}}</view>
+                </navigator>
+             
+                
+            </block>
 
-            <view class='list'>
-                <image src='../../images/index-logo.png'></image>
-                <view class='cate_text'>限时抢购</view>
-            </view>
-
-            <view class='list'>
-                <image src='../../images/index-logo.png'></image>
-                <view class='cate_text'>限时抢购</view>
-            </view>
-            <view class='list'>
-                <image src='../../images/index-logo.png'></image>
-                <view class='cate_text'>限时抢购</view>
-            </view>
-            <view class='list'>
-                <image src='../../images/index-logo.png'></image>
-                <view class='cate_text'>限时抢购</view>
-            </view>
-            <view class='list'>
-                <image src='../../images/index-logo.png'></image>
-                <view class='cate_text'>限时抢购</view>
-            </view>
         </view>
 
     </view>
 
     <view class='space'></view>
     
-    <view class='brand'>
+<!--     <view class='brand'>
         <view class='brand-title'>品牌街</view>
-        <view class='brand-image'>
-            <image src='../../images/bran-img.png'></image>
-            <image src='../../images/bran-img.png'></image>
-            <image src='../../images/bran-img.png'></image>
-            <image src='../../images/bran-img.png'></image>
+        <image class='icon-images' src='../../images/icon-arrowdown.png'></image>
+        <view class='brand-image' >
+            <view wx:for='{{data.brand}}'>
+                <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.brandImage}}'></image>
+            </view>
+        </view>
+
+    </view> -->
+
+    <view class='search' wx:if='{{data.brand.length != 0}}'>
+        <view class='category brand'>
+            <view class='brand-title'>品牌街</view>
+            <block wx:for='{{data.brand}}' wx:key='' >
+                <view class='list'>
+                    <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.brandImage}}'></image>
+                    <view class='cate_text'>{{item.brandName}}</view>
+                </view>
+                <view class='list'>
+                    <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.brandImage}}'></image>
+                    <view class='cate_text'>{{item.brandName}}</view>
+                </view>
+                
+            </block>
+
         </view>
 
     </view>
@@ -82,18 +74,18 @@
     <view class='space'></view>
     
     <view class='goods-box'>
-        <navigator url='/pages/details/index?id=111' class='goods-item' wx:for="{{obj}}">
+        <navigator url='/pages/details/index?brand_id={{item.brand_id}}&species_id={{item.species_id}}' class='goods-item' wx:key='' wx:for="{{data.product}}">
             <view class='item-image'>
-                <image src='../../images/index/test.png'></image>
+                <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.img_path}}'></image>
             </view>
             <view class='item-msg'>
-                <view class='item-name'>啊啊阿斯蒂芬啥地方手动阀手动阀撒旦发生</view>
+                <view class='item-name'>{{item.product_name}}</view>
                 <view class='item-shop'>总店</view>
                 <view style='height:45rpx;line-height:45rpx;'>
-                    <text class='item-newprice'>￥75.00</text> <text class='item-oldprice'>￥155.00</text>
+                    <text class='item-newprice'>￥{{item.current_price}}.00</text> <text class='item-oldprice'>￥{{item.original_price}}</text>
                 </view>
                 <view class='item-tips'>
-                    <text>新上架</text><text class='item-num'>库存：<text>3786</text></text>
+                    <text>{{item.species_name}}</text><text class='item-num'>库存：<text>{{item.stock}}</text></text>
                 </view>
             </view>
         </navigator>

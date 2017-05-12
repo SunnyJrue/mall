@@ -7,12 +7,14 @@ Page({
         location:'深圳',
         windowHeight:'',
         userInfo:'',
-        id:''
+        id:'',
+        data:''
+
     },
 
     onLoad: function() {
-      
-      console.log(22222222)
+      var userAppName = app.data.userAppName
+
        var that = this;
 
        wx.getSystemInfo({
@@ -55,13 +57,16 @@ Page({
                            dataType:'json',
                            success:function(res){
                                console.log(res)
+                               console.log(open)
                                wx.setStorage({
                                    key:'userMsg',
                                    data:{
                                        userAppName:'吴填生',
-                                       memberId:res.data.data.id
+                                       memberId:res.data.data.id,
+                                       opens:open
                                    }
                                });
+                              
                        
                            }
                        })
@@ -73,6 +78,28 @@ Page({
               
            }
        })
+
+
+        
+
+        
+       //获取商品信息
+       wx.request({
+          url:'http://119.23.216.161:8080/product/homeInfo.do?userAppName='+userAppName,
+          method:'post',
+          success:function(res){
+            console.log(res)
+            var data = res.data.data
+            that.setData({
+                data:data  
+            })
+          }
+       })
+
+
+
+
+
       
     },
     onShow:function(){

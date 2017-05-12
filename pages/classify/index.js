@@ -3,10 +3,10 @@ Page({
     data: {
         navLeftItems: [],
         navRightItems: [],
-        curNav: 1,
+        curNav: -1,
 		curIndex: 0,
         modalindex:'1',
-        obj:[1,2,3,4,5,6,7],
+        obj:'',
         sublist:-1,
         modalShow:false,
         default:'',
@@ -24,30 +24,86 @@ Page({
           }
         })
         
+        // wx.request({
+        //     url: 'http://huanqiuxiaozhen.com/wemall/goodstype/typebrandList',
+        //     method: 'GET',
+        //     data: {},
+        //     header: {
+        //         'Accept': 'application/json'
+        //     },
+        //     success: function(res) {
+        //         that.setData({
+        //             navLeftItems: res.data,
+        //             navRightItems: res.data
+        //         })
+        //     }
+        // })
+
+        //分类商品获取
+        var userAppName = app.data.userAppName
+        console.log(userAppName);
         wx.request({
-            url: 'http://huanqiuxiaozhen.com/wemall/goodstype/typebrandList',
-            method: 'GET',
-            data: {},
+            url:'http://119.23.216.161:8080/product/productList.do?userAppName='+userAppName,
+            method:'post',
+            data:{},
             header: {
                 'Accept': 'application/json'
             },
-            success: function(res) {
+            success:function(res){
+                console.log(res)
                 that.setData({
-                    navLeftItems: res.data,
-                    navRightItems: res.data
+                    navLeftItems:res.data.data.species,
+                    obj:res.data.data.product
                 })
             }
+
         })
+
+
+
+
+
     },
 
     //事件处理函数
     switchRightTab: function(e) {
-        let id = e.target.dataset.id,
-			index = parseInt(e.target.dataset.index);
+
+        var id = e.target.dataset.id,
+			index = parseInt(e.target.dataset.index),
+            itemId = e.target.dataset.itemid,
+            that = this;
+
 		this.setData({
 			curNav: id,
 			curIndex: index
-		})
+		});
+        var url ;
+
+        if(id == -1){
+            url = 'http://119.23.216.161:8080/product/productList.do?userAppName='+ app.data.userAppName;
+            
+        }else{
+            url = 'http://119.23.216.161:8080/product/productList.do?userAppName='+ app.data.userAppName+'&id='+itemId+'&page=1&pageSize=10'
+        }
+
+        wx.request({
+            url: url,
+            data:{
+                'page':1,
+                'pageSize':10
+            },
+            header:{
+                'Accept': 'application/json'
+            },
+            method:'post',
+            success:function(res){
+                console.log(res.data.data);
+                var data = res.data.data;
+                that.setData({
+                    obj:data.product,
+                })
+            }
+        })
     },
     showTap:function(e){
         var index = e.target.dataset.index;
