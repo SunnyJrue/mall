@@ -69,6 +69,7 @@ page{
     justify-content:space-around;
     background:#fff;
     border-bottom:2rpx solid #d7d7d7;
+    margin-top:20rpx;
     height:80rpx;
 
 }

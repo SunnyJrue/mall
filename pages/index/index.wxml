@@ -74,7 +74,7 @@
     <view class='space'></view>
     
     <view class='goods-box'>
-        <navigator url='/pages/details/index?brand_id={{item.brand_id}}&species_id={{item.species_id}}' class='goods-item' wx:key='' wx:for="{{data.product}}">
+        <navigator url='/pages/details/index?brand_id={{item.brand_id}}&species_id={{item.species_id}}&id={{item.id}}' class='goods-item' wx:key='' wx:for="{{hotgoods}}">
             <view class='item-image'>
                 <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.img_path}}'></image>
             </view>

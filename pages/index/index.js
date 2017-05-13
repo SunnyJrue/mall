@@ -8,7 +8,9 @@ Page({
         windowHeight:'',
         userInfo:'',
         id:'',
-        data:''
+        data:'',
+        hotgoods:'',
+        page:1
 
     },
 
@@ -85,13 +87,14 @@ Page({
         
        //获取商品信息
        wx.request({
-          url:'http://119.23.216.161:8080/product/homeInfo.do?userAppName='+userAppName,
+          url:'http://119.23.216.161:8080/product/homeInfo.do?userAppName='+app.data.userAppName+'&page=1&pageSize=6',
           method:'post',
           success:function(res){
             console.log(res)
             var data = res.data.data
             that.setData({
-                data:data  
+                data:data,
+                hotgoods:data.product  
             })
           }
        })
@@ -133,7 +136,36 @@ Page({
     },
     //上拉加载
     onReachBottom:function(){
-      console.log(222)
+      var that = this;
+      wx.showToast({
+        title:'加载中',
+        icon:'loading',
+        mask:true,
+        duration:2000
+      })
+      wx.request({
+          url:'http://119.23.216.161:8080/product/homeInfo.do?userAppName='+app.data.userAppName+'&page='+that.data.page+'&pageSize=6',
+         
+          header: {
+                       'Content-Type': 'application/json'
+          },
+          method:'POST',
+          success:function(res){
+              wx.hideToast();
+              console.log(that.data.page)
+              var newData = res.data.data.product;
+              var data = that.data.hotgoods.concat(newData);
+              console.log(data)
+              that.setData({
+                page:that.data.page+1,
+                hotgoods:data
+              })
+
+              
+             
+
+          }
+      })
 
     }
     

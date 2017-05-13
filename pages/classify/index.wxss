@@ -150,21 +150,23 @@ page{
     line-height:90rpx;
 }
 .filter_goods view{
+    font-size:10px;
     width:25%;
+    
     text-align:center;
     display:inline-block;
-    font-size:28rpx;
+    font-size:24rpx;
     color:#919191;
     background:url('http://cdn-img.easyicon.net/png/12054/1205407.gif') no-repeat;
     background-size:20rpx;
-    background-position:140rpx 34rpx;
+    background-position:right 18px;
 
 }
 .filter_goods .hoverd{
     color:#d63838;
     background:url('../../images/down-color.png') no-repeat;
     background-size:20rpx;
-    background-position:140rpx 34rpx;
+    background-position:right 18px;
 }
 
 
@@ -232,7 +234,7 @@ page{
     z-index:1000;
 }
 .select_list{
-    height:580rpx;
+    height:450rpx;
     width:100%;
     background:#fff;
     position:fixed;

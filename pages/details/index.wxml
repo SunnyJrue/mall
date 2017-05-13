@@ -2,8 +2,8 @@
 
     <view>
          <swiper class="swiper_box" indicator-dots="true" autoplay='true' interval='4000'>
-            <swiper-item wx:for="{{imgs}}">
-                <image src="{{item}}" class="slide-image"/>
+            <swiper-item >
+                <image src="http://119.23.216.161:8080/downloadFile.do?url={{datas.product[0].img_path}}" class="slide-image"/>
             </swiper-item>
         </swiper>
     </view>
@@ -12,8 +12,8 @@
 
 
     <view class="shopping_box">
-        <view class="title">啊发生发生发射点发啥地方啥都发士大夫阿斯顿法撒旦飞洒地方啥发士大夫</view>
-        <view class="desc">sfdfsdf</view>
+        <view class="title">{{datas.product[0].product_name}}</view>
+        <!-- <view class="desc">sfdfsdf</view> -->
         <view class="price">
             ￥{{datas.product[0].current_price}}<text wx:if="true">库存：<text>{{datas.product[0].stock}}</text></text>
         </view>
@@ -33,12 +33,12 @@
 
 
     <view class='good_tap_content {{goodtap == 1?"active":""}}'>
-        <view class='goods_mesage'>
-            <view class='goods_title'>
-                <image src='../../images/details/logo.png'></image>
-                <view>阿斯顿发生发送发送的</view>
-            </view>
-        </view>
+       <!--  <view class='goods_mesage'>
+           <view class='goods_title'>
+               <image src='../../images/details/logo.png'></image>
+               <view>阿斯顿发生发送发送的</view>
+           </view>
+       </view> -->
         
         <view class='goodsIntroduce'>
             <view class='items' >
@@ -82,7 +82,7 @@
 
         <view class='delivery'>
             <view>配送</view>
-            <view>免邮费免邮费免邮费免邮费免邮费免邮费免邮费免邮费免邮费</view>
+            <view>满39元免邮费</view>
         </view>
 
         <view class='estimate'>
@@ -171,7 +171,7 @@
             </view>
             <view class='good_text'>
                 <view class='good_title'>
-                    正品包邮苹果夫人化妆品正品包邮苹果夫人化妆品正品包邮苹果夫人化妆品
+                    {{datas.product[0].product_name}}
                 </view>
                 <view style='padding:6rpx 0;'>
                     <text class='good_price'>￥75.00</text><text class='goods_num'>库存:3786</text>
@@ -201,7 +201,7 @@
         <view class='footer'>
             总价：
             <view class='total_money'>
-                ￥{{goodNums*75}}
+                ￥{{goodNums*datas.product[0].current_price}}
             </view>
             <view wx:if="{{switchPay == true}}" bindtap='payForGoods' class='pay_btn'>立即购买</view>
             <view wx:if="{{switchPay == false}}" bindtap='confirmAddShocar'  class='pay_btn'>加入购物车</view>
