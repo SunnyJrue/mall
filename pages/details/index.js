@@ -2,14 +2,6 @@ var app = getApp()
 Page({
     data:{
         switchWindow:false,
-        imgs:[
-            "../../images/details/details.png",
-            "../../images/details/details.png",
-            "../../images/details/details.png",
-            "../../images/details/details.png",
-            "../../images/details/details.png",
-
-        ],
         goodNums:1,
         animationData:{},
         switchPay:true,
@@ -35,7 +27,6 @@ Page({
                 console.log(res.data.data.product[0])
                 that.setData({
                     datas:res.data.data,
-
                 })
 
             }
@@ -77,20 +68,59 @@ Page({
     },
     //加入购物车
     addShopCar:function(){
+        
+
         this.setData({
             switchPay:false,
             switchWindow:true,
 
         })
+
+
+
         
     },
     //添加购物车提示
     confirmAddShocar:function(){
-        wx.showToast({
-            title:'成功添加到购物车',
-            duration:1000,
+        var id = this.data.datas.product[0].id;
+        var that = this;
 
+        console.log(id)
+        wx.getStorage({
+            key:'userMsg',
+            success:function(res){
+                console.log(res)
+                var memberId = res.data.memberId;
+                var number = that.data.goodNums;
+                var url = 'http://119.23.216.161:8080/cart/insert.do?userAppName='+app.data.userAppName+'&memberId='+memberId+'&id='+id+'&number='+number;
+                console.log(url)
+                wx.request({
+                    url:'http://119.23.216.161:8080/cart/insert.do?userAppName='+app.data.userAppName+'&memberId='+memberId+'&id='+id+'&number='+number,
+                    method:'post',
+                    success:function(res){
+                        console.log(res)
+                        if(res.data.code == 0 ){
+                            wx.showToast({
+                                title:'成功添加到购物车',
+                                duration:1000,
+                                mask:true
+
+                            })
+                        }else{
+                            wx.showToast({
+                                title:'添加到购物车失败',
+                                duration:1000,
+                                mask:true
+                            })
+                        }
+                        
+                    }
+                })
+            }
         })
+        
+
+   
     },
     //立即购买
     payForGoods:function(){
@@ -114,5 +144,10 @@ Page({
         this.setData({
             goodtap:tapnum,
         })
-    }
+    },
+    // turnToShopCar:function(){//跳转购物车
+    //     wx.switchTab({
+    //         url:'/pages/cart/index'
+    //     })
+    // }
 })

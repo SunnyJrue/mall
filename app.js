@@ -3,7 +3,8 @@ App({
     data:{
         address:'111111',
         userMsg:{},
-        userAppName:'吴填生'
+        userAppName:'吴填生',
+        memberId:'',
     },
     onLoad:function(){
         
@@ -39,6 +40,7 @@ App({
 
             //                 var data =JSON.parse(res.data.data) ;
             //                 var  open= data.openid;
+                           
 
             //                 wx.request({
             //                     url:"http://119.23.216.161:8080/member/insert.do?userAppName=吴填生&wxOpenId="+open,

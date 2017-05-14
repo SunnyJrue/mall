@@ -96,11 +96,11 @@
 
         <view class='goodsDetails'>
             <view>图文详情</view>
-            <image src='../../images/index/test.png'></image>
-            <image src='../../images/index/test.png'></image>
-            <image src='../../images/index/test.png'></image>
-            <image src='../../images/index/test.png'></image>
-            <image src='../../images/index/test.png'></image>
+            <block wx:for='{{datas.product[0].html_path}}'>
+                <image src='http://119.23.216.161:8080/downloadFile.do?url={{item}}'></image>
+                <image src='http://119.23.216.161:8080/downloadFile.do?url={{item}}'></image>
+            </block>
+            
         </view>
 
 
@@ -167,14 +167,14 @@
             </view>
 
             <view class='goods_msg'>
-                <image src='../../images/details/details.png'></image>
+                <image src='http://119.23.216.161:8080/downloadFile.do?url={{datas.product[0].img_path}}'></image>
             </view>
             <view class='good_text'>
                 <view class='good_title'>
                     {{datas.product[0].product_name}}
                 </view>
                 <view style='padding:6rpx 0;'>
-                    <text class='good_price'>￥75.00</text><text class='goods_num'>库存:3786</text>
+                    <text class='good_price'>￥{{datas.product[0].current_price}}</text><text class='goods_num'>库存:{{datas.product[0].stock}}</text>
                 </view>
                 <view class='select_num'>
                     已选<text style='margin-left:24rpx;'>数量：{{goodNums}}</text>

@@ -12,6 +12,9 @@ Page( {
   },
   onLoad:function(){
 
+
+
+
   },
   checkboxChange:function(e){
     console.log(e.detail)

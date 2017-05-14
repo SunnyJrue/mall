@@ -14,9 +14,15 @@ Page({
         nationalCode :"",
         userMobile :"", 
         showSelectAdd:false,
-        adrdatas:''
+        adrdatas:'',
+        id:'',//购物车商品的id
+        memberId:'',
     },
-    onLoad:function(){
+    onLoad:function(e){
+        var id=e.id;
+        this.setData({
+            id:id
+        })
         var that = this;
         wx.getStorage({
             key:'userMsg',
@@ -30,7 +36,7 @@ Page({
                 })
 
                 wx.request({
-                    url:'http://119.23.216.161:8080/address/findList.do?defaultFlag=1&userAppName='+res.data.userAppName+'&memberId='+res.data.memberId,
+                    url:'http://119.23.216.161:8080/address/findList.do?defaultFlag=1&userAppName='+app.data.userAppName+'&memberId='+res.data.memberId,
                     method:'post',
                     success:function(res){
                         console.log(res)
@@ -41,7 +47,8 @@ Page({
                             userName:data.userName,
                             userMobile:data.userMobile,
                             detailName:data.addres,
-                            adrdatas:adrdatas
+                            adrdatas:adrdatas,
+                            addressNum:data.id
                         })
                     }
                 })
@@ -59,14 +66,14 @@ Page({
     onShow:function(){
         var that = this;
         wx.getStorage({
-            key: 'id',
+            key: 'userMsg',
             success: function(res) {
                   console.log(res.data)
                   var id = res.data;
                  
                   if(id>=0){
                     wx.request({
-                        url:'http://119.23.216.161:8080/address/findList.do?id='+id+'&userAppName='+that.data.userMsg.userAppName+'&memberId='+that.data.userMsg.memberId,
+                        url:'http://119.23.216.161:8080/address/findList.do?id='+id+'&userAppName='+app.data.userAppName+'&memberId='+that.data.memberId,
                         method:'post',
                         success:function(res){
                             console.log(res)
@@ -84,7 +91,8 @@ Page({
                                     userName:data.userName,
                                     userMobile:data.userMobile,
                                     detailName:data.addres,
-                                    adrdatas:adrdatas
+                                    adrdatas:adrdatas,
+                                    addressNum:data.id
 
                                 })
                             }
@@ -137,26 +145,46 @@ Page({
         })
     },
     submitOrder:function(){
-        // var address = this.data.provinceName+this.data.cityName+this.data.countyName;
-        // console.log(address)
-        wx.getStorage({
-            key:'userMsg',
+        var that = this;
+        var productId  = that.data.id;
+        var addrId = that.data.addressNum;
+        var orderNumber = 1;
+        var reason = '';
+        //测试用 先生成订单
+        console.log('http://119.23.216.161:8080/order/insert.do?productId='+productId+'&userAppName'+app.data.userAppName+'&memberId='+that.data.memberId+'&orderNumber='+orderNumber+'&reason='+reason+'&addrId='+addrId)
+        wx.request({
+            url:'http://119.23.216.161:8080/order/insert.do?productId='+4+'&userAppName='+app.data.userAppName+'&memberId='+that.data.memberId+'&orderNumber='+orderNumber+'&reason='+reason+'&addrId='+addrId,
+            method:'post',
             success:function(res){
                 console.log(res)
-                var code = res.data.opens;
-                wx.request({
-                    url:'http://119.23.216.161:8080/prepay.do?code='+code,
-                    method:'post',
-                    success:function(res){
-                        console.log(res);
-                        var data = res.data;
+                if(res.data.code == 0){ //success
 
-
-
-                    }
-                })
+                }else{
+                    wx.showToast({
+                        url:''
+                    })
+                }
             }
         })
+
+
+
+        // wx.getStorage({
+        //     key:'userMsg',
+        //     success:function(res){
+        //         console.log(res)
+        //         var code = res.data.opens;
+        //         wx.request({
+        //             url:'http://119.23.216.161:8080/order/insert.do?userAppName='+userAppName+'&memberId='+memberId+'&productId='+productId+'&reason='+reason+'&orderNumber='+orderNumber+'&page='+page+'&pageSize='+pageSize,
+        //             method:'post',
+        //             success:function(res){
+        //                 console.log(res);
+        //                 var data = res.data;
+
+        //             }
+        //         })
+        //     }
+        // })
         
         
 

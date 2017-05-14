@@ -42,6 +42,44 @@ Page({
                var code = login.code;
                console.log(code)
 
+               // wx.request({
+               //    url:'https://api.weixin.qq.com/sns/jscode2session?appid=wx022220779d0c9e96&secret=0270525690e6749a3f3e72b8068edea2&js_code='+code+'&grant_type=authorization_code',
+               //    method:'post',
+               //    success:function(res){
+                    
+               //      console.log(res.data)
+
+               //      var open = res.data.openid;
+
+               //      wx.request({
+               //          url:"http://119.23.216.161:8080/member/insert.do?userAppName=吴填生&wxOpenId="+open,
+               //          method:'post',
+               //          header: {
+               //                'content-type': 'application/json'
+               //            },
+               //          dataType:'json',
+               //          success:function(res){
+               //              console.log(res)
+               //              console.log(open)
+               //              wx.setStorage({
+               //                  key:'userMsg',
+               //                  data:{
+               //                      userAppName:'吴填生',
+               //                      memberId:res.data.data.id,
+               //                      opens:open
+               //                  }
+               //              });
+                           
+                    
+               //          }
+               //      })
+
+
+               //    }
+               // })
+
+
+
                wx.request({
                    url:"http://119.23.216.161:8080/open/getOpenId.do?code="+code,
                    method:'post',
@@ -49,7 +87,8 @@ Page({
 
                        var data =JSON.parse(res.data.data) ;
                        var  open= data.openid;
-
+                       console.log(data)
+                       console.log(open)
                        wx.request({
                            url:"http://119.23.216.161:8080/member/insert.do?userAppName=吴填生&wxOpenId="+open,
                            method:'post',

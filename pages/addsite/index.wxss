@@ -45,7 +45,7 @@ picker{
 
 }
 .adress_details:nth-child(1){
-    background:url('../../images/icon-arrowdown.png') no-repeat 680rpx center;
+    background:url('http://www.easyicon.net/api/resizeApi.php?id=1199480&size=24') no-repeat 680rpx center;
     background-size:40rpx 40rpx;
 }
 .region{
