@@ -29,10 +29,7 @@ Page({
             success:function(res){
                 console.log(res)
                 that.setData({
-                    userMsg:{
-                        memberId:res.data.memberId,
-                        userAppName:res.data.userAppName
-                    }
+                    memberId:res.data.memberId,
                 })
 
                 wx.request({
@@ -70,6 +67,7 @@ Page({
             success: function(res) {
                   console.log(res.data)
                   var id = res.data;
+
                  
                   if(id>=0){
                     wx.request({
@@ -151,7 +149,8 @@ Page({
         var orderNumber = 1;
         var reason = '';
         //测试用 先生成订单
-        console.log('http://119.23.216.161:8080/order/insert.do?productId='+productId+'&userAppName'+app.data.userAppName+'&memberId='+that.data.memberId+'&orderNumber='+orderNumber+'&reason='+reason+'&addrId='+addrId)
+        console.log(that.data.memberId)
+        console.log('http://119.23.216.161:8080/order/insert.do?productId='+4+'&userAppName='+app.data.userAppName+'&memberId='+that.data.memberId+'&orderNumber='+orderNumber+'&reason='+reason+'&addrId='+addrId)
         wx.request({
             url:'http://119.23.216.161:8080/order/insert.do?productId='+4+'&userAppName='+app.data.userAppName+'&memberId='+that.data.memberId+'&orderNumber='+orderNumber+'&reason='+reason+'&addrId='+addrId,
             method:'post',

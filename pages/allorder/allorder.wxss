@@ -130,7 +130,7 @@
 
 
 }
-.btn_item navigator{
+.btn_item navigator,.btn_item view{
     display:inline-block;
     padding:12rpx 20rpx;
     border-radius:10rpx;

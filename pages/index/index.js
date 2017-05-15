@@ -79,6 +79,17 @@ Page({
                // })
 
 
+              // wx.request({
+              //   url:'https://api.weixin.qq.com/sns/jscode2session?appid=wx1f2ccec1a2c82c0b&secret=ccb2e04d3bf7cf6d36acdb44576882f9&js_code='+code+'&grant_type=authorization_code',
+              //   method:'post',
+              //   success:function(res){
+              //     console.log(res)
+              //   }
+              // })
+
+              
+
+
 
                wx.request({
                    url:"http://119.23.216.161:8080/open/getOpenId.do?code="+code,
