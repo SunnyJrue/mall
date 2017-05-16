@@ -10,59 +10,68 @@
             <input type="text" placeholder='搜索所有订单' placeholder-class='input_order' />
         </view>
     </view> -->
-    
-    <view class='item_list'>
-        <view style='background:#fff'>
-            <view class='title'>
-                <image src='../../images/icon-tmall.png'></image>sunndipy旗舰店
-            </view>
-            <view class='status'>{{msg}}</view>
-        </view>
-
-        <view class='item_details'>
-            <image src='../../images/allorder/title.png'></image>
-            <view class='item_text'>
-                <view class='item_title'>
-                    sundipy夏季七分袖总阿斯蒂芬是地方啥地方啥都防啊是发生发射点发啥地方
+    <block wx:for='{{datas}}'>
+        <view class='item_list'>
+            <view style='background:#fff'>
+                <view class='title'>
+                    <!-- <image src='../../images/icon-tmall.png'></image>sunndipy旗舰店 -->
                 </view>
-                <view class='item_size'>
-                    颜色:白色;尺码:170M
+                <view class='status'>{{msg}}</view>
+            </view>
+
+            <view class='item_details'>
+                <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.img_path}}'></image>
+                <view class='item_text'>
+                    <view class='item_title'>
+                        {{item.product_name}}
+                    </view>
+                    <view class='item_size'>
+                        原价
+                    </view>
+                    <view class='item_size'>
+                        商品数量
+                    </view>
+                    <!-- <view class='item_logo'>
+                        <image src='../../images/icon-seven.png'></image>
+                    </view> -->
+
                 </view>
-                <view class='item_logo'>
-                    <image src='../../images/icon-seven.png'></image>
+                <view class='item_num'>
+                    <view class='dis_price'>￥{{item.current_price}}</view>
+                    <view class='old_price'>￥{{item.original_price}}</view>
+                    <view class='old_price'> 
+                        X{{item.order_number}}
+                    </view>
+                </view>
+                <view class='total_price'>
+                    共{{item.order_number}}件商品 合计:<text class='price_bold'>￥{{item.current_price*item.order_number+item.freight}}</text>.00元（含运费￥{{item.freight}}）
                 </view>
 
-            </view>
-            <view class='item_num'>
-                <view class='dis_price'>￥69.00</view>
-                <view class='old_price'>￥198.00</view>
-                <view class='old_price'> 
-                    X1
+                <view class='btn_item' wx:if="{{status==1}}">
+                    <view bindtap='cancelOrder' data-id='{{item.id}}' >删除订单</view>
+                    <navigator url='/pages/order/order'>付款</navigator>
                 </view>
-            </view>
-            <view class='total_price'>
-                共1件商品 合计:<text class='price_bold'>￥69</text>.00元（含运费￥0.00）
-            </view>
-
-            <view class='btn_item' wx:if="{{status==1}}">
-                <view bindtap='cancelOrder'>取消订单</view>
-                <navigator url='/pages/order/order'>付款</navigator>
-            </view>
-            
-            <view class='btn_item' wx:if="{{status==3}}">
-                <navigator url='../logistics/logistics'>查看物流</navigator>
-                <view bindtap='confirmRev'>确认收货</view>
-            </view>
-
-            <view class='btn_item' wx:if="{{status==4}}">
-                <view><navigator url='../logistics/logistics'>查看物流</navigator></view>
-                <view>评价</view>
-            </view>
-
-        </view>
                 
-    </view>
-    
+                <view class='btn_item' wx:if="{{status==3}}">
+                    <navigator url='../logistics/logistics?id={{item.order_code}}&code={{item.logistics_code}}'>查看物流</navigator>
+                    <view bindtap='confirmRev'>确认收货</view>
+                </view>
+
+                <view class='btn_item' wx:if="{{status==4}}">
+                    <view bindtap='cancelOrder' data-id='{{item.id}}' >删除订单</view>
+                    <view>评价</view>
+                </view>
+
+                <view class='btn_item' wx:if="{{status==5}}">
+                    <view>退换</view>
+                    <view>售后</view>
+                </view>
+
+            </view>
+                    
+        </view>
+    </block>
+        
 
 
 

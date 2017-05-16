@@ -7,7 +7,7 @@
         <view class='right'>
             <view><text style='color:#000'>物流状态</text> <text style='color:#4BAF74'>运输中</text></view>
             <view>承运公司：申通快递</view>
-            <view>运单编号：123231321</view>
+            <view>运单编号：{{id}}</view>
             <view>官方电话：暂无 </view>
         </view>
     </view>

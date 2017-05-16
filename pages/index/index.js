@@ -114,7 +114,7 @@ Page({
                                    key:'userMsg',
                                    data:{
                                        userAppName:'吴填生',
-                                       memberId:res.data.data.id,
+                                       memberId:res.data.data.id, 
                                        opens:open
                                    }
                                });

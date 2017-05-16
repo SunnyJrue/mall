@@ -26,7 +26,7 @@
                         {{item.product_name}}
                     </view>
                     <view class='item_size'>
-                        颜色:白色;尺码:170M
+                        <!-- 颜色:白色;尺码:170M -->
                     </view>
                  <!--    <view class='item_logo'>
                         <image src='../../images/icon-seven.png'></image>
