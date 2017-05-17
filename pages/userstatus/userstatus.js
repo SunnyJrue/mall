@@ -2,7 +2,7 @@ var app = getApp();
 Page({
     data:{
         goodsStatus:'',
-        msg:'1111',
+        msg:'',
         status:'',
         datas:''
     },
@@ -10,8 +10,73 @@ Page({
 
         var status = parseInt(e.status);
         var that =this;
+
+        getData(that,status);
+
+        
+    },
+    //取消订单
+    cancelOrder:function(){
+        wx.showModal({
+            title:'提示',
+            content:'是否取消订单？',
+            success:function(res){
+                if(res.confirm){
+                    
+
+                }else{
+                    
+                }
+            }
+        })
+    },
+    //确认收货
+    confirmRev:function(e){
+        console.log(e)
+        var id = e.target.dataset.id;
+        var that = this;
+        wx.showModal({
+            title:'提示',
+            content:'是否确认收货？',
+            success:function(res){
+                if(res.confirm){
+                    wx.request({
+                        url:'https://i-wg.com/order/confirm.do?id='+id,
+                        method:'post',
+                        success:function(res){
+                            console.log(res)
+                            if(res.data.code == 0 ){
+                                wx.showToast({
+                                    title:'确认收货成功',
+                                    icon:'success',
+                                    mask:true,
+                                    duration:1000
+                                })
+                                getData(that,that.data.status);
+
+                            }else{
+                                wx.showToast({
+                                    title:res.data.desc,
+                                    icon:'loading',
+                                    mask:true,
+                                    duration:1000
+                                })
+                            }
+                        }
+
+                    })
+                }else{
+
+                }
+            }
+        })
+    }
+})
+
+
+    function getData(that,status){
         var msg,title;
-        status = 3
+        
         switch(status){
             case 1: 
                 msg = '等待买家付款';
@@ -35,6 +100,14 @@ Page({
                 break;
 
         }
+        that.setData({
+            msg:msg,
+            status:status
+        })
+        
+        wx.setNavigationBarTitle({
+            title:title
+        })
         wx.getStorage({
             key:'userMsg',
             success:function(res){
@@ -42,7 +115,7 @@ Page({
                 var memberId = res.data.memberId;
                 console.log(memberId)
                 wx.request({
-                    url:'http://119.23.216.161:8080/order/findOrder.do',
+                    url:'https://i-wg.com/order/findOrder.do',
                     method:'post',
                     header:{
                         'content-type':'application/x-www-form-urlencoded'
@@ -61,6 +134,7 @@ Page({
                             that.setData({
                                 datas:datas
                             })
+
                         }else{
                             wx.showToast({
                                 title:res.data.desc,
@@ -76,44 +150,4 @@ Page({
 
         })
         
-
-
-        this.setData({
-            msg:msg,
-            status:status
-        })
-        wx.setNavigationBarTitle({
-            title:title
-
-        })
-    },
-    //取消订单
-    cancelOrder:function(){
-        wx.showModal({
-            title:'提示',
-            content:'是否取消订单？',
-            success:function(res){
-                if(res.confirm){
-                    
-
-                }else{
-                    
-                }
-            }
-        })
-    },
-    //确认收货
-    confirmRev:function(){
-        wx.showModal({
-            title:'提示',
-            content:'是否确认收货？',
-            success:function(res){
-                if(res.confirm){
-                    
-                }else{
-
-                }
-            }
-        })
     }
-})

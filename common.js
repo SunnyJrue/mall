@@ -3,9 +3,9 @@
 function requestName(para,precode,nextcode,that,cb){
     var name,url;
     if(para == 0 ){
-        url = 'http://119.23.216.161:8080/region/regionInfos.do'
+        url = 'https://i-wg.com/region/regionInfos.do'
     }else if(para == 1){
-        url = 'http://119.23.216.161:8080/region/regionInfos.do?regionId='+precode
+        url = 'https://i-wg.com/region/regionInfos.do?regionId='+precode
     }
     wx.request({
         url:url,

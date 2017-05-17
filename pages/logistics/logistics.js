@@ -8,17 +8,19 @@ Page({
         var that = this;
         var id = e.id;
         var code = e.code;
+        var img_path = e.img_path;
         console.log(id)
-        console.log(code)
+        console.log(img_path)
         wx.showToast({
             title:'加载中...',
             icon:'loading',
         })
         that.setData({
-            id:id
+            id:id,
+            img_path:img_path
         })
         wx.request({
-            url:"http://119.23.216.161:8080/logistics/logisticsInfo.do",
+            url:"https://i-wg.com/logistics/logisticsInfo.do",
             method:"post",
             header:{
                 'content-type':'application/x-www-form-urlencoded'

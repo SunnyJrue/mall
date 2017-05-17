@@ -46,7 +46,7 @@ Page({
 
 
                 wx.request({
-                    url:'http://119.23.216.161:8080/address/findList.do?userAppName='+userAppName+'&memberId='+memberId,
+                    url:'https://i-wg.com/address/findList.do?userAppName='+userAppName+'&memberId='+memberId,
                     method:'post',
                     success:function(res){
                         console.log(res)

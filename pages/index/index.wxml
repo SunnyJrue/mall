@@ -18,7 +18,7 @@
     <swiper indicator-dots='true'  class='swiper' autoplay='true' >
         <block>
             <swiper-item wx:for='{{data.carousel}}' wx:key='' >
-                <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.imgPath}}'></image>
+                <image src='https://i-wg.com/downloadFile.do?url={{item.imgPath}}'></image>
             </swiper-item>
             
         </block>
@@ -28,7 +28,7 @@
         <view class='category'>
             <block wx:for='{{data.species}}' wx:key=''  >
                 <navigator url='/pages/index/searchgoods?id={{item.id}}' class='list'>
-                    <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.speciesImage}}'></image>
+                    <image src='https://i-wg.com/downloadFile.do?url={{item.speciesImage}}'></image>
                     <view class='cate_text'>{{item.speciesName}}</view>
                 </navigator>
              
@@ -46,7 +46,7 @@
         <image class='icon-images' src='../../images/icon-arrowdown.png'></image>
         <view class='brand-image' >
             <view wx:for='{{data.brand}}'>
-                <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.brandImage}}'></image>
+                <image src='https://i-wg.com/downloadFile.do?url={{item.brandImage}}'></image>
             </view>
         </view>
 
@@ -57,11 +57,11 @@
             <view class='brand-title'>品牌街</view>
             <block wx:for='{{data.brand}}' wx:key='' >
                 <view class='list'>
-                    <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.brandImage}}'></image>
+                    <image src='https://i-wg.com/downloadFile.do?url={{item.brandImage}}'></image>
                     <view class='cate_text'>{{item.brandName}}</view>
                 </view>
                 <view class='list'>
-                    <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.brandImage}}'></image>
+                    <image src='https://i-wg.com/downloadFile.do?url={{item.brandImage}}'></image>
                     <view class='cate_text'>{{item.brandName}}</view>
                 </view>
                 
@@ -76,7 +76,7 @@
     <view class='goods-box'>
         <navigator url='/pages/details/index?brand_id={{item.brand_id}}&species_id={{item.species_id}}&id={{item.id}}' class='goods-item' wx:key='' wx:for="{{hotgoods}}">
             <view class='item-image'>
-                <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.img_path}}'></image>
+                <image src='https://i-wg.com/downloadFile.do?url={{item.img_path}}'></image>
             </view>
             <view class='item-msg'>
                 <view class='item-name'>{{item.product_name}}</view>

@@ -29,7 +29,7 @@ Page({
         var memberId = that.data.memberId;
         console.log(id);
         wx.request({
-            url:'http://119.23.216.161:8080/order/delete.do',
+            url:'https://i-wg.com/order/delete.do',
             header:{
                 'content-type':'application/x-www-form-urlencoded'
             },
@@ -62,7 +62,7 @@ Page({
 
 function getOrderlist(that,memberId){
     wx.request({
-        url:'http://119.23.216.161:8080/order/findOrder.do',
+        url:'https://i-wg.com/order/findOrder.do',
         method:'post',
         header:{
             'content-type':'application/x-www-form-urlencoded'

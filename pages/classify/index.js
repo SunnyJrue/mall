@@ -40,7 +40,7 @@ Page({
         var userAppName = app.data.userAppName
         console.log(userAppName);
         wx.request({
-            url:'http://119.23.216.161:8080/product/productList.do?userAppName='+userAppName+'&page=1&pageSize=6',
+            url:'https://i-wg.com/product/productList.do?userAppName='+userAppName+'&page=1&pageSize=6',
             method:'post',
             success:function(res){
                 console.log(res)
@@ -203,10 +203,10 @@ function getClassifyGoods(that,id,itemId,type,startPrice,endPrice,page){
 
 
     if(id == -1){
-        url = 'http://119.23.216.161:8080/product/productList.do?userAppName='+ app.data.userAppName+'&page='+page+'&pageSize=6&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice;
+        url = 'https://i-wg.com/product/productList.do?userAppName='+ app.data.userAppName+'&page='+page+'&pageSize=6&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice;
         
     }else{
-        url = 'http://119.23.216.161:8080/product/productList.do?userAppName='+ app.data.userAppName+'&id='+itemId+'&page='+page+'&pageSize=6&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice;
+        url = 'https://i-wg.com/product/productList.do?userAppName='+ app.data.userAppName+'&id='+itemId+'&page='+page+'&pageSize=6&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice;
     }
 
     wx.request({

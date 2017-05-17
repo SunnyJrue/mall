@@ -3,7 +3,7 @@
     <view>
          <swiper class="swiper_box" indicator-dots="true" autoplay='true' interval='4000'>
             <swiper-item >
-                <image src="http://119.23.216.161:8080/downloadFile.do?url={{datas.product[0].img_path}}" class="slide-image"/>
+                <image src="https://i-wg.com/downloadFile.do?url={{datas.product[0].img_path}}" class="slide-image"/>
             </swiper-item>
         </swiper>
     </view>
@@ -97,8 +97,8 @@
         <view class='goodsDetails'>
             <view>图文详情</view>
             <block wx:for='{{datas.product[0].html_path}}'>
-                <image src='http://119.23.216.161:8080/downloadFile.do?url={{item}}'></image>
-                <image src='http://119.23.216.161:8080/downloadFile.do?url={{item}}'></image>
+                <image src='https://i-wg.com/downloadFile.do?url={{item}}'></image>
+                <image src='https://i-wg.com/downloadFile.do?url={{item}}'></image>
             </block>
             
         </view>
@@ -167,7 +167,7 @@
             </view>
 
             <view class='goods_msg'>
-                <image src='http://119.23.216.161:8080/downloadFile.do?url={{datas.product[0].img_path}}'></image>
+                <image src='https://i-wg.com/downloadFile.do?url={{datas.product[0].img_path}}'></image>
             </view>
             <view class='good_text'>
                 <view class='good_title'>

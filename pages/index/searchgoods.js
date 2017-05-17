@@ -33,7 +33,7 @@ Page({
         })
         
         wx.request({
-            url:'http://119.23.216.161:8080/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
+            url:'https://i-wg.com/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
             method:'post',
             success:function(res){
                 console.log(res)

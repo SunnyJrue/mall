@@ -20,7 +20,7 @@
             </view>
 
             <view class='item_details'>
-                <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.img_path}}'></image>
+                <image src='https://i-wg.com/downloadFile.do?url={{item.img_path}}'></image>
                 <view class='item_text'>
                     <view class='item_title'>
                         {{item.product_name}}
@@ -53,8 +53,8 @@
                 </view>
                 
                 <view class='btn_item' wx:if="{{status==3}}">
-                    <navigator url='../logistics/logistics?id={{item.order_code}}&code={{item.logistics_code}}'>查看物流</navigator>
-                    <view bindtap='confirmRev'>确认收货</view>
+                    <navigator url='/pages/logistics/logistics?id={{item.order_code}}&code={{item.logistics_code}}&img_path={{item.img_path}}'>查看物流</navigator>
+                    <view bindtap='confirmRev' data-id='{{item.order_code}}'>确认收货</view>
                 </view>
 
                 <view class='btn_item' wx:if="{{status==4}}">

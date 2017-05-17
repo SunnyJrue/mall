@@ -42,57 +42,10 @@ Page({
                var code = login.code;
                console.log(code)
 
-               // wx.request({
-               //    url:'https://api.weixin.qq.com/sns/jscode2session?appid=wx022220779d0c9e96&secret=0270525690e6749a3f3e72b8068edea2&js_code='+code+'&grant_type=authorization_code',
-               //    method:'post',
-               //    success:function(res){
-                    
-               //      console.log(res.data)
-
-               //      var open = res.data.openid;
-
-               //      wx.request({
-               //          url:"http://119.23.216.161:8080/member/insert.do?userAppName=吴填生&wxOpenId="+open,
-               //          method:'post',
-               //          header: {
-               //                'content-type': 'application/json'
-               //            },
-               //          dataType:'json',
-               //          success:function(res){
-               //              console.log(res)
-               //              console.log(open)
-               //              wx.setStorage({
-               //                  key:'userMsg',
-               //                  data:{
-               //                      userAppName:'吴填生',
-               //                      memberId:res.data.data.id,
-               //                      opens:open
-               //                  }
-               //              });
-                           
-                    
-               //          }
-               //      })
-
-
-               //    }
-               // })
-
-
-              // wx.request({
-              //   url:'https://api.weixin.qq.com/sns/jscode2session?appid=wx1f2ccec1a2c82c0b&secret=ccb2e04d3bf7cf6d36acdb44576882f9&js_code='+code+'&grant_type=authorization_code',
-              //   method:'post',
-              //   success:function(res){
-              //     console.log(res)
-              //   }
-              // })
-
-              
-
 
 
                wx.request({
-                   url:"http://119.23.216.161:8080/open/getOpenId.do?code="+code,
+                   url:"https://i-wg.com/open/getOpenId.do?code="+code,
                    method:'post',
                    success:function(res){
 
@@ -101,10 +54,10 @@ Page({
                        console.log(data)
                        console.log(open)
                        wx.request({
-                           url:"http://119.23.216.161:8080/member/insert.do?userAppName=吴填生&wxOpenId="+open,
+                           url:"https://i-wg.com/member/insert.do?userAppName=吴填生&wxOpenId="+open,
                            method:'post',
                            header: {
-                                 'content-type': 'application/json'
+                                'content-type':'application/x-www-form-urlencoded'
                              },
                            dataType:'json',
                            success:function(res){
@@ -137,7 +90,7 @@ Page({
         
        //获取商品信息
        wx.request({
-          url:'http://119.23.216.161:8080/product/homeInfo.do?userAppName='+app.data.userAppName+'&page=1&pageSize=6',
+          url:'https://i-wg.com/product/homeInfo.do?userAppName='+app.data.userAppName+'&page=1&pageSize=6',
           method:'post',
           success:function(res){
             console.log(res)
@@ -194,7 +147,7 @@ Page({
         duration:2000
       })
       wx.request({
-          url:'http://119.23.216.161:8080/product/homeInfo.do?userAppName='+app.data.userAppName+'&page='+that.data.page+'&pageSize=6',
+          url:'https://i-wg.com/product/homeInfo.do?userAppName='+app.data.userAppName+'&page='+that.data.page+'&pageSize=6',
          
           header: {
                        'Content-Type': 'application/json'

@@ -33,7 +33,7 @@ Page({
                 })
 
                 wx.request({
-                    url:'http://119.23.216.161:8080/address/findList.do?defaultFlag=1&userAppName='+app.data.userAppName+'&memberId='+res.data.memberId,
+                    url:'https://i-wg.com/address/findList.do?defaultFlag=1&userAppName='+app.data.userAppName+'&memberId='+res.data.memberId,
                     method:'post',
                     success:function(res){
                         console.log(res)
@@ -71,7 +71,7 @@ Page({
                  
                   if(id>=0){
                     wx.request({
-                        url:'http://119.23.216.161:8080/address/findList.do?id='+id+'&userAppName='+app.data.userAppName+'&memberId='+that.data.memberId,
+                        url:'https://i-wg.com/address/findList.do?id='+id+'&userAppName='+app.data.userAppName+'&memberId='+that.data.memberId,
                         method:'post',
                         success:function(res){
                             console.log(res)
@@ -150,9 +150,9 @@ Page({
         var reason = '';
         //测试用 先生成订单
         console.log(that.data.memberId)
-        console.log('http://119.23.216.161:8080/order/insert.do?productId='+4+'&userAppName='+app.data.userAppName+'&memberId='+that.data.memberId+'&orderNumber='+orderNumber+'&reason='+reason+'&addrId='+addrId)
+        console.log('https://i-wg.com/order/insert.do?productId='+4+'&userAppName='+app.data.userAppName+'&memberId='+that.data.memberId+'&orderNumber='+orderNumber+'&reason='+reason+'&addrId='+addrId)
         wx.request({
-            url:'http://119.23.216.161:8080/order/insert.do?productId='+4+'&userAppName='+app.data.userAppName+'&memberId='+that.data.memberId+'&orderNumber='+orderNumber+'&reason='+reason+'&addrId='+addrId,
+            url:'https://i-wg.com/order/insert.do?productId='+4+'&userAppName='+app.data.userAppName+'&memberId='+that.data.memberId+'&orderNumber='+orderNumber+'&reason='+reason+'&addrId='+addrId,
             method:'post',
             success:function(res){
                 console.log(res)
@@ -174,7 +174,7 @@ Page({
         //         console.log(res)
         //         var code = res.data.opens;
         //         wx.request({
-        //             url:'http://119.23.216.161:8080/order/insert.do?userAppName='+userAppName+'&memberId='+memberId+'&productId='+productId+'&reason='+reason+'&orderNumber='+orderNumber+'&page='+page+'&pageSize='+pageSize,
+        //             url:'https://i-wg.com/order/insert.do?userAppName='+userAppName+'&memberId='+memberId+'&productId='+productId+'&reason='+reason+'&orderNumber='+orderNumber+'&page='+page+'&pageSize='+pageSize,
         //             method:'post',
         //             success:function(res){
         //                 console.log(res);

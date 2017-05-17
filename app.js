@@ -34,7 +34,7 @@ App({
             //         console.log(code)
 
             //         wx.request({
-            //             url:"http://119.23.216.161:8080/open/getOpenId.do?code="+code,
+            //             url:"https://i-wg.com/open/getOpenId.do?code="+code,
             //             method:'post',
             //             success:function(res){
 
@@ -43,7 +43,7 @@ App({
                            
 
             //                 wx.request({
-            //                     url:"http://119.23.216.161:8080/member/insert.do?userAppName=吴填生&wxOpenId="+open,
+            //                     url:"https://i-wg.com/member/insert.do?userAppName=吴填生&wxOpenId="+open,
             //                     method:'post',
             //                     header: {
             //                           'content-type': 'application/json'

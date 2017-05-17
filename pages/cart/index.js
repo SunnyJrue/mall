@@ -134,7 +134,7 @@ Page( {
         success:function(res){
           if(res.confirm){
               wx.request({
-                url:'http://119.23.216.161:8080/cart/delete.do?id='+id,
+                url:'https://i-wg.com/cart/delete.do?id='+id,
                 method:'post',
                 success:function(res){
                   console.log(res)
@@ -194,7 +194,7 @@ Page( {
 function alterOrder(type,id,that){
   
   wx.request({
-    url:'http://119.23.216.161:8080/cart/'+type+'.do?id='+id,
+    url:'https://i-wg.com/cart/'+type+'.do?id='+id,
     method:'post',
     success:function(res){
       console.log(res)
@@ -235,7 +235,7 @@ function getOrderList(that){
       success:function(res){
           var memberId = res.data.memberId;
           wx.request({
-              url:'http://119.23.216.161:8080/cart/findCart.do?userAppName='+app.data.userAppName+'&memberId='+memberId,
+              url:'https://i-wg.com/cart/findCart.do?userAppName='+app.data.userAppName+'&memberId='+memberId,
               method:'post',
               success:function(res){
                   wx.hideToast();

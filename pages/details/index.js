@@ -19,7 +19,7 @@ Page({
             duration:5000
         })
         wx.request({
-            url:'http://119.23.216.161:8080/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
+            url:'https://i-wg.com/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
             method:'post',
             success:function(res){
                 wx.hideToast();
@@ -92,10 +92,10 @@ Page({
                 console.log(res)
                 var memberId = res.data.memberId;
                 var number = that.data.goodNums;
-                var url = 'http://119.23.216.161:8080/cart/insert.do?userAppName='+app.data.userAppName+'&memberId='+memberId+'&id='+id+'&number='+number;
+                var url = 'https://i-wg.com/cart/insert.do?userAppName='+app.data.userAppName+'&memberId='+memberId+'&id='+id+'&number='+number;
                 console.log(url)
                 wx.request({
-                    url:'http://119.23.216.161:8080/cart/insert.do?userAppName='+app.data.userAppName+'&memberId='+memberId+'&id='+id+'&number='+number,
+                    url:'https://i-wg.com/cart/insert.do?userAppName='+app.data.userAppName+'&memberId='+memberId+'&id='+id+'&number='+number,
                     method:'post',
                     success:function(res){
                         console.log(res)

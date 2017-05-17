@@ -20,7 +20,7 @@
             </view>
 
             <navigator url='/pages/details/index' class='item_details'>
-                <image src='http://119.23.216.161:8080/downloadFile.do?url={{item.img_path}}'></image>
+                <image src='https://i-wg.com/downloadFile.do?url={{item.img_path}}'></image>
                 <view class='item_text'>
                     <view class='item_title'>
                         {{item.product_name}}
