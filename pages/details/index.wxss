@@ -139,12 +139,12 @@ page{
     height:80rpx;
     border-radius:50%;
     background:#96CA6F;
-    position:absolute;
-    z-index:0;
-    top:50%;
-    left:50%;
-    margin-top:-40rpx;
-    margin-left:-40rpx;
+    /* position:absolute; */
+    /* z-index:0; */
+   /*  top:50%;
+   left:50%; */
+   /*  margin-top:-40rpx;
+   margin-left:-40rpx; */
     text-align:center;
     line-height:80rpx;
     color:#fff;
@@ -157,6 +157,11 @@ page{
     background:#fff;
     position:absolute;
     border:6rpx solid #96CA6F;
+    display:felx;
+    display:-webkit-flex;
+    align-items:center;
+    justify-content:center;
+
 
 
 }
@@ -174,7 +179,7 @@ page{
     color:#B9B9B9;
 }
 .delivery view:nth-child(2){
-    width:85%;
+    width:65%;
     vertical-align:top;
     margin-left:40rpx;
 }
@@ -396,10 +401,13 @@ page{
 }
 .arg-title{
     width:30%;
+    text-align:right;
 }
 .arg-content{
-    width:50%;
+    padding-left:20%;
+    width:45%;
     color:#999;
+    text-align:left;
 }
 
 

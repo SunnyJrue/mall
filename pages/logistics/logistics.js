@@ -20,7 +20,7 @@ Page({
             img_path:img_path
         })
         wx.request({
-            url:"https://i-wg.com/logistics/logisticsInfo.do",
+            url:"https://tobidto.cn/logistics/logisticsInfo.do",
             method:"post",
             header:{
                 'content-type':'application/x-www-form-urlencoded'

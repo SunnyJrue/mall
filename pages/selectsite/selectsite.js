@@ -14,6 +14,7 @@ Page({
     },
     selectAddress:function(e){
         var id = e.currentTarget.dataset.id;
+        console.log(id)
         wx.setStorage({
             key:'id',
             data:id
@@ -46,7 +47,7 @@ Page({
 
 
                 wx.request({
-                    url:'https://i-wg.com/address/findList.do?userAppName='+userAppName+'&memberId='+memberId,
+                    url:'https://tobidto.cn/address/findList.do?userAppName='+userAppName+'&memberId='+memberId,
                     method:'post',
                     success:function(res){
                         console.log(res)

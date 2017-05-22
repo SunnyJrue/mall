@@ -16,17 +16,25 @@
                 <view class='title'>
                     <!-- <image src='../../images/icon-tmall.png'></image>sunndipy旗舰店 -->
                 </view>
-                <view class='status' wx:if='{{item.status}}'>交易成功</view>
+                <view class='status' wx:if='{{item.order_status == 1}}'>等待买家付款</view>
+                <view class='status' wx:if='{{item.order_status == 2}}'>等待卖家发货</view>
+                <view class='status' wx:if='{{item.order_status == 3}}'>卖家已发货</view>
+                <view class='status' wx:if='{{item.order_status == 4}}'>待评价</view>
+                <view class='status' wx:if='{{item.order_status == 6}}'>交易成功</view>
             </view>
 
             <view class='item_details'>
-                <image src='https://i-wg.com/downloadFile.do?url={{item.img_path}}'></image>
+                <navigator url='/pages/details/index?id={{item.productId}}'>
+                <image src='https://tobidto.cn/downloadFile.do?url={{item.img_path}}'></image>
                 <view class='item_text'>
                     <view class='item_title'>
                         {{item.product_name}}
                     </view>
                     <view class='item_size'>
-                        <!-- 颜色:白色;尺码:170M -->
+                        原价
+                    </view>
+                    <view class='item_size'>
+                        商品数量
                     </view>
                  <!--    <view class='item_logo'>
                         <image src='../../images/icon-seven.png'></image>
@@ -40,13 +48,30 @@
                         X{{item.order_number}}
                     </view>
                 </view>
+                </navigator>
                 <view class='total_price'>
                     共{{item.order_number}}件商品 合计:<text class='price_bold'>￥{{item.current_price*item.order_number+item.freight}}</text>.00元（含运费￥{{item.freight}}）
                 </view>
+                
 
-                <view class='btn_item'>
+                <view class='btn_item' wx:if='{{item.order_status == 1}}'>
                     <view data-id='{{item.id}}' bindtap='deleteOrder'>删除订单</view>
-                    <navigator url='/pages/logistics/logistics?id={{item.order_code}}&code={{item.logistics_code}}&img_path={{item.img_path}}'>查看物流</navigator>
+                    <!-- <view data-id='{{item.id}}' data-num='{{item.order_number}}' bindtap='payOrder'>付款</view> -->
+                    <navigator url='/pages/order/order?id={{item.productId}}&goodNums={{item.order_number}}&orderId={{item.id}}'>付款</navigator>
+                </view>
+                <view class='btn_item' wx:if='{{item.order_status == 2}}'>
+                   <view class='redytosend'>您的宝贝商家正在备货中，请耐心等待哦！</view>
+                </view>
+                <view class='btn_item' wx:if='{{item.order_status == 3}}'>
+                    <view data-id='{{item.id}}' bindtap='deleteOrder'>查看物流</view>
+                    <navigator url='/pages/logistics/logistics?id={{item.order_code}}&code={{item.logistics_code}}&img_path={{item.img_path}}'>确认收货</navigator>
+                </view>
+                <view class='btn_item' wx:if='{{item.order_status == 4}}'>
+                    <view data-id='{{item.id}}' bindtap='deleteOrder'>删除订单</view>
+                    <navigator url='/pages/logistics/logistics?id={{item.order_code}}&code={{item.logistics_code}}&img_path={{item.img_path}}'>评价</navigator>
+                </view>
+                <view class='btn_item' wx:if='{{item.order_status == 6}}'>
+                    <view data-id='{{item.id}}' bindtap='deleteOrder'>查看详情</view>
                 </view>
             </view>
 

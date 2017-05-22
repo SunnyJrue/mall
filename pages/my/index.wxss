@@ -8,7 +8,9 @@
   display:-webkit-flex;
   align-items:center;
   padding: 68rpx  0 68rpx 30rpx ;
-  background: #FDB9C4;
+  background: #fff;
+  border-bottom:solid 1px #ddd;
+
 }
 .userinfo-avatar {
   width: 118rpx;
@@ -18,7 +20,7 @@
 }
 .userinfo-nickname {
   display:inline-block;
-  color: #fff;
+  color: #666;
   margin-left:15rpx;
   
 }
@@ -64,7 +66,7 @@
 }
 .with_arrow{
   position: absolute;
-  top: 22px;
+  top: 38rpx;
   right: 30px;
   width: 70px;
   height: 15px;

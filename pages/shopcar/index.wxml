@@ -1,10 +1,74 @@
 <view class="container">
-    <view wx:if='{{false}}'>
+    <view wx:if='{{orderList.length == 0}}'>
       <image src="{{cartImg}}" class="cart-image"/>
       <view>{{tipWords}}</view>
     </view>
 
-      <checkbox-group bindchange="checkboxChange">
+      <checkbox-group bindchange="checkboxChange"  >
+        <block wx:for='{{orderList}}'>
+        <view class='item_list' >
+            <view style='background:#fff'>
+                
+                <view class='title'>
+                    <image class='icon-images' src='../../images/icon-arrowdown.png'></image>
+                    <label class="radio"  >
+                        <checkbox value='{{item.number*item.current_price+item.freight}}'   checked="{{arr}}" />
+                    </label>
+                    
+                </view>
+                <view class='status'>{{msg}}</view>
+            </view>
+
+            <navigator url='/pages/details/index' class='item_details'>
+                <image src='https://tobidto.cn/downloadFile.do?url={{item.img_path}}'></image>
+                <view class='item_text'>
+                    <view class='item_title'>
+                        {{item.product_name}}
+                    </view>
+                 
+                    <view class='item_size'>
+                        <!-- 颜色:白色;尺码:170M -->
+                        原价
+                    </view>
+                    <!-- <view class='item_size'>
+                        数量
+                    </view> -->
+                   <!--  <view class='item_logo'>
+                        <image src='../../images/icon-seven.png'></image>
+                    </view> -->
+
+                </view>
+                    <view class='item_num'>
+                        <view class='dis_price'>￥{{item.current_price}}</view>
+                        <view class='old_price'>￥{{item.p['original_price*c'].number}}</view>
+                        <!-- <view class='nums'> 
+                                X{{item.number}}
+                        </view> -->
+
+                    </view>
+                </navigator>
+                
+                <view class='total_price'>
+                    共1件商品 合计:<text class='price_bold'>￥{{item.number*item.current_price+item.freight}}</text>.00元（含运费￥{{item.freight}}）
+                </view>
+                
+
+
+                <view class='btn_item' >
+                    <view class='alterOrder'>
+                        <view wx:if='{{item.number>1}}' data-price='{{item.current_price}}' data-id='{{item.id}}' data-num='{{item.number}}' bindtap='lessOrder'>-</view> <view>{{item.number}}</view>  <view data-id='{{item.id}}' bindtap='plusOrder'>+</view>
+                    </view>
+                    <view data-id='{{item.id}}' bindtap='deleteOrder'>删除</view>
+                    <navigator url='/pages/order/order?id={{item.id}}'>订单结算</navigator>
+                </view>
+                    
+        </view>
+
+        </block>
+
+
+
+<!-- 
         <view class='item_list'>
             <view style='background:#fff'>
                 
@@ -17,50 +81,42 @@
                 <view class='status'>{{msg}}</view>
             </view>
 
-            <view class='item_details'>
-                    <navigator class='images' url='/pages/details/index'>
-                        <image src='../../images/allorder/title.png'></image>
-                    </navigator>
-                    <view class='item_text'>
-                        
-                        <view class='item_title'>
-                            sundipy夏季七分袖总阿斯蒂芬是地方啥地方啥都防啊是发生发射点发啥地方
-                        </view>
-                        <view class='item_size'>
-                            颜色:白色;尺码:170M
-                        </view>
-                        <view class='item_logo'>
-                            <image src='../../images/icon-seven.png'></image>
-                        </view>
-                        
-
+            <navigator url='/pages/details/index' class='item_details'>
+                <image src='../../images/allorder/title.png'></image>
+                <view class='item_text'>
+                    <view class='item_title'>
+                        sundipy夏季七分袖总阿斯蒂芬是地方啥地方啥都防啊是发生发射点发啥地方
                     </view>
-                    
-                
-                    <view class='item_num'>
-                        <view class='dis_price'>￥69.00</view>
-                        <view class='old_price'>￥198.00</view>
-                        <view class='old_price'> 
-                            X1
-                        </view>
+                    <view class='item_size'>
+                        颜色:白色;尺码:170M
                     </view>
-                    <view class='total_price'>
-                        共1件商品 合计:<text class='price_bold'>￥69</text>.00元（含运费￥0.00）
+                    <view class='item_logo'>
+                        <image src='../../images/icon-seven.png'></image>
                     </view>
 
-                    <view class='btn_item' >
-                        <view>删除</view>
-                        <navigator class='navigator' url='/pages/order/order'>订单结算</navigator>
+                </view>
+                <view class='item_num'>
+                    <view class='dis_price'>￥69.00</view>
+                    <view class='old_price'>￥198.00</view>
+                    <view class='old_price'> 
+                        X1
                     </view>
-                
+                </view>
+                <view class='total_price'>
+                    共1件商品 合计:<text class='price_bold'>￥69</text>.00元（含运费￥0.00）
+                </view>
+
+                <view class='btn_item' >
+                    <view>删除</view>
+                    <view>订单结算</view>
+                </view>
                 
               
 
-            </view>
+            </navigator>
                     
-      </view>
+        </view> -->
 
-       
 
        
 
@@ -80,16 +136,12 @@
               <view style='font-size:24rpx;text-align:right'>不含运费</view>
           </view>
           <view class='btn'>
-              结算({{goodsSUm}})
+              <navigator url='/pages/order/order' >
+                  结算({{goodsSUm}})
+              </navigator>
           </view>
       </view>
     
-
-
-
-   
-
-
 
 
 

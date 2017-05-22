@@ -41,7 +41,7 @@ Page({
             success:function(res){
                 if(res.confirm){
                     wx.request({
-                        url:'https://i-wg.com/order/confirm.do?id='+id,
+                        url:'https://tobidto.cn/order/confirm.do?id='+id,
                         method:'post',
                         success:function(res){
                             console.log(res)
@@ -115,7 +115,7 @@ Page({
                 var memberId = res.data.memberId;
                 console.log(memberId)
                 wx.request({
-                    url:'https://i-wg.com/order/findOrder.do',
+                    url:'https://tobidto.cn/order/findOrder.do',
                     method:'post',
                     header:{
                         'content-type':'application/x-www-form-urlencoded'

@@ -20,7 +20,7 @@
             </view>
 
             <navigator url='/pages/details/index' class='item_details'>
-                <image src='https://i-wg.com/downloadFile.do?url={{item.img_path}}'></image>
+                <image src='https://tobidto.cn/downloadFile.do?url={{item.img_path}}'></image>
                 <view class='item_text'>
                     <view class='item_title'>
                         {{item.product_name}}
@@ -30,9 +30,9 @@
                         <!-- 颜色:白色;尺码:170M -->
                         原价
                     </view>
-                    <!-- <view class='item_size'>
+                    <view class='item_size'>
                         数量
-                    </view> -->
+                    </view> 
                    <!--  <view class='item_logo'>
                         <image src='../../images/icon-seven.png'></image>
                     </view> -->
@@ -41,9 +41,9 @@
                     <view class='item_num'>
                         <view class='dis_price'>￥{{item.current_price}}</view>
                         <view class='old_price'>￥{{item.p['original_price*c'].number}}</view>
-                        <!-- <view class='nums'> 
+                        <view class='nums'> 
                                 X{{item.number}}
-                        </view> -->
+                        </view>
 
                     </view>
                 </navigator>
@@ -59,7 +59,7 @@
                         <view wx:if='{{item.number>1}}' data-price='{{item.current_price}}' data-id='{{item.id}}' data-num='{{item.number}}' bindtap='lessOrder'>-</view> <view>{{item.number}}</view>  <view data-id='{{item.id}}' bindtap='plusOrder'>+</view>
                     </view>
                     <view data-id='{{item.id}}' bindtap='deleteOrder'>删除</view>
-                    <navigator url='/pages/order/order?id={{item.id}}'>订单结算</navigator>
+                    <view data-id='{{item.id}}' data-num='{{item.number}}' bindtap='payOrder'>订单结算</view>
                 </view>
                     
         </view>

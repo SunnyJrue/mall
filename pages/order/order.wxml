@@ -6,7 +6,7 @@
    <!-- 有收货地址 -->
    <view class='rev_adress' wx:if='{{address != 1}}'>
        <view>
-           收货人：{{userName}} {{userMobile}}
+           收货人：{{userName}} {{'  '+userMobile}}
        </view>
        <view class='adress_details'>
            <view>收货地址：</view>
@@ -20,16 +20,19 @@
    <view class='space' style='height:20rpx'></view>
     <!-- 商品信息 -->
 
-    <navigator url='/pages/details/index' class='good_msg'>
-        <image src='../../images/index/test.png'></image>
+    <navigator url='/pages/details/index?id={{id}}' class='good_msg'>
+        <image src='https://tobidto.cn/downloadFile.do?url={{goodsdatas.img_path}}'></image>
         <view style='display:inline-block;width:60%;vertical-align:top;'>
             <view class='description'>
-                正品包邮苹果夫人化妆品啊打发是地方啥地方扫地发扫地发射
+                {{goodsdatas.product_name}}
+            </view>
+            <view class='description'>
+                商品数量
             </view>
         </view>
         <view  class='num_price'>
-            <view>￥75.00</view>
-            <viwe>X1</viwe>
+            <view>￥{{goodsdatas.current_price}}</view>
+            <viwe>X{{goodNums}}</viwe>
         </view>
     </navigator>
     
@@ -49,19 +52,19 @@
    <view class='space' style='height:10rpx'></view>
 
    <view class='count_price'>
-       商品总价<text>￥</text>
+       商品总价<text>￥{{goodNums*goodsdatas.current_price}}</text>
    </view>
    <view class='count_price'>
-       打折减<text>-￥</text>
+       打折价<text>-￥{{goodsdatas.original_price*goodsdatas.discount}}</text>
    </view>
    <view class='count_price'>
-       打折减<text>-￥</text>
+       打折减<text>-￥{{goodsdatas.original_price*goodsdatas.discount}}</text>
    </view>
    <view class='count_price'>
-       邮费<text>+￥</text>
+       邮费<text>+￥{{goodsdatas.freight}}</text>
    </view>
     
-   <view class='footer'>
+   <view class='footer' wx:if='{{status == 1}}'>
         <view>
             
         </view>
@@ -69,7 +72,7 @@
             提交订单
         </view>
         <view class='total_price'>
-            实付款：￥
+            实付款：￥{{goodNums*goodsdatas.current_price}}
         </view>
 
        

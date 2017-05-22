@@ -43,13 +43,13 @@
 }
 .locationbox .list{
     position:relative;
-    background:url('../../images/dot-gray.png') no-repeat 22rpx 40rpx;
-    background-size:38rpx;
+    background:url('http://ico.58pic.com/iconset01/function_icon_set/gif/44634.gif') no-repeat 28rpx 52rpx;
+    background-size:20rpx;
 
 }
 .locationbox .list:nth-child(1){
-    background:url('../../images/dot-color.png') no-repeat 10rpx 10rpx;
-    background-size:60rpx;
+    background:url('http://ico.58pic.com/iconset01/milky/gif/96530.gif') no-repeat 24rpx 30rpx;
+    background-size:30rpx;
 
 }
 .locationbox .list:last-child{
@@ -57,7 +57,7 @@
 }
 .locationbox .list-item{
     margin-left:41rpx;
-    border-left:2rpx solid #DADADA;
+    
     padding:40rpx 0 20rpx 40rpx;
 
 

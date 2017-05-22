@@ -7,6 +7,7 @@ Page({
         switchPay:true,
         datas:'',
         goodtap:1,
+        id:'', //商品的id
     },
     onLoad: function(e) {
         console.log(e)
@@ -19,15 +20,26 @@ Page({
             duration:5000
         })
         wx.request({
-            url:'https://i-wg.com/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
+            url:'https://tobidto.cn/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
             method:'post',
             success:function(res){
-                wx.hideToast();
-                console.log(res)
-                console.log(res.data.data.product[0])
-                that.setData({
-                    datas:res.data.data,
-                })
+                if(res.data.code == 0 ){
+                    wx.hideToast();
+                    console.log(res)
+                    console.log(res.data.data.product[0])
+                    that.setData({
+                        datas:res.data.data,
+                        id:id
+                    })
+                }else{
+                    wx.showToast({
+                        title:res.data.desc,
+                        icon:'loading',
+                        mask:true,
+                        duration:1000
+                    })
+                }
+                
 
             }
         })
@@ -84,6 +96,7 @@ Page({
     confirmAddShocar:function(){
         var id = this.data.datas.product[0].id;
         var that = this;
+        console.log(that.data.goodNums)
 
         console.log(id)
         wx.getStorage({
@@ -92,10 +105,10 @@ Page({
                 console.log(res)
                 var memberId = res.data.memberId;
                 var number = that.data.goodNums;
-                var url = 'https://i-wg.com/cart/insert.do?userAppName='+app.data.userAppName+'&memberId='+memberId+'&id='+id+'&number='+number;
+                var url = 'https://tobidto.cn/cart/insert.do?userAppName='+app.data.userAppName+'&memberId='+memberId+'&id='+id+'&number='+number;
                 console.log(url)
                 wx.request({
-                    url:'https://i-wg.com/cart/insert.do?userAppName='+app.data.userAppName+'&memberId='+memberId+'&id='+id+'&number='+number,
+                    url:'https://tobidto.cn/cart/insert.do?userAppName='+app.data.userAppName+'&memberId='+memberId+'&id='+id+'&number='+number,
                     method:'post',
                     success:function(res){
                         console.log(res)
@@ -132,10 +145,10 @@ Page({
                 
             }
         })
+        console.log(this.data.goodNums)
 
         wx.navigateTo({
-            url:'/pages/order/order',
-
+            url:'/pages/order/order?id='+this.data.id+'&goodNums='+this.data.goodNums,
         })
     },
     changeTap:function(){

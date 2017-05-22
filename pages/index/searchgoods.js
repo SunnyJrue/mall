@@ -6,11 +6,14 @@ Page({
         obj:[1,2,3,4,5,6,7],
         sublist:0,
         modalShow:false,
-        inputInfo:'',
+        productName:'', //关键字查询
         inputDefault:'',
         goodContent:'',
-        location:'广州',
-        windowHeight:''
+        location:'深圳',
+        windowHeight:'',
+        goodsDatas:'',
+        page:1,
+        id:''
        
     },
     onLoad:function(e){
@@ -29,19 +32,11 @@ Page({
         var id = e.id;
         this.setData({
             location:location,
-            inputInfo:e.kw
+            inputInfo:e.kw,
+            id:id
         })
-        
-        wx.request({
-            url:'https://i-wg.com/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
-            method:'post',
-            success:function(res){
-                console.log(res)
-                that.setData({
 
-                })
-            }
-        })
+        getList(that,id,1,'');
 
 
     },
@@ -100,18 +95,13 @@ Page({
     //搜索查询
     searchConfirm:function(e){
         var value = e.detail.value;
-
-        wx.request({
-            url:'',
-            dataType:'json',
-            success:function(res){
-
-            }
-        })
+        var that = this;
+        getList(that,'',1,value);
+        
 
 
         this.setData({
-            inputInfo:value
+            productName:value
         })
 
     },
@@ -120,10 +110,68 @@ Page({
             modalShow:false
         })
     },
-    //下拉加载更多
-    pullUpLoad:function(){
-        console.log(2222)
+    //上拉加载更多
+
+    onReachBottom:function(){
+        var that = this;
+        var page = that.data.page;
+        var id = that.data.id;
+        var productName = that.data.productName;
+
+        getList(that,id,2,productName)
+
+
+
     }
 
     
 })
+
+
+
+function getList(that,id,page,productName){
+    var page = page?page:1;
+    console.log(page)
+    var productName = productName?productName:'';
+    wx.request({
+        url:'https://tobidto.cn/product/productList.do',
+        method:'post',
+        header:{
+            'content-type':'application/x-www-form-urlencoded'
+        },
+        data:{
+            id:id,
+            userAppName:app.data.userAppName,
+            page:page,
+            pageSize:10,
+            productName:productName,
+           
+        },
+        success:function(res){
+
+            console.log(res)
+            if(res.data.code == 0){
+                if(page == 1){
+                    that.setData({  
+                        goodsDatas:res.data.data.product
+                    })
+                }else{
+                    that.setData({  
+                        goodsDatas:that.data.goodsDatas.concat(res.data.data.product),
+                        page:page+1
+                    })
+
+                }
+                
+            }else{
+                wx.showToast({
+                    title:res.data.desc,
+                    icon:'loading',
+                    mask:true,
+                    duration:1000
+                })
+            }
+            
+        }
+    })
+}

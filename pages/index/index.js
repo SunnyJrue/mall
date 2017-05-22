@@ -45,7 +45,7 @@ Page({
 
 
                wx.request({
-                   url:"https://i-wg.com/open/getOpenId.do?code="+code,
+                   url:"https://tobidto.cn/open/getOpenId.do?code="+code,
                    method:'post',
                    success:function(res){
 
@@ -54,7 +54,7 @@ Page({
                        console.log(data)
                        console.log(open)
                        wx.request({
-                           url:"https://i-wg.com/member/insert.do?userAppName=吴填生&wxOpenId="+open,
+                           url:"https://tobidto.cn/member/insert.do?userAppName=吴填生&wxOpenId="+open,
                            method:'post',
                            header: {
                                 'content-type':'application/x-www-form-urlencoded'
@@ -90,7 +90,7 @@ Page({
         
        //获取商品信息
        wx.request({
-          url:'https://i-wg.com/product/homeInfo.do?userAppName='+app.data.userAppName+'&page=1&pageSize=6',
+          url:'https://tobidto.cn/product/homeInfo.do?userAppName='+app.data.userAppName+'&page=1&pageSize=6',
           method:'post',
           success:function(res){
             console.log(res)
@@ -147,7 +147,7 @@ Page({
         duration:2000
       })
       wx.request({
-          url:'https://i-wg.com/product/homeInfo.do?userAppName='+app.data.userAppName+'&page='+that.data.page+'&pageSize=6',
+          url:'https://tobidto.cn/product/homeInfo.do?userAppName='+app.data.userAppName+'&page='+that.data.page+'&pageSize=6',
          
           header: {
                        'Content-Type': 'application/json'

@@ -1,9 +1,13 @@
+page{
+  background-color: #F2F2F2;
+
+}
 .container {
   display: flex;
   height: 100%;
   align-items: center;/*垂直居中*/
   justify-content: center;/*水平居中*/
-  background-color: #F2f2f2;
+  background-color: #F2F2F2;
   color: #939393;
 }
 .container .cart-image {
@@ -11,7 +15,12 @@
   height: 120px;
 }
 
-
+checkbox-group{
+    width:100%;
+}
+.btn_item .alterOrder{
+    border:none;
+}
 
 
 
@@ -65,10 +74,14 @@
     line-height:80rpx;
     background:#fff;
     font-size:28rpx;
-    background:url('../../images/icon-arrowdown.png') no-repeat;
-    background-size:30rpx 30rpx;
-    background-position:350rpx 26rpx;
-
+    position:relative;
+}
+.title .icon-images{
+    position:absolute;
+    top:26rpx;
+    right:10rpx;
+    width:30rpx;
+    height:30rpx;
 }
 .title label{
     margin-left:30rpx;
@@ -83,17 +96,12 @@
 .item_details{
     padding-top:25rpx;
     background:#f5f5f5;
+    
 }
-.item_details  image,.item_details  .images{
+.item_details  image{
     width:190rpx;
     height:190rpx;
     vertical-align:top;
-    display:inline-block;
-
-}
-
-.item_details  .images{
-    margin: 0 60rpx 0 0px;
 }
 .item_text{
     display:inline-block;
@@ -130,12 +138,16 @@
     color:#3a4041;
     text-align:right;
 }
-.old_price{
+.old_price,.nums{
     color:#999;
     text-align:right;
     text-decoration:line-through;
 
 }
+.nums{
+    text-decoration:none;
+}
+
 .total_price{
     height:80rpx;
     line-height:80rpx;
@@ -160,7 +172,7 @@
 
 
 }
-.btn_item view,.navigator{
+.btn_item view,.btn_item navigator{
     display:inline-block;
     padding:12rpx 20rpx;
     border-radius:10rpx;
@@ -177,7 +189,6 @@
     width:100%;
     height:100rpx;
     background:#fff;
-    border-top:2rpx solid #FD544A;
 
     
 }

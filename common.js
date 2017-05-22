@@ -3,9 +3,9 @@
 function requestName(para,precode,nextcode,that,cb){
     var name,url;
     if(para == 0 ){
-        url = 'https://i-wg.com/region/regionInfos.do'
+        url = 'https://tobidto.cn/region/regionInfos.do'
     }else if(para == 1){
-        url = 'https://i-wg.com/region/regionInfos.do?regionId='+precode
+        url = 'https://tobidto.cn/region/regionInfos.do?regionId='+precode
     }
     wx.request({
         url:url,

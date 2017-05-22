@@ -134,7 +134,7 @@ Page( {
         success:function(res){
           if(res.confirm){
               wx.request({
-                url:'https://i-wg.com/cart/delete.do?id='+id,
+                url:'https://tobidto.cn/cart/delete.do?id='+id,
                 method:'post',
                 success:function(res){
                   console.log(res)
@@ -171,6 +171,56 @@ Page( {
         }
       })
   },
+  //提交订单
+  payOrder:function(e){
+/*      var productId = parseInt(e.target.dataset.id);
+      var orderNumber = e.target.dataset.num;
+      console.log(productId)
+      console.log(orderNumber)
+      wx.getStorage({
+          key:'userMsg',
+          success:function(res){
+              console.log(res)
+              var memberId = res.data.memberId;
+
+              wx.request({
+                  url:'https://tobidto.cn/order/insert.do',
+                  method:'post',
+                  header:{
+                      'content-type':'application/x-www-form-urlencoded'
+                  },
+                  data:{
+                      userAppName:app.data.userAppName,
+                      memberId:memberId,
+                      productId:productId,
+                      orderNumber:orderNumber
+
+                  },
+                  success:function(res){
+                      console.log(res)
+                  }
+              })
+          }
+      })*/
+
+
+    //   wx.login({
+    //        success:function(login){
+    //           var code = login.code;
+    //           console.log(code)
+    //           console.log('https://tobidto.cn/wx/prepay.do?code='+code)
+    //           wx.request({
+    //             // url:'https://tobidto.cn/wx/prepay.do?code='+code,
+    //             url:'https://api.weixin.qq.com/sns/jscode2session?appid=wx230817054925923e&secret=dc0a266b44da135b99b39de620dfc751&js_code='+code+'&grant_type=authorization_code',
+    //             method:'post',
+    //             success:function(res){
+    //               console.log(res)
+    //             }
+    //           })
+    //       }
+    // })
+
+  },
 
   //x修改订单数
   lessOrder:function(e){
@@ -194,7 +244,7 @@ Page( {
 function alterOrder(type,id,that){
   
   wx.request({
-    url:'https://i-wg.com/cart/'+type+'.do?id='+id,
+    url:'https://tobidto.cn/cart/'+type+'.do?id='+id,
     method:'post',
     success:function(res){
       console.log(res)
@@ -235,7 +285,7 @@ function getOrderList(that){
       success:function(res){
           var memberId = res.data.memberId;
           wx.request({
-              url:'https://i-wg.com/cart/findCart.do?userAppName='+app.data.userAppName+'&memberId='+memberId,
+              url:'https://tobidto.cn/cart/findCart.do?userAppName='+app.data.userAppName+'&memberId='+memberId,
               method:'post',
               success:function(res){
                   wx.hideToast();
@@ -247,9 +297,6 @@ function getOrderList(that){
                       that.setData({
                         orderList:data,
                      });
-
-
-
 
                   }else{
                     wx.showToast({

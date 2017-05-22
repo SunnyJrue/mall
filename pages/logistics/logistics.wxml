@@ -2,7 +2,7 @@
 <view class='container'>
     <view class='goodsMsg'>
         <view class='left'>
-            <image src='https://i-wg.com/downloadFile.do?url={{img_path}}'></image>
+            <image src='https://tobidto.cn/downloadFile.do?url={{img_path}}'></image>
         </view>
         <view class='right'>
             <view><text style='color:#000'>物流状态</text> <text style='color:#4BAF74'>运输中</text></view>

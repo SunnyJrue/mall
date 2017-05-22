@@ -31,6 +31,7 @@
     width:100%;
     position:relative;
     margin-bottom:220rpx;
+    padding-bottom:30rpx;
 }
 .item_list image{
     width:45rpx;
@@ -128,6 +129,12 @@
     align-items:center;
     justify-content: flex-end;
 
+
+}
+.redytosend{
+    font-size:28rpx;
+    border:none !important;
+    color:#dc2323;
 
 }
 .btn_item navigator,.btn_item view{

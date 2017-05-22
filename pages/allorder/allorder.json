@@ -1,4 +1,4 @@
 {
     "navigationBarTitleText": "全部订单",
-    "enablePullDownRefresh":false
+    "enablePullDownRefresh":true
 }
