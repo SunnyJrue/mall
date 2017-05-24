@@ -23,6 +23,26 @@ Page({
         endPrice:'',//结束价格
         type:''//排序
     },
+    onShareAppMessage: function () {
+      return {
+        title: app.data.userAppName,
+        path: '/pages/index/index',
+        success: function(res) {
+          wx.showToast({
+            title:'转发成功',
+            icon:'success',
+            duration:1000
+          })
+        },
+        fail: function(res) {
+          wx.showToast({
+            title:'转发失败',
+            icon:'loading',
+            duration:1000
+          })
+        }
+      }
+    },
     onLoad: function() {
 
         var that = this

@@ -60,10 +60,7 @@
                     <image src='https://tobidto.cn/downloadFile.do?url={{item.brandImage}}'></image>
                     <view class='cate_text'>{{item.brandName}}</view>
                 </view>
-                <view class='list'>
-                    <image src='https://tobidto.cn/downloadFile.do?url={{item.brandImage}}'></image>
-                    <view class='cate_text'>{{item.brandName}}</view>
-                </view>
+               
                 
             </block>
 

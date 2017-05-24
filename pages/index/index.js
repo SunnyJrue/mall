@@ -13,7 +13,26 @@ Page({
         page:1
 
     },
-
+    onShareAppMessage: function () {
+      return {
+        title: app.data.userAppName,
+        path: '/pages/index/index',
+        success: function(res) {
+          wx.showToast({
+            title:'转发成功',
+            icon:'success',
+            duration:1000
+          })
+        },
+        fail: function(res) {
+          wx.showToast({
+            title:'转发失败',
+            icon:'loading',
+            duration:1000
+          })
+        }
+      }
+    },
     onLoad: function() {
       var userAppName = app.data.userAppName
 
@@ -27,6 +46,20 @@ Page({
          }
 
        });
+
+       wx.login({
+           success:function(res){
+               console.log(res.code)
+               var code = res.code;
+               wx.request({
+                   url:'https://tobidto.cn/wx/prepay.do?code='+code,
+                   method:'post',
+                   success:function(res){
+                      console.log(res)
+                   }
+               })
+           }
+       })
 
 
        app.getUserInfo(function(userInfo){
@@ -135,7 +168,7 @@ Page({
     },
     //下拉刷新
     onPullDownRefresh:function(){
-      console.log(111)
+      wx.stopPullDownRefresh()
     },
     //上拉加载
     onReachBottom:function(){

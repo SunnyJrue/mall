@@ -1,9 +1,9 @@
 //app.js
 App({
     data:{
-        address:'111111',
+        address:'',
         userMsg:{},
-        userAppName:'吴填生',
+        userAppName:'云企优品',
         memberId:'',
     },
     onLoad:function(){

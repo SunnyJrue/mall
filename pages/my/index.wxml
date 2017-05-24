@@ -2,7 +2,7 @@
 <view class="container">
   <view  bindtap="bindViewTap" class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl?userInfo.avatarUrl:'../../images/unlogin-icon.png'}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName?userInfo.nickName:'未登录'}}</text>
+    <text class="userinfo-nickname">{{userInfo.nickName?userInfo.nickName:'游客'}}</text>
   </view>
 
   <view class="weui_cell">

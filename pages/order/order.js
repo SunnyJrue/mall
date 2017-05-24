@@ -201,7 +201,21 @@ Page({
         var orderNumber = that.data.goodNums;
         var reason = '';
 
-        console.log(productId)
+
+        wx.login({
+            success:function(res){
+                console.log(res.code)
+                var code = res.code;
+                wx.request({
+                    url:'https://tobidto.cn/wx/prepay.do',
+                    method:'post',
+                    success:function(res){
+                        
+                    }
+                })
+            }
+        })
+        /*console.log(productId)
         wx.request({
             url:'https://tobidto.cn/order/insert.do',
             method:'post',
@@ -232,7 +246,7 @@ Page({
                     })
                 }
             }
-        })
+        })*/
 
 
 

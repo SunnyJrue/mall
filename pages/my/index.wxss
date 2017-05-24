@@ -8,7 +8,7 @@
   display:-webkit-flex;
   align-items:center;
   padding: 68rpx  0 68rpx 30rpx ;
-  background: #fff;
+  background: #E20E27;
   border-bottom:solid 1px #ddd;
 
 }
@@ -20,7 +20,7 @@
 }
 .userinfo-nickname {
   display:inline-block;
-  color: #666;
+  color: #fff;
   margin-left:15rpx;
   
 }
