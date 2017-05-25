@@ -17,6 +17,8 @@ Page({
         wx.showToast({
           title: '加载中',
           icon:'loading',
+          mask:true,
+          duration:1000
         })
         var that = this;
 
@@ -87,6 +89,12 @@ Page({
         })
 
 
+    },
+    //跳转去添加收货信息
+    goToAddsite:function(){
+        wx.navigateTo({
+            url:'/pages/addsite/index?status=1'
+        })
     },
     deleteAddress:function(e){
         var index = e.currentTarget.dataset.list;

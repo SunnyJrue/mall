@@ -47,7 +47,7 @@ Page({
 
        });
 
-       wx.login({
+/*       wx.login({
            success:function(res){
                console.log(res.code)
                var code = res.code;
@@ -60,12 +60,24 @@ Page({
                })
            }
        })
-
+*/
 
        app.getUserInfo(function(userInfo){
          that.setData({
            userInfo:userInfo
          })
+       })
+
+       //获取地理位置
+       wx.getLocation({
+         type: 'wgs84',
+         success: function(res) {
+          console.log(res)
+           var latitude = res.latitude
+           var longitude = res.longitude
+           var speed = res.speed
+           var accuracy = res.accuracy
+         }
        })
 
 
@@ -81,13 +93,13 @@ Page({
                    url:"https://tobidto.cn/open/getOpenId.do?code="+code,
                    method:'post',
                    success:function(res){
-
+                      console.log(res)
                        var data =JSON.parse(res.data.data) ;
                        var  open= data.openid;
                        console.log(data)
                        console.log(open)
                        wx.request({
-                           url:"https://tobidto.cn/member/insert.do?userAppName=吴填生&wxOpenId="+open,
+                           url:"https://tobidto.cn/member/insert.do?userAppName="+app.data.userAppName+"&wxOpenId="+open,
                            method:'post',
                            header: {
                                 'content-type':'application/x-www-form-urlencoded'
@@ -99,7 +111,7 @@ Page({
                                wx.setStorage({
                                    key:'userMsg',
                                    data:{
-                                       userAppName:'吴填生',
+                                       userAppName:app.data.userAppName,
                                        memberId:res.data.data.id, 
                                        opens:open
                                    }

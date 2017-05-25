@@ -54,12 +54,12 @@
    <view class='count_price'>
        商品总价<text>￥{{goodNums*goodsdatas.current_price}}</text>
    </view>
-   <view class='count_price'>
+<!--    <view class='count_price'>
        打折价<text>-￥{{goodsdatas.original_price*goodsdatas.discount}}</text>
    </view>
    <view class='count_price'>
        打折减<text>-￥{{goodsdatas.original_price*goodsdatas.discount}}</text>
-   </view>
+   </view> -->
    <view class='count_price'>
        邮费<text>+￥{{goodsdatas.freight}}</text>
    </view>
@@ -72,7 +72,7 @@
             提交订单
         </view>
         <view class='total_price'>
-            实付款：￥{{goodNums*goodsdatas.current_price}}
+            实付款：￥{{ goodNums*goodsdatas.current_price*1 + goodsdatas.freight*1}}
         </view>
 
        

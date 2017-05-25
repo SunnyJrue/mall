@@ -24,9 +24,9 @@
 
     </radio-group>
 
-    <navigator url='/pages/addsite/index?status=1'  class='btn'>
+    <view  bindtap='goToAddsite'  class='btn'>
         添加收货信息
-    </navigator>
+    </view>
 
 
     

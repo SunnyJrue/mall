@@ -157,7 +157,8 @@ Page({
                    })
                    var userAppName = that.data.userAppName;
                    var memberId = that.data.memberId;
-                   console.log(111111111111111111);
+                   console.log(memberId);
+                   console.log(userAppName)
                 
                        wx.request({
                            url:'https://tobidto.cn/address/insert.do?userAppName='+userAppName+'&memberId='+memberId+'&userName='+username+'&userMobile='+phonenum+'&province='+that.data.provices+'&city='+that.data.citys+'&region='+that.data.areas+'&address='+address_det,

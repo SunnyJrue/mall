@@ -23,6 +23,7 @@ Page({
             url:'https://tobidto.cn/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
             method:'post',
             success:function(res){
+                console.log(res)
                 if(res.data.code == 0 ){
                     wx.hideToast();
                     console.log(res)
