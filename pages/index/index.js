@@ -10,7 +10,11 @@ Page({
         id:'',
         data:'',
         hotgoods:'',
-        page:1
+        page:1,
+        payOrder:'',
+        openid:'',
+
+
 
     },
     onShareAppMessage: function () {
@@ -46,6 +50,7 @@ Page({
          }
 
        });
+
 
 /*       wx.login({
            success:function(res){
@@ -90,7 +95,7 @@ Page({
 
 
                wx.request({
-                   url:"https://tobidto.cn/open/getOpenId.do?code="+code,
+                   url:"https://tobidto.cn/wx/getOpenIdB.do?code="+code,
                    method:'post',
                    success:function(res){
                       console.log(res)
