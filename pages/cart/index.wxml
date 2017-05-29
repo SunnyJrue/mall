@@ -19,15 +19,18 @@
                 <view class='status'>{{msg}}</view>
             </view>
 
-            <navigator url='/pages/details/index' class='item_details'>
+            <navigator url='/pages/details/index?id={{item.productId}}' class='item_details'>
                 <image src='https://tobidto.cn/downloadFile.do?url={{item.img_path}}'></image>
-                <view class='item_text'>
-                    <view class='item_title'>
+                <view class='item_text' >
+                    <view class='item_title' style='height:70rpx'>
                         {{item.product_name}}
                     </view>
                  
-                    <view class='item_size'>
+                    <view class='item_size' >
                         <!-- 颜色:白色;尺码:170M -->
+                        价格
+                    </view>
+                    <view class='item_size' >
                         原价
                     </view>
                     <view class='item_size'>
@@ -59,7 +62,7 @@
                         <view wx:if='{{item.number>1}}' data-price='{{item.current_price}}' data-id='{{item.id}}' data-num='{{item.number}}' bindtap='lessOrder'>-</view> <view>{{item.number}}</view>  <view data-id='{{item.id}}' bindtap='plusOrder'>+</view>
                     </view>
                     <view data-id='{{item.id}}' bindtap='deleteOrder'>删除</view>
-                    <view data-id='{{item.id}}' data-num='{{item.number}}' bindtap='payOrder'>订单结算</view>
+                    <navigator url='/pages/order/order?id={{item.productId}}&goodNums={{item.number}}&status=1'>订单结算</navigator>
                 </view>
                     
         </view>

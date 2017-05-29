@@ -3,7 +3,7 @@ App({
     data:{
         address:'',
         userMsg:{},
-        userAppName:'云企优品',
+        userAppName:'吴填生',
         memberId:'',
     },
     onLoad:function(){
@@ -24,55 +24,6 @@ App({
                   
                 }
             })
-
-
-
-            // wx.login({
-            //     success:function(login){
-            //         //获取openid
-            //         var code = login.code;
-            //         console.log(code)
-
-            //         wx.request({
-            //             url:"https://tobidto.cn/open/getOpenId.do?code="+code,
-            //             method:'post',
-            //             success:function(res){
-
-            //                 var data =JSON.parse(res.data.data) ;
-            //                 var  open= data.openid;
-                           
-
-            //                 wx.request({
-            //                     url:"https://tobidto.cn/member/insert.do?userAppName=吴填生&wxOpenId="+open,
-            //                     method:'post',
-            //                     header: {
-            //                           'content-type': 'application/json'
-            //                       },
-            //                     dataType:'json',
-            //                     success:function(res){
-            //                         console.log(res)
-            //                         wx.setStorage({
-            //                             key:'userMsg',
-            //                             data:{
-            //                                 userAppName:'吴填生',
-            //                                 memberId:res.data.data.id
-            //                             }
-            //                         });
-                            
-            //                     }
-            //                 })
-
-            //             }
-            //         })
-
-
-                   
-            //     }
-            // })
-            
-
-
-
 
            
         }

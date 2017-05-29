@@ -1,5 +1,5 @@
-<view class="container" scroll-y="true"  bindscrolltolower="pullUpLoad" style=""  >
-    <!-- 轮播 -->
+<view class="container" scroll-y="true"  bindscrolltolower="pullUpLoad" >
+
 <!--     <view class='search'>
         <view class='floatEle'>
             <view class='position' >

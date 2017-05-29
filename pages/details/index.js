@@ -159,9 +159,10 @@ Page({
             goodtap:tapnum,
         })
     },
-    // turnToShopCar:function(){//跳转购物车
-    //     wx.switchTab({
-    //         url:'/pages/cart/index'
-    //     })
-    // }
+    
+    turnToShopCar:function(){//跳转购物车
+        wx.switchTab({
+            url:'/pages/cart/index'
+        })
+    }
 })

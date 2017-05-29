@@ -175,6 +175,7 @@ Page({
                                   wx.showModal({
                                       title:'保存成功',
                                       content:'是否返回地址列表',
+                                      cancelText:'确定',
                                       confirmText:'返回',
                                       success:function(res){
                                           if(res.confirm){

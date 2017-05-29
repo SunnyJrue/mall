@@ -60,7 +60,7 @@ Page({
         var userAppName = app.data.userAppName
         console.log(userAppName);
         wx.request({
-            url:'https://tobidto.cn/product/productList.do?userAppName='+userAppName+'&page=1&pageSize=6',
+            url:'https://tobidto.cn/product/productList.do?userAppName='+userAppName+'&page=1&pageSize=10',
             method:'post',
             success:function(res){
                 console.log(res)
@@ -71,6 +71,8 @@ Page({
             }
 
         })
+        //获取总店的商品名称和id列表
+        getBranList(that)
 
 
 
@@ -116,7 +118,7 @@ Page({
         this.setData({
             modalindex:index,
             sublist:0,
-            modalShow:!this.data.modalShow
+            modalShow:true
         })
     },
     listIndex:function(e){
@@ -129,6 +131,8 @@ Page({
 
         var startPrice =  e.target.dataset.start?e.target.dataset.start:'';
         var endPrice = e.target.dataset.end?e.target.dataset.end:'';
+        var brandId = e.target.dataset.brand?e.target.dataset.brand:'';
+        console.log(brandId)
         that.setData({
             startPrice:startPrice,
             endPrice:endPrice,
@@ -147,7 +151,7 @@ Page({
         var itemId = that.data.itemId;
 
 
-        getClassifyGoods(that,id,itemId,type,startPrice,endPrice)
+        getClassifyGoods(that,id,itemId,type,startPrice,endPrice,'',brandId)
 
 
 
@@ -173,17 +177,14 @@ Page({
         })
     },
     submits:function(){
-
-
         this.setData({
             modalShow:false
         })
     },
     searchGoods:function(e){
         console.log(e.detail.value)
-        e.detail.value = ''
-        this.setData({
-            default:''
+        wx.navigateTo({
+            url:'/pages/index/searchgoods?kw='+e.detail.value,
         })
     },
     //点击遮罩关闭遮罩
@@ -192,41 +193,39 @@ Page({
             modalShow:false
         })
     },
-    pullUpLoad:function(){
+    onPullDownRefresh:function(){
+        wx.stopPullDownRefresh()
 
     },
     //加载更多
     onReachBottom:function(){
         var that = this;
-        var page = this.data.page+1;
-        this.setData({
-            page:page
-        })
         var id = that.data.curNav,
         itemId = that.data.itemId,
         type = that.data.type,
         startPrice = that.data.startPrice,
         endPrice = that.data.endPrice;
 
-        getClassifyGoods(that,id,itemId,type,startPrice,endPrice,page)
+        getClassifyGoods(that,id,itemId,type,startPrice,endPrice,2)
 
     }
 
 })
 
 
-function getClassifyGoods(that,id,itemId,type,startPrice,endPrice,page){
+function getClassifyGoods(that,id,itemId,type,startPrice,endPrice,page,brandId){
     var url ;
     var page = page?page:1;
-    console.log(page)
-
+    console.log(that.data.page)
+    console.log(brandId)
+    brandId = brandId?brandId:'';
 
 
     if(id == -1){
-        url = 'https://tobidto.cn/product/productList.do?userAppName='+ app.data.userAppName+'&page='+page+'&pageSize=6&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice;
+        url = 'https://tobidto.cn/product/productList.do?userAppName='+ app.data.userAppName+'&page='+page+'&pageSize=10&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice+'&brandId='+brandId;
         
     }else{
-        url = 'https://tobidto.cn/product/productList.do?userAppName='+ app.data.userAppName+'&id='+itemId+'&page='+page+'&pageSize=6&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice;
+        url = 'https://tobidto.cn/product/productList.do?userAppName='+ app.data.userAppName+'&id='+itemId+'&page='+page+'&pageSize=10&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice+'&brandId='+brandId;
     }
 
     wx.request({
@@ -236,19 +235,48 @@ function getClassifyGoods(that,id,itemId,type,startPrice,endPrice,page){
         },
         method:'post',
         success:function(res){
-            wx.hideToast();
-            console.log(res.data.data);
-            var data = res.data.data;
-            if(page>1){
-                that.setData({
-                    obj:that.data.obj.concat(data.product)
-                })
-            }else{
-                that.setData({
-                    obj:data.product,
-                })
+            if(res.data.code == 0){
+
+                wx.hideToast();
+                console.log(res.data.data);
+                var data = res.data.data;
+                if(page>1){
+
+                    that.setData({
+                        obj:that.data.obj.concat(data.product),
+                        page:that.data.page*1+1
+                    })
+                }else{
+                    that.setData({
+                        obj:data.product,
+                    })
+                }
+                
             }
            
         }
+    })
+}
+
+function getBranList(that){
+    wx.request({
+        url:'https://tobidto.cn/product/productList.do',
+        method:'post',
+        header:{
+            'content-type':'application/x-www-form-urlencoded'
+        },
+        data:{
+            userAppName:app.data.userAppName,
+        },
+        success:function(res){
+            console.log(res);
+            if(res.data.code ==0){
+                var brandArr = res.data.data.brand;
+                that.setData({
+                    brandArr:brandArr
+                })
+            }
+        }
+
     })
 }

@@ -133,6 +133,7 @@ checkbox-group{
     vertical-align:top;
     font-size:28rpx;
     margin-left:26rpx;
+    margin-top:72rpx;
 }
 .dis_price{
     color:#3a4041;

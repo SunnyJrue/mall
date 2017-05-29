@@ -20,21 +20,23 @@
    <view class='space' style='height:20rpx'></view>
     <!-- 商品信息 -->
 
-    <navigator url='/pages/details/index?id={{id}}' class='good_msg'>
+    <view class='good_msg'>
         <image src='https://tobidto.cn/downloadFile.do?url={{goodsdatas.img_path}}'></image>
-        <view style='display:inline-block;width:60%;vertical-align:top;'>
+        <view style='display:inline-block;width:80%;vertical-align:top;'>
             <view class='description'>
                 {{goodsdatas.product_name}}
             </view>
             <view class='description'>
-                商品数量
+                价格
+                <view style='display:inline-block;text-align:right;width:80%;color:#FD544A;font-size:28rpx'>￥ {{goodsdatas.current_price}}</view>
+            </view>
+            <view class='description' >
+                数量
+                <viwe style='display:inline-block;text-align:right;width:80%;color:#FD544A;font-size:28rpx'>X {{goodNums}}</viwe>
             </view>
         </view>
-        <view  class='num_price'>
-            <view>￥{{goodsdatas.current_price}}</view>
-            <viwe>X{{goodNums}}</viwe>
-        </view>
-    </navigator>
+
+    </view>
     
     <view class='space' style='height:20rpx'></view>
     

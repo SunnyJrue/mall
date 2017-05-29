@@ -59,7 +59,7 @@ page{
 
 
 .good_msg{
-    height:175rpx;
+    min-height:175rpx;
     width:100%;
     box-sizing:border-box;
     -webkit-box-sizing:border-box;

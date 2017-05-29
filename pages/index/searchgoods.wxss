@@ -78,6 +78,7 @@ page{
     width:100%;
     top:38rpx;
     border-top:2rpx solid #ccc;
+    border-bottom:2rpx solid #ccc;
     margin-top:78rpx;
     margin-bottom:8rpx;
     z-index:10003;
@@ -92,14 +93,14 @@ page{
     display:inline-block;
     font-size:28rpx;
     color:#919191;
-    background:url('../../images/down-gray.png') no-repeat;
+    /* background:url('../../images/down-gray.png') no-repeat; */
     background-size:20rpx;
     background-position:140rpx 34rpx;
 
 }
 .filter_goods .hoverd{
     color:#d63838;
-    background:url('../../images/down-color.png') no-repeat;
+    /* background:url('../../images/down-color.png') no-repeat; */
     background-size:20rpx;
     background-position:140rpx 34rpx;
 }
@@ -111,7 +112,7 @@ page{
     display:flex;
     flex-wrap:wrap;
     justify-content:space-between;
-    margin-top:80rpx;
+    margin-top:180rpx;
 }
 .goods-item{
     border:2rpx solid #EDEDED;
@@ -185,6 +186,11 @@ page{
     border-top:2rpx solid #ececec;
 }
 .select_list>view{
+    border-bottom:2rpx solid #ececec;
+    height:85rpx;
+    line-height:85rpx;
+}
+.select_list>scroll-view view{
     border-bottom:2rpx solid #ececec;
     height:85rpx;
     line-height:85rpx;

@@ -12,15 +12,61 @@
         </view>
     </view>
 
- <!--    
+   
  <view class='filter_goods' bindtap='showTap'>
      <view class='{{modalindex ==1?"hoverd":""}}' data-index='1'>品牌</view>
      <view class='{{modalindex ==2?"hoverd":""}}' data-index='2'>综合</view>
-     <view class='{{modalindex ==3?"hoverd":""}}' data-index='3'>评价</view>
+     <!-- <view class='{{modalindex ==3?"hoverd":""}}' data-index='3'>评价</view> -->
      <view class='{{modalindex ==4?"hoverd":""}}' data-index='4'>价格</view>
- </view> -->
-        <view class='goods-box'>
-            <block wx:for='{{goodsDatas}}' wx:key=''>
+ </view>
+
+
+     <!-- 遮罩层和对应的筛选 -->
+ <view class='modal' wx:if='{{modalShow}}' bindtap='closeModal'></view>
+ <view class='select_list' bindtap='listIndex' wx:if='{{modalShow}}' >
+     <scroll-view style='height:400rpx' scroll-y='true' wx:if="{{modalindex ==1}}">
+        <block wx:for='{{brandArr}}'>
+            <view class='{{sublist ==1?"list-selected":""}}'  data-brand='{{item.id}}' data-list='1'>{{item.brandName}}</view>
+        </block>
+     </scroll-view>
+
+     <block wx:if='{{modalindex ==2}}'>
+         <view class='{{sublist ==1?"list-selected":""}}' data-list='1' data-type='purchaseTotal'>购买最多</view>
+         <view class='{{sublist ==2?"list-selected":""}}' data-list='2' data-type='priceMin'>价格低到高</view>
+         <view class='{{sublist ==3?"list-selected":""}}' data-list='3' data-type='priceMax'>价格高到低</view>
+         <!-- <view class='{{sublist ==4?"list-selected":""}}' data-list='4'>上架时间</view>
+         <view class='{{sublist ==5?"list-selected":""}}' data-list='5'>销量最多</view> -->
+     </block>
+
+<!--      <block wx:if='{{modalindex ==3}}'>
+         <view class='{{sublist ==1?"list-selected":""}}' data-list='1'>好评最多</view>
+         <view class='{{sublist ==2?"list-selected":""}}' data-list='2'>好评最低</view>
+     </block> -->
+     
+     <block wx:if='{{modalindex ==4}}'>
+         <view class='{{sublist ==1?"list-selected":""}}' data-list='1' data-start='0' data-end='100'>0-100</view>
+         <view class='{{sublist ==2?"list-selected":""}}' data-list='2' data-start='100' data-end='300'>100-300</view>
+         <view class='{{sublist ==3?"list-selected":""}}' data-list='3' data-start='300' data-end='600'>300-600</view>
+         <view class='{{sublist ==4?"list-selected":""}}' data-list='4' data-start='600' data-end='1000'>600-1000</view>
+         <view class='{{sublist ==5?"list-selected":""}}' data-list='5'  data-start='1000' data-end='2000'>1000-2000</view>
+     </block>
+
+
+     <view class='btn'>
+         <view class='left' catchtap='closeModal'>关闭</view>
+         <!-- <view class='right' bindtap='submits'>确定</view> -->
+     </view>
+ </view>
+
+
+
+
+
+
+
+
+        <view class='goods-box' >
+            <block wx:for='{{goodsDatas}}' wx:key='' wx:if='{{goodsDatas.length > 0}}'>
 
                 <navigator url='/pages/details/index?id={{item.id}}' class='goods-item'>
                     <view class='item-image'>
@@ -37,49 +83,22 @@
                         </view>
                     </view>
                 </navigator>
+
+              
+
+
             
-            </block>        
+            </block>    
+            <view wx:if='{{goodsDatas.length == 0}}' style='text-align:center;width:100%;margin-top:150rpx'>
+                <image src='../../images/nogoods.png' style='width:150rpx;height:150rpx'></image>
+                <view style='color:#ddd'>未搜索到商品！</view>
+            </view>    
               
                 
 
         </view>
     
 
-    <!-- 遮罩层和对应的筛选 -->
-<!--     <view class='modal' wx:if='{{modalShow}}' bindtap='closeModal'></view>
-<view class='select_list' bindtap='listIndex' wx:if='{{modalShow}}' >
-    <block wx:if="{{modalindex ==1}}" >
-        <view class='{{sublist ==1?"list-selected":""}}' data-list='1'>总店</view>
-    </block>
-    
-
-    <block wx:if='{{modalindex ==2}}'>
-        <view class='{{sublist ==1?"list-selected":""}}' data-list='1'>购买数量最多</view>
-        <view class='{{sublist ==2?"list-selected":""}}' data-list='2'>价格从低到高</view>
-        <view class='{{sublist ==3?"list-selected":""}}' data-list='3'>价格从高到低</view>
-        <view class='{{sublist ==4?"list-selected":""}}' data-list='4'>上架时间</view>
-        <view class='{{sublist ==5?"list-selected":""}}' data-list='5'>销量最多</view>
-    </block>
-
-    <block wx:if='{{modalindex ==3}}'>
-        <view class='{{sublist ==1?"list-selected":""}}' data-list='1'>好评最多</view>
-        <view class='{{sublist ==2?"list-selected":""}}' data-list='2'>好评最低</view>
-    </block>
-    
-    <block wx:if='{{modalindex ==4}}'>
-        <view class='{{sublist ==1?"list-selected":""}}' data-list='1'>0-100</view>
-        <view class='{{sublist ==2?"list-selected":""}}' data-list='2'>100-300</view>
-        <view class='{{sublist ==3?"list-selected":""}}' data-list='3'>300-600</view>
-        <view class='{{sublist ==4?"list-selected":""}}' data-list='4'>600-100</view>
-        <view class='{{sublist ==5?"list-selected":""}}' data-list='5'>1000-2000</view>
-    </block>
-
-
-    <view class='btn'>
-        <view class='left' bindtap='resetOptions'>重置</view>
-        <view class='right' bindtap='submits'>确定</view>
-    </view>
-</view> -->
 
 
 

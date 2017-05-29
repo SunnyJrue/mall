@@ -19,7 +19,8 @@
                 <view class='status'>{{msg}}</view>
             </view>
 
-            <navigator url='/pages/details/index' class='item_details'>
+           <!--  <navigator url='/pages/details/index' class='item_details'> -->
+            <view class='item_details'>
                 <image src='https://tobidto.cn/downloadFile.do?url={{item.img_path}}'></image>
                 <view class='item_text'>
                     <view class='item_title'>
@@ -46,7 +47,8 @@
                         </view> -->
 
                     </view>
-                </navigator>
+               <!--  </navigator> -->
+                </view>
                 
                 <view class='total_price'>
                     共1件商品 合计:<text class='price_bold'>￥{{item.number*item.current_price+item.freight}}</text>.00元（含运费￥{{item.freight}}）
@@ -59,7 +61,7 @@
                         <view wx:if='{{item.number>1}}' data-price='{{item.current_price}}' data-id='{{item.id}}' data-num='{{item.number}}' bindtap='lessOrder'>-</view> <view>{{item.number}}</view>  <view data-id='{{item.id}}' bindtap='plusOrder'>+</view>
                     </view>
                     <view data-id='{{item.id}}' bindtap='deleteOrder'>删除</view>
-                    <navigator url='/pages/order/order?id={{item.id}}'>订单结算</navigator>
+                    <navigator url='/pages/order/order?id={{item.productId}}&goodNums={{item.number}}&status=1'>订单结算</navigator>
                 </view>
                     
         </view>

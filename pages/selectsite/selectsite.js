@@ -23,7 +23,10 @@ Page({
     },
     operateAdress:function(){
         wx.navigateTo({
-            url:'/pages/adress/adress'
+            url:'/pages/addsite/index?status=1',
+            success:function(res){
+                console.log(res)
+            }
         })
     }
 

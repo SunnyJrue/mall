@@ -142,12 +142,12 @@
             </view>
         </view> -->
         <view class='shop_icon'>
-            <navigator url='/pages/shopcar/index'>
+            <view bindtap='turnToShopCar'>
                 <view>
                     <image src='../../images/details-shop-car.png'></image>
                 </view>
                 <view>购物车</view>
-            </navigator>
+            </view>
         </view>
         <view class='shop_buy'>
             <view class='join_shopcar' bindtap='addShopCar'>

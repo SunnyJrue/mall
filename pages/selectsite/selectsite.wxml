@@ -18,9 +18,11 @@
 
     </radio-group>
 
-    <navigator bindtap='operateAdress' class='operate' >
-        管理
-    </navigator>
+    <view bindtap='operateAdress' class='operate' >
+        添加地址
+    </view>
+
+
 
 
 
