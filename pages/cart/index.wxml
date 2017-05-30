@@ -12,7 +12,7 @@
                 <view class='title'>
                     <image class='icon-images' src='../../images/icon-arrowdown.png'></image>
                     <label class="radio"  >
-                        <checkbox value='{{item.number*item.current_price+item.freight}}'   checked="{{arr}}" />
+                        <checkbox value='{{item.number*item.current_price+item.freight}}'   checked="{{arr}}"  />
                     </label>
                     
                 </view>

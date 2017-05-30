@@ -133,7 +133,7 @@ Page({
 
 
                wx.request({
-                   url:"https://tobidto.cn/open/getOpenId.do?code="+code,
+                   url:"https://tobidto.cn/wx/getOpenId.do?code="+code,
                    method:'post',
                    success:function(res){
                       console.log(res)

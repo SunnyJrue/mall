@@ -26,7 +26,19 @@ page{
     font-weight: bold;
     color: #333;
 }
+.lable-title{
+    padding-bottom:14rpx;
+}
+.lable-title view{
+    display:inline-block;
+    border-radius:14rpx;
+    background:#66DBD6;
+    color:#fff;
+    padding:0 6px;
+    margin:0 10rpx;
+    font-size:24rpx;
 
+}
 .desc{
     margin: 20rpx 0;
     color: #939393;
