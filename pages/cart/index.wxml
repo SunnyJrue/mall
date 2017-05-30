@@ -12,7 +12,7 @@
                 <view class='title'>
                     <image class='icon-images' src='../../images/icon-arrowdown.png'></image>
                     <label class="radio"  >
-                        <checkbox value='{{item.number*item.current_price+item.freight}}'   checked="{{arr}}"  />
+                        <checkbox value='{{item.number*item.current_price+item.freight}}'   checked="{{arr}}" data-num='{{item.number}}' data-id='{{item.productId}}'  data-index='{{index}}' bindtap='getIndex' />
                     </label>
                     
                 </view>
@@ -25,9 +25,7 @@
                     <view class='item_title' style='height:70rpx'>
                         {{item.product_name}}
                     </view>
-                 
                     <view class='item_size' >
-                        <!-- 颜色:白色;尺码:170M -->
                         价格
                     </view>
                     <view class='item_size' >
@@ -36,10 +34,6 @@
                     <view class='item_size'>
                         数量
                     </view> 
-                   <!--  <view class='item_logo'>
-                        <image src='../../images/icon-seven.png'></image>
-                    </view> -->
-
                 </view>
                     <view class='item_num'>
                         <view class='dis_price'>￥{{item.current_price}}</view>
@@ -50,16 +44,13 @@
 
                     </view>
                 </navigator>
-                
                 <view class='total_price'>
                     共1件商品 合计:<text class='price_bold'>￥{{item.number*item.current_price+item.freight}}</text>.00元（含运费￥{{item.freight}}）
                 </view>
-                
-
 
                 <view class='btn_item' >
                     <view class='alterOrder'>
-                        <view wx:if='{{item.number>1}}' data-price='{{item.current_price}}' data-id='{{item.id}}' data-num='{{item.number}}' bindtap='lessOrder'>-</view> <view>{{item.number}}</view>  <view data-id='{{item.id}}' bindtap='plusOrder'>+</view>
+                        <view wx:if='{{item.number>1}}' data-price='{{item.current_price}}' data-id='{{item.id}}' data-index='{{index}}' data-check='{{arr}}'  data-num='{{item.number}}' bindtap='lessOrder'>-</view> <view>{{item.number}}</view>  <view data-index='{{index}}' data-price='{{item.current_price}}' data-id='{{item.id}}' bindtap='plusOrder'>+</view>
                     </view>
                     <view data-id='{{item.id}}' bindtap='deleteOrder'>删除</view>
                     <navigator url='/pages/order/order?id={{item.productId}}&goodNums={{item.number}}&status=1'>订单结算</navigator>
@@ -68,60 +59,6 @@
         </view>
 
         </block>
-
-
-
-<!-- 
-        <view class='item_list'>
-            <view style='background:#fff'>
-                
-                <view class='title'>
-                    <label class="radio"  >
-                        <checkbox value='69'   checked="{{arr[0]}}" />{{item.value}}
-                    </label>
-                    <image src='../../images/icon-tmall.png'></image>sunndipy旗舰店
-                </view>
-                <view class='status'>{{msg}}</view>
-            </view>
-
-            <navigator url='/pages/details/index' class='item_details'>
-                <image src='../../images/allorder/title.png'></image>
-                <view class='item_text'>
-                    <view class='item_title'>
-                        sundipy夏季七分袖总阿斯蒂芬是地方啥地方啥都防啊是发生发射点发啥地方
-                    </view>
-                    <view class='item_size'>
-                        颜色:白色;尺码:170M
-                    </view>
-                    <view class='item_logo'>
-                        <image src='../../images/icon-seven.png'></image>
-                    </view>
-
-                </view>
-                <view class='item_num'>
-                    <view class='dis_price'>￥69.00</view>
-                    <view class='old_price'>￥198.00</view>
-                    <view class='old_price'> 
-                        X1
-                    </view>
-                </view>
-                <view class='total_price'>
-                    共1件商品 合计:<text class='price_bold'>￥69</text>.00元（含运费￥0.00）
-                </view>
-
-                <view class='btn_item' >
-                    <view>删除</view>
-                    <view>订单结算</view>
-                </view>
-                
-              
-
-            </navigator>
-                    
-        </view> -->
-
-
-       
 
       </checkbox-group >
       
@@ -139,9 +76,9 @@
               <view style='font-size:24rpx;text-align:right'>不含运费</view>
           </view>
           <view class='btn'>
-              <navigator url='/pages/order/order' >
+              <view url='' catchtap='turnToOrder' >
                   结算({{goodsSUm}})
-              </navigator>
+              </view>
           </view>
       </view>
     

@@ -49,7 +49,7 @@
 
 
     <view class='leave_message'>
-        <input type="text" placeholder-class='input_message' placeholder='选填：买家留言（50字以内）' />
+        <input type="text" placeholder-class='input_message' placeholder='选填：买家留言（50字以内'  bindinput="bindKeyInput"  />
     </view>
    <view class='space' style='height:10rpx'></view>
 

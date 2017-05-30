@@ -129,9 +129,6 @@ Page({
                //获取openid
                var code = login.code;
                console.log(code)
-
-
-
                wx.request({
                    url:"https://tobidto.cn/wx/getOpenId.do?code="+code,
                    method:'post',
@@ -150,28 +147,38 @@ Page({
                              },
                            dataType:'json',
                            success:function(res){
-                               console.log(res)
-                               console.log(open)
-                               wx.setStorage({
-                                   key:'userMsg',
-                                   data:{
-                                       userAppName:app.data.userAppName,
-                                       memberId:res.data.data.id, 
-                                       opens:open
-                                   }
-                               });
-                              
+                              console.log(res)
+                              console.log(open)
+                              if(res.data.code == 0){
+
+                                wx.setStorage({
+                                    key:'userMsg',
+                                    data:{
+                                        userAppName:app.data.userAppName,
+                                        memberId:res.data.data.id, 
+                                        opens:open
+                                    }
+                                });
+                              }else{
+                                wx.showToast({
+                                  title:res.data.desc,
+                                  icon:'loading',
+                                  mask:true,
+                                  duration:1500
+                                })
+                               
                        
                            }
+                              }
                        })
 
                    }
                })
-
-
               
            }
        })
+
+
 
 
         

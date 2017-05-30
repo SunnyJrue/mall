@@ -19,7 +19,8 @@ Page({
         memberId:'',
         status:1,
         goodNums:1,//商品数量
-        goodsdatas:'' //商品的信息
+        goodsdatas:'', //商品的信息
+        reason:''
     },
     onLoad:function(e){
         console.log(e)
@@ -76,6 +77,7 @@ Page({
                         if(res.data.code ==0){
                             console.log(res);
                             var data = res.data.data.product[0];
+                            console.log(data)
                             that.setData({
                                 goodsdatas:data
                             })
@@ -188,6 +190,11 @@ Page({
         
 
     },
+    bindKeyInput:function(e){
+        this.setData({
+            reason: e.detail.value
+        })
+    },
     showSubPage:function(){
         wx.navigateTo({
             url:'/pages/selectsite/selectsite'
@@ -196,78 +203,165 @@ Page({
     //提交订单
     submitOrder:function(){
         var that = this;
+        var goodsdatas = that.data.goodsdatas;
+
+        //商品名字
+        var productName = goodsdatas.product_name;
+        //商品id
         var productId  = that.data.id;
+        //商家id
+        var memberId = that.data.memberId;
+        //地址id
         var addrId = that.data.addressNum;
-        var orderNumber = that.data.goodNums;
-        var reason = '';
+        //商品数目
+        var orderNumber = that.data.goodNums*1;
+        //计算总价
+        var totalPrice = (goodsdatas.current_price*1)*(orderNumber*1)+goodsdatas.freight*1;
+        //备注
+        var reason = that.data.reason;
 
-
-        wx.login({
-            success:function(res){
-                console.log(res.code)
-                var code = res.code;
-                wx.request({
-                    url:'https://tobidto.cn/wx/prepay.do',
-                    method:'post',
-                    success:function(res){
-                        
-                    }
-                })
-            }
+        
+        wx.showToast({
+            title:'订单提交中...',
+            icon:'loading',
+            mask:true,
+            duration:5000
         })
-        /*console.log(productId)
-        wx.request({
-            url:'https://tobidto.cn/order/insert.do',
-            method:'post',
-            header:{
-                'content-type':'application/x-www-form-urlencoded'
-            },
-            data:{
-                productId:productId,
-                userAppName:app.data.userAppName,
-                memberId:that.data.memberId,
-                orderNumber:orderNumber,
-                reason:reason,
-                addrId:addrId
-            },
-            success:function(res){
-                console.log(res)
-                if(res.data.code == 0){ //success
-                    wx.showToast({
-                        title:res.data.desc+'加载微信支付中',
-                        icon:'loading',
-                        mask:true,
-                        duration:0
-                    })
 
-                }else{
-                    wx.showToast({
-                        url:''
-                    })
+
+        wx.getStorage({
+          key: 'userMsg',
+          success:function(res){
+            var openid = res.data.opens;
+            var datas={
+               userAppName:app.data.userAppName,
+               productName:productName,
+               productId:productId,
+               memberId:memberId,
+               addrId:addrId,
+               orderNumber:orderNumber,
+               totalPrice:totalPrice,
+               reason:reason,
+               openId:openid,
+            };
+            console.log(datas)
+
+
+            wx.request({
+                url:'https://tobidto.cn/order/insert.do',
+                method:'post',
+                header:{
+                    'content-type':'application/x-www-form-urlencoded'
+                },
+                data:{
+                  userAppName:app.data.userAppName,
+                  productName:productName,
+                  productId:productId,
+                  memberId:memberId,
+                  addrId:addrId,
+                  orderNumber:orderNumber,
+                  totalPrice:totalPrice,
+                  reason:reason,
+                  openId:openid,
+                },
+                success:function(res){
+                    wx.hideToast()
+                    console.log(res)
+                    var params = res.data.data
+                    if(res.data.code == 0){
+                        wx.requestPayment({
+                           'timeStamp': params.timestamp+'',
+                           'nonceStr': params.nonceStr,
+                           'package': params.package,
+                           'signType': 'MD5',
+                           'paySign': params.sign,
+                           success:function(res){
+                                wx.request({
+                                    url:'https://tobidto.cn/order/wxnotify.do',
+                                    method:'post',
+                                    header:{
+                                        'content-type':'application/x-www-form-urlencoded'
+                                    },
+                                    data:{
+                                        outTradeNo:params.outTradeNo,
+                                        wxPayStatus:1
+                                    }
+
+                                })
+                           },
+                           fail:function(res){
+                                wx.request({
+                                    url:'https://tobidto.cn/order/wxnotify.do',
+                                    method:'post',
+                                    header:{
+                                        'content-type':'application/x-www-form-urlencoded'
+                                    },
+                                    data:{
+                                        outTradeNo:params.outTradeNo,
+                                        wxPayStatus:3
+                                    }
+
+                                })
+                           }
+                        })
+                    }else{
+                        wx.showToast({
+                            title:res.data.desc,
+                            loading:'loading',
+                            mask:true,
+                            duration:1500
+                        })
+                    }
                 }
-            }
-        })*/
+            })
+          }
+        })
 
 
 
-        // wx.getStorage({
-        //     key:'userMsg',
+
+        // wx.login({
         //     success:function(res){
-        //         console.log(res)
-        //         var code = res.data.opens;
+        //         console.log(res.code)
+        //         var code = res.code;
         //         wx.request({
-        //             url:'https://tobidto.cn/order/insert.do?userAppName='+userAppName+'&memberId='+memberId+'&productId='+productId+'&reason='+reason+'&orderNumber='+orderNumber+'&page='+page+'&pageSize='+pageSize,
+        //             url:'https://tobidto.cn/order/insert.do',
         //             method:'post',
+        //             header:{
+        //                 'content-type':'application/x-www-form-urlencoded'
+        //             },
+        //             data:{
+        //               userAppName:app.data.userAppName,
+        //               productName:productName,
+        //               productId:productId,
+        //               memberId:memberId,
+        //               addrId:addrId,
+        //               orderNumber:orderNumber,
+        //               totalPrice:totalPrice,
+        //               reason:reason,
+        //               code:code,
+        //             },
         //             success:function(res){
-        //                 console.log(res);
-        //                 var data = res.data;
+        //                 wx.hideToast()
+        //                 console.log(res)
+        //                 if(res.data.code == 0){
 
+        //                 }else{
+        //                     wx.showToast({
+        //                         title:res.data.desc,
+        //                         loading:'loading',
+        //                         mask:true,
+        //                         duration:1500
+        //                     })
+        //                 }
         //             }
         //         })
         //     }
         // })
-        
-        
+
+
+
+
 
     }
 })

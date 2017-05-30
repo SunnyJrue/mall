@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/cart/index",
     "pages/selectsite/selectsite",
     "pages/classify/index",
     "pages/shopcar/index",
@@ -16,7 +17,6 @@
     "pages/list/index",
     "pages/my/index",
     "pages/disticket/disticket",
-    "pages/cart/index",
     "pages/brand/index"
   ],
   "window":{

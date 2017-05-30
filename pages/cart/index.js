@@ -10,7 +10,8 @@ Page( {
     page:1,//分页,
     orderList:'',
     arr:false,
-
+    arrCheck:[],//列表保存checkbox是否选择
+    arrIndex:[] //保存index
 
 
   },
@@ -26,8 +27,14 @@ Page( {
         })
       }
     })
+  
 
-    getOrderList(that)
+
+    getOrderList(that,'onload')
+
+
+
+
 
   },
   onShareAppMessage: function () {
@@ -78,6 +85,10 @@ Page( {
     this.setData({
         allChecked:info,
     })
+
+
+
+
   },
   selectAll:function(e){
     var that = this;
@@ -87,10 +98,15 @@ Page( {
 
     if(this.data.allChecked){
         changeCheck(arrs,false,that);
+        var arrCheck = that.data.arrCheck
+        for(var i = 0 ; i < arrCheck.length ; i++){
+          arrCheck[i] = false;
+        }
         this.setData({
             allChecked:false,
             goodsSUm:0,
-            totalPrice:0
+            totalPrice:0,
+            arrCheck:arrCheck
         })
 
 
@@ -98,7 +114,10 @@ Page( {
         changeCheck(arrs,true,that);
         var sum = 0
         var orderData = that.data.orderList;
-        console.log(orderData)
+        var arrCheck = that.data.arrCheck
+        for(var i = 0 ; i < arrCheck.length ; i++){
+          arrCheck[i] = true;
+        }
         for(var i = 0 ; i < orderData.length ; i++){
             sum += orderData[i].current_price*orderData[i].number+orderData[i].freight
         }
@@ -106,6 +125,7 @@ Page( {
             allChecked:true,
             goodsSUm:that.data.orderList.length,
             totalPrice:sum,
+            arrCheck:arrCheck
         })
 
 
@@ -244,24 +264,79 @@ Page( {
 
   //x修改订单数
   lessOrder:function(e){
-
+    console.log(e)
     var that = this;
     var id = e.target.dataset.id;
-    var price = e.target.dataset.price;
-    alterOrder('less',id,that);
+
+    alterOrder('less',id,that,e);
+
 
   },
   plusOrder:function(e){
+    console.log(e)
     var that = this;
     var id = e.target.dataset.id;
     var price = e.target.dataset.price;
 
-    alterOrder('update',id,that);
+    alterOrder('update',id,that,e);
   },
+  //点击checkbox 是否选中 改变总价和生成缓存到订单信息
+  getIndex:function(e){
+    console.log(e)
+    var index = e.target.dataset.index;
+    var goodsNums = e.target.dataset.num;
+    var id = e.target.dataset.id;
+
+    var that = this;
+
+    var arrCheck = that.data.arrCheck;
+    arrCheck[index] = !arrCheck[index];
+
+    console.log(arrCheck[index])
+
+    that.setData({
+      arrCheck:arrCheck
+    });
+
+    //点击多个订单生成缓存
+    var arr = that.data.arrIndex;
+
+    if(arrCheck[index]){
+      arr[index] = index;
+    }else{
+      arr[index] = null;
+    }
+    console.log(arr)
+    that.setData({
+      arrIndex:arr
+    })
+
+    wx.setStorage({
+      key:'goodsIndex',
+      data:arr
+    })
+   
+  },
+  turnToOrder:function(){
+    var num = this.data.goodsSUm;
+    if(num>0){
+      wx.navigateTo({
+        url:'/pages/order/order?status=1'
+      })
+    }else{
+      wx.showToast({
+        title:'请选择要下单的商品',
+        icon:'loading',
+        mask:true,
+        duration:1500
+      })
+    }
+    
+  }
 
 
 })
-function alterOrder(type,id,that){
+function alterOrder(type,id,that,e){
   
   wx.request({
     url:'https://tobidto.cn/cart/'+type+'.do?id='+id,
@@ -270,8 +345,20 @@ function alterOrder(type,id,that){
       console.log(res)
       if(res.data.code == 0){
         getOrderList(that)
-       
-
+        var price = e.target.dataset.price;
+        var index = e.target.dataset.index;
+        var arrCheck = that.data.arrCheck;
+        var totalPrice = that.data.totalPrice;
+        if(arrCheck[index]){
+          if(type == 'less'){
+            totalPrice -= price;
+          }else{
+            totalPrice += price;
+          }
+          that.setData({
+            totalPrice:totalPrice
+          })
+        }
       }else{
         wx.showToast({
           title:res.data.desc,
@@ -298,8 +385,8 @@ function changeCheck(arrs,para,that){
     })
 
 }
-
-function getOrderList(that){
+//type判别是否是onload
+function getOrderList(that,type){
   wx.getStorage({
       key:'userMsg',
       success:function(res){
@@ -310,10 +397,28 @@ function getOrderList(that){
               success:function(res){
                   wx.hideToast();
                   console.log(res);
+
                   if(res.data.code == 0){
+                    wx.setStorage({
+                      key:'goodsList',
+                      data:res
+                    })
+                    if(type=='onload'){
+                      var length = res.data.data.length; //获取订单数
+                      var arrCheck = new Array(length); //保存订单是否勾选状态
+                      var arrIndex = new Array(length);
+                      for(var i = 0 ; i < length ; i++){
+                        arrCheck[i] = false;
+                      }
+                      console.log(arrCheck)
+                      that.setData({
+                        arrCheck:arrCheck,
+                        arrIndex:arrIndex,
+                      })
+                    }
+                    
                     wx.stopPullDownRefresh();
                     var data = res.data.data;
-                 
                       that.setData({
                         orderList:data,
                      });
