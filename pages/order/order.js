@@ -23,11 +23,14 @@ Page({
         reason:''
     },
     onLoad:function(e){
+        var that = this;
         console.log(e)
         var id = e.id; //商品的类型id
         var status = e.status?e.status:1;
         var goodNums = e.goodNums; //商品数量
         var orderId = e.orderId; //订单id 提交成功后删除该笔订单用
+        var str = e.str;
+        var orderType = e.orderType;
         console.log(id)
         if(status == 2){
             wx.setNavigationBarTitle({
@@ -40,7 +43,53 @@ Page({
             goodNums:goodNums,
             orderId:orderId 
         })
-        var that = this;
+
+
+        //获取多订单
+        if(orderType==1){
+            console.log(str)
+            wx.request({
+                  url:'https://tobidto.cn/product/getManyProduct.do',
+                  method:'post',
+                  header:{
+                    'content-type':'application/x-www-form-urlencoded'
+                  },
+                  data:{
+                    productId:str
+                  },
+                  success:function(res){
+                    console.log(res)
+                }
+            })
+        }else{
+                //获取单列表
+                //获取商品的列表
+                wx.request({
+                    url:'https://tobidto.cn/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
+                    method:'post',
+                    success:function(res){
+                        console.log(res)
+                        if(res.data.code ==0){
+                            console.log(res);
+                            var data = res.data.data.product[0];
+                            console.log(data)
+                            that.setData({
+                                goodsdatas:data
+                            })
+                        }else{
+                            wx.showToast({
+                                title:res.data.desc,
+                                icon:'loading',
+                                mask:true,
+                                duration:1000
+                            })
+                        }
+                    }
+                })
+
+            }
+        
+      
         wx.getStorage({
             key:'userMsg',
             success:function(res){
@@ -68,29 +117,7 @@ Page({
                     }
                 })
 
-                //获取商品的列表
-                wx.request({
-                    url:'https://tobidto.cn/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
-                    method:'post',
-                    success:function(res){
-                        console.log(res)
-                        if(res.data.code ==0){
-                            console.log(res);
-                            var data = res.data.data.product[0];
-                            console.log(data)
-                            that.setData({
-                                goodsdatas:data
-                            })
-                        }else{
-                            wx.showToast({
-                                title:res.data.desc,
-                                icon:'loading',
-                                mask:true,
-                                duration:1000
-                            })
-                        }
-                    }
-                })
+                
 
             }
         })
@@ -270,12 +297,14 @@ Page({
                     var params = res.data.data
                     if(res.data.code == 0){
                         wx.requestPayment({
-                           'timeStamp': params.timestamp+'',
+                          'appId': params.appid,
+                          'timeStamp': params.timeStamp+'',
                            'nonceStr': params.nonceStr,
-                           'package': params.package,
+                           'package': 'prepay_id=' + params.prepay_id,
                            'signType': 'MD5',
                            'paySign': params.sign,
                            success:function(res){
+                             console.log(res);
                                 wx.request({
                                     url:'https://tobidto.cn/order/wxnotify.do',
                                     method:'post',
@@ -290,6 +319,7 @@ Page({
                                 })
                            },
                            fail:function(res){
+                             console.log(res);
                                 wx.request({
                                     url:'https://tobidto.cn/order/wxnotify.do',
                                     method:'post',

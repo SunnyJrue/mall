@@ -90,19 +90,6 @@ Page({
        // })
 
 
-       // wx.login({
-       //     success:function(res){
-       //         console.log(res.code)
-       //         var code = res.code;
-       //         wx.request({
-       //             url:'https://tobidto.cn/wx/getOpenId.do?code='+code,
-       //             method:'post',
-       //             success:function(res){
-       //                console.log(res)
-       //             }
-       //         })
-       //     }
-       // })
 
 
        app.getUserInfo(function(userInfo){
@@ -130,7 +117,7 @@ Page({
                var code = login.code;
                console.log(code)
                wx.request({
-                   url:"https://tobidto.cn/wx/getOpenId.do?code="+code,
+                   url:"https://tobidto.cn/open/getOpenId.do?code="+code,
                    method:'post',
                    success:function(res){
                       console.log(res)
@@ -261,7 +248,7 @@ function getGoodsList(that,page){
         },
         data:{
           userAppName:app.data.userAppName,
-          page:that.data.page,
+          page:page==1?1:that.data.page+1,
           pageSize:10
         },
         method:'POST',
@@ -273,12 +260,22 @@ function getGoodsList(that,page){
             wx.hideToast();
             console.log(that.data.page)
             var newData = res.data.data.product;
-            var data = page==1?newData:that.data.hotgoods.concat(newData);
+            if(page == 1){
+              var data = newData;
+              that.setData({
+                page:1,
+                hotgoods:data
+              })
+            }else{
+              var data = that.data.hotgoods.concat(newData);
+              that.setData({
+                page:that.data.page+1,
+                hotgoods:data
+              })
+            }
+            
             console.log(data)
-            that.setData({
-              page:page==1?page:(that.data.page+1),
-              hotgoods:data
-            })
+            
           }else{
             wx.showToast({
               title:res.code.desc,

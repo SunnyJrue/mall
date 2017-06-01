@@ -53,7 +53,7 @@
                         <view wx:if='{{item.number>1}}' data-price='{{item.current_price}}' data-id='{{item.id}}' data-index='{{index}}' data-check='{{arr}}'  data-num='{{item.number}}' bindtap='lessOrder'>-</view> <view>{{item.number}}</view>  <view data-index='{{index}}' data-price='{{item.current_price}}' data-id='{{item.id}}' bindtap='plusOrder'>+</view>
                     </view>
                     <view data-id='{{item.id}}' bindtap='deleteOrder'>删除</view>
-                    <navigator url='/pages/order/order?id={{item.productId}}&goodNums={{item.number}}&status=1'>订单结算</navigator>
+                    <navigator url='/pages/order/order?id={{item.productId}}&goodNums={{item.number}}&status=1&orderType=2'>订单结算</navigator>
                 </view>
                     
         </view>

@@ -11,7 +11,9 @@ Page( {
     orderList:'',
     arr:false,
     arrCheck:[],//列表保存checkbox是否选择
-    arrIndex:[] //保存index
+    arrIndex:[], //保存index
+    productId:[],
+    productIdAll:[]
 
 
   },
@@ -27,14 +29,7 @@ Page( {
         })
       }
     })
-  
-
-
     getOrderList(that,'onload')
-
-
-
-
 
   },
   onShareAppMessage: function () {
@@ -106,7 +101,8 @@ Page( {
             allChecked:false,
             goodsSUm:0,
             totalPrice:0,
-            arrCheck:arrCheck
+            arrCheck:arrCheck,
+            productId:[]
         })
 
 
@@ -125,12 +121,15 @@ Page( {
             allChecked:true,
             goodsSUm:that.data.orderList.length,
             totalPrice:sum,
-            arrCheck:arrCheck
+            arrCheck:arrCheck,
+            productId:that.data.productIdAll
         })
 
 
 
     }
+
+    console.log(that.data.productId)
   },
   //下拉刷新
   onPullDownRefresh:function(){
@@ -288,6 +287,8 @@ Page( {
     var id = e.target.dataset.id;
 
     var that = this;
+    var productidArr = that.data.productId;
+
 
     var arrCheck = that.data.arrCheck;
     arrCheck[index] = !arrCheck[index];
@@ -303,12 +304,15 @@ Page( {
 
     if(arrCheck[index]){
       arr[index] = index;
+      productidArr[index] = id+'-'+goodsNums;
     }else{
       arr[index] = null;
+      productidArr[index] = null;
     }
-    console.log(arr)
+    console.log(productidArr)
     that.setData({
-      arrIndex:arr
+      arrIndex:arr,
+      productId:productidArr
     })
 
     wx.setStorage({
@@ -318,11 +322,25 @@ Page( {
    
   },
   turnToOrder:function(){
+    var that = this;
     var num = this.data.goodsSUm;
+    var productId = that.data.productId;
+    console.log(productId);
+    var str='';
+    for(var i = 0 ; i < productId.length ; i++){
+      if(!productId[i] || productId[i] == null  ){
+          continue ;
+      }else if( i == productId.length-1){
+        str += productId[i];
+      }else{
+        str += productId[i] +',';
+      }
+    }
+    console.log(str);
     if(num>0){
-      wx.navigateTo({
-        url:'/pages/order/order?status=1'
-      })
+        wx.navigateTo({
+          url:'/pages/order/order?status=1&str='+str+'&orderType=1',
+        })
     }else{
       wx.showToast({
         title:'请选择要下单的商品',
@@ -407,13 +425,16 @@ function getOrderList(that,type){
                       var length = res.data.data.length; //获取订单数
                       var arrCheck = new Array(length); //保存订单是否勾选状态
                       var arrIndex = new Array(length);
+                      var productIdAll = [];
                       for(var i = 0 ; i < length ; i++){
                         arrCheck[i] = false;
+                        productIdAll[i] = res.data.data[i].productId;
                       }
                       console.log(arrCheck)
                       that.setData({
                         arrCheck:arrCheck,
                         arrIndex:arrIndex,
+                        productIdAll:productIdAll
                       })
                     }
                     
