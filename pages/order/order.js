@@ -20,7 +20,8 @@ Page({
         status:1,
         goodNums:1,//商品数量
         goodsdatas:'', //商品的信息
-        reason:''
+        reason:'',
+        orderType:0 
     },
     onLoad:function(e){
         var that = this;
@@ -58,7 +59,24 @@ Page({
                     productId:str
                   },
                   success:function(res){
-                    console.log(res)
+                        console.log(res)
+                    if(res.data.code == 0 ){
+                        var datas = res.data.data;
+                        
+                        var totalPrice = 0;
+                        for(var i = 0 ; i < datas.length ; i++ ){
+                            totalPrice += datas[i].current_price*1*datas[i].productNumber
+                        }
+                        totalPrice += datas[0].freight;
+                        that.setData({
+                            goodsdatas:datas,
+                            orderType:1,
+                            someGoodsTotalPrice:totalPrice
+                        })
+                        console.log(totalPrice)
+
+
+                    }
                 }
             })
         }else{

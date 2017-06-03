@@ -3,7 +3,7 @@
   <view class='search'>
       <view class='floatEle'>
           <view class='position' >
-              深圳
+              {{locations?locations:'深圳'}}
               <image src='../../images/icon-location.png'></image>
           </view>
           <view class='infotext'>

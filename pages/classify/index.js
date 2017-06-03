@@ -21,7 +21,8 @@ Page({
         itemId:'',//传给接口的商品id,
         startPrice:'', //开始价格
         endPrice:'',//结束价格
-        type:''//排序
+        type:'',//排序
+        locations:''
     },
     onShareAppMessage: function () {
       return {
@@ -68,12 +69,25 @@ Page({
                     navLeftItems:res.data.data.species,
                     obj:res.data.data.product
                 })
-            }
+            },
 
         })
         //获取总店的商品名称和id列表
         getBranList(that)
 
+
+
+        //获取地理位置
+        wx.getStorage({
+            key:'location',
+            success:function(res){
+                console.log(res)
+                that.setData({
+                    locations:res.data
+                })
+            }
+        })
+        
 
 
 

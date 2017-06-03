@@ -20,7 +20,9 @@
    <view class='space' style='height:20rpx'></view>
     <!-- 商品信息 -->
 
-    <view class='good_msg'>
+    <!-- 单个商品下单 -->
+    <view  wx:if='{{!orderType}}'>
+      <view class='good_msg'>
         <image src='https://tobidto.cn/downloadFile.do?url={{goodsdatas.img_path}}'></image>
         <view style='display:inline-block;width:80%;vertical-align:top;'>
             <view class='description'>
@@ -36,9 +38,34 @@
             </view>
         </view>
 
+      </view>
+      <view class='space' style='height:20rpx'></view>
     </view>
     
-    <view class='space' style='height:20rpx'></view>
+    <!-- 多商品下单 -->
+    <view wx:if='{{orderType}}' wx:for='{{goodsdatas}}'>
+      <view class='good_msg'>
+        <image src='https://tobidto.cn/downloadFile.do?url={{item.img_path}}'></image>
+        <view style='display:inline-block;width:80%;vertical-align:top;'>
+            <view class='description'>
+                {{item.product_name}}
+            </view>
+            <view class='description'>
+                价格
+                <view style='display:inline-block;text-align:right;width:80%;color:#FD544A;font-size:28rpx'>￥ {{item.current_price}}</view>
+            </view>
+            <view class='description' >
+                数量
+                <viwe style='display:inline-block;text-align:right;width:80%;color:#FD544A;font-size:28rpx'>X {{item.productNumber}}</viwe>
+            </view>
+        </view>
+
+      </view>
+      <view class='space' style='height:20rpx'></view>
+    </view>
+
+    
+
     
 
 
@@ -49,22 +76,30 @@
 
 
     <view class='leave_message'>
-        <input type="text" placeholder-class='input_message' placeholder='选填：买家留言（50字以内'  bindinput="bindKeyInput"  />
+        <input type="text" placeholder-class='input_message' placeholder='选填：买家留言（50字以内）'  bindinput="bindKeyInput"  />
     </view>
    <view class='space' style='height:10rpx'></view>
 
-   <view class='count_price'>
-       商品总价<text>￥{{goodNums*goodsdatas.current_price}}</text>
+  <view wx:if='{{!orderType}}'>
+    <view class='count_price' >
+        商品总价<text>￥{{goodNums*goodsdatas.current_price}}</text>
+    </view>
+
+
+     <view class='count_price se_count_price' >
+         邮费<text>￥{{goodsdatas.freight}}</text>
+     </view>
+  </view>
+
+  <!-- 多商品 -->
+  <view wx:if='{{orderType}}'>
+    <view class='count_price' >
+         商品总价<text>￥{{someGoodsTotalPrice}}</text>
+    </view>
+   <view class='count_price se_count_price' wx:if='{{orderType}}'>
+       邮费<text>￥{{goodsdatas[0].freight}}</text>
    </view>
-<!--    <view class='count_price'>
-       打折价<text>-￥{{goodsdatas.original_price*goodsdatas.discount}}</text>
-   </view>
-   <view class='count_price'>
-       打折减<text>-￥{{goodsdatas.original_price*goodsdatas.discount}}</text>
-   </view> -->
-   <view class='count_price'>
-       邮费<text>+￥{{goodsdatas.freight}}</text>
-   </view>
+  </view>
     
    <view class='footer' wx:if='{{status == 1}}'>
         <view>
@@ -73,7 +108,7 @@
         <view class='submit_btn' bindtap='submitOrder'>
             提交订单
         </view>
-        <view class='total_price'>
+        <view class='total_price' wx:if='{{}}'>
             实付款：￥{{ goodNums*goodsdatas.current_price*1 + goodsdatas.freight*1}}
         </view>
 

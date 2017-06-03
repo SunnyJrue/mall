@@ -4,7 +4,6 @@ Page({
     data: {
         obj:[1,2,3,4,5,6,7],
         scrollTops:0,
-        location:'深圳',
         windowHeight:'',
         userInfo:'',
         id:'',
@@ -13,6 +12,7 @@ Page({
         page:1,
         payOrder:'',
         openid:'',
+        location:''
 
 
 
@@ -102,11 +102,41 @@ Page({
        wx.getLocation({
          type: 'wgs84',
          success: function(res) {
-          console.log(res)
            var latitude = res.latitude
            var longitude = res.longitude
-           var speed = res.speed
-           var accuracy = res.accuracy
+           // var speed = res.speed
+           // var accuracy = res.accuracy
+           var that = this;
+           wx.request({
+              url:'https://tobidto.cn/region/getLocation.do',
+              method:'post',
+              header:{
+                'content-type':'application/x-www-form-urlencoded'
+              },
+              data:{
+                location:longitude+','+latitude,
+              },
+              success:function(res){
+                console.log(res)
+                if(res.data.code == 0){
+                  wx.setStorage({
+                    key:'location',
+                    data:res.data.data
+                  })
+                }else{
+                  wx.showToast({
+                    title:res.data.desc,
+                    icon:'loading',
+                    mask:true,
+                    duration:1500
+                  })
+                }
+              }
+           })
+
+
+
+
          }
        })
 

@@ -304,7 +304,7 @@ Page( {
 
     if(arrCheck[index]){
       arr[index] = index;
-      productidArr[index] = id+'-'+goodsNums;
+      productidArr[index] = id+'/'+goodsNums;
     }else{
       arr[index] = null;
       productidArr[index] = null;

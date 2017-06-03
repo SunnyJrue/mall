@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/cart/index",
+    "pages/order/order",
     "pages/index/index",
     "pages/selectsite/selectsite",
     "pages/classify/index",
@@ -9,7 +10,6 @@
     "pages/adress/adress",
     "pages/allorder/allorder",
     "pages/userstatus/userstatus",
-    "pages/order/order",
     "pages/order/ordersuccess",
     "pages/addsite/index", 
     "pages/logistics/logistics",
