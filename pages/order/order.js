@@ -42,7 +42,8 @@ Page({
             id:id,
             status:status,
             goodNums:goodNums,
-            orderId:orderId 
+            orderId:orderId ,
+            somegoodNums:str,
         })
 
 
@@ -259,9 +260,20 @@ Page({
         //地址id
         var addrId = that.data.addressNum;
         //商品数目
-        var orderNumber = that.data.goodNums*1;
+        var orderNumber;
+        if(that.data.orderType == 1){
+            orderNumber = that.data.somegoodNums;
+        }else{
+            orderNumber = that.data.goodNums*1;
+        }
         //计算总价
-        var totalPrice = (goodsdatas.current_price*1)*(orderNumber*1)+goodsdatas.freight*1;
+        var totalPrice = 0;
+        if(that.data.orderType == 1){
+            var totalPrice = that.data.someGoodsTotalPrice;
+        }else{
+            totalPrice = (goodsdatas.current_price*1)*(orderNumber*1)+goodsdatas.freight*1;
+        }
+        
         //备注
         var reason = that.data.reason;
 

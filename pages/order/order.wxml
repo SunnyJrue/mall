@@ -108,8 +108,15 @@
         <view class='submit_btn' bindtap='submitOrder'>
             提交订单
         </view>
-        <view class='total_price' wx:if='{{}}'>
+        
+        <!-- 单商品 -->
+        <view class='total_price'  wx:if='{{!orderType}}'>
             实付款：￥{{ goodNums*goodsdatas.current_price*1 + goodsdatas.freight*1}}
+        </view>
+        <!-- 多商品 -->
+
+        <view class='total_price' wx:if='{{orderType}}'>
+            实付款：￥{{totalPrice}}
         </view>
 
        
