@@ -8,7 +8,7 @@ Page({
         productName:'', //关键字查询
         inputDefault:'',
         goodContent:'',
-        location:'深圳',
+        location:'',
         windowHeight:'',
         goodsDatas:'',
         page:1,
@@ -31,8 +31,20 @@ Page({
           }
         });
 
+        wx.getStorage({
+            key:'location',
+            success:function(res){
+                console.log(res);
+                var location = res.data;
+                this.setData({
+                    location:location
+                })
+            }
+        })
+
         var id = e.id?e.id:'';
         var kw = e.kw?e.kw:'';
+        var brandId = e.brandId?e.brandId:'';
         console.log(id)
         this.setData({
             location:location,
@@ -41,7 +53,7 @@ Page({
         })
 
         getBranList(that)
-        getList(that,id,1,kw,'','','','');
+        getList(that,id,1,kw,'','','',brandId);
        
 
 
@@ -170,13 +182,14 @@ function getList(that,id,page,productName,type,startPrice,endPrice,brandId){
             'content-type':'application/x-www-form-urlencoded'
         },
         data:{
-            id:id,
+            speciesId:id,
             userAppName:app.data.userAppName,
             page:page,
             pageSize:10,
             productName:productName, 
             startPrice:startPrice,
             endPrice:endPrice,
+            brandId:brandId
 
         },
         success:function(res){

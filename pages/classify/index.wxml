@@ -3,7 +3,7 @@
   <view class='search'>
       <view class='floatEle'>
           <view class='position' >
-              {{locations?locations:'深圳'}}
+              {{locations?locations:''}}
               <image src='../../images/icon-location.png'></image>
           </view>
           <view class='infotext'>
@@ -67,7 +67,7 @@
     <view class="nav_left_items {{curNav == -1 ? 'active' : ''}}" bindtap="switchRightTab" data-id="-1" >全部</view>
     <block wx:for="{{navLeftItems}}">
 
-      <view class="nav_left_items {{curNav == index ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{index}}" data-itemid='{{item.id}}'>{{item.speciesName}}</view>
+      <view class="nav_left_items {{curNav == index ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-brand='{{}}' data-id="{{index}}" data-itemid='{{item.id}}'>{{item.speciesName}}</view>
     </block>
   </view>
 

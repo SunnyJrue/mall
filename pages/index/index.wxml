@@ -27,7 +27,7 @@
     <view class='search' wx:if='{{data.species.length != 0}}'>
         <view class='category'>
             <block wx:for='{{data.species}}' wx:key=''  >
-                <navigator url='/pages/index/searchgoods?id={{item.id}}' class='list'>
+                <navigator url='/pages/index/searchgoods?id={{item.id}}&brandid={{item.brand_id}}' class='list'>
                     <image src='https://tobidto.cn/downloadFile.do?url={{item.speciesImage}}'></image>
                     <view class='cate_text'>{{item.speciesName}}</view>
                 </navigator>
@@ -56,11 +56,12 @@
         <view class='category brand'>
             <view class='brand-title'>品牌街</view>
             <block wx:for='{{data.brand}}' wx:key='' >
-                <view class='list'>
-                    <image src='https://tobidto.cn/downloadFile.do?url={{item.brandImage}}'></image>
-                    <view class='cate_text'>{{item.brandName}}</view>
-                </view>
-               
+                <navigator url='/pages/index/searchgoods?brandId={{item.id}}'>
+                    <!-- <view class='list'> -->
+                        <image src='https://tobidto.cn/downloadFile.do?url={{item.brandImage}}'></image>
+                        <view class='cate_text'>{{item.brandName}}</view>
+                   <!--  </view> -->
+              </navigator>
                 
             </block>
 

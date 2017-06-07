@@ -116,7 +116,7 @@
         <!-- 多商品 -->
 
         <view class='total_price' wx:if='{{orderType}}'>
-            实付款：￥{{totalPrice}}
+            实付款：￥{{totalPrice?totalPrice:someGoodsTotalPrice}}
         </view>
 
        

@@ -52,46 +52,6 @@ Page({
        });
 
 
-       // wx.login({
-       //     success:function(res){
-       //         console.log(res.code)
-       //         var code = res.code;
-       //         wx.request({
-       //             url:'https://tobidto.cn/wx/prepay.do?code='+code,
-       //             method:'post',
-       //             success:function(res){
-       //                console.log(res)
-       //                wx.requestPayment({
-       //                   'timeStamp': res.data.timeStamp,
-       //                   'nonceStr': res.data.nonceStr,
-       //                   'package': res.data.package,
-       //                   'signType': 'MD5',
-       //                   'paySign': res.data.paySign,
-       //                   'success':function(res){
-       //                      console.log(res)
-       //                      wx.showToast({
-       //                        title: '支付成功',
-       //                        icon: 'success',
-       //                        duration: 1000
-       //                      })
-       //                   },
-       //                   'fail':function(res){
-       //                      console.log(res)
-       //                      wx.showToast({
-       //                        title: '支付失败',
-       //                        icon: 'loading',
-       //                        duration: 1000
-       //                      })
-       //                   }
-       //                })
-       //             }
-       //         })
-       //     }
-       // })
-
-
-
-
        app.getUserInfo(function(userInfo){
          that.setData({
            userInfo:userInfo
@@ -99,6 +59,7 @@ Page({
        })
 
        //获取地理位置
+       var that = this;
        wx.getLocation({
          type: 'wgs84',
          success: function(res) {
@@ -106,7 +67,8 @@ Page({
            var longitude = res.longitude
            // var speed = res.speed
            // var accuracy = res.accuracy
-           var that = this;
+           console.log('latitude='+latitude)
+           console.log('longitude='+longitude)
            wx.request({
               url:'https://tobidto.cn/region/getLocation.do',
               method:'post',
@@ -115,6 +77,7 @@ Page({
               },
               data:{
                 location:longitude+','+latitude,
+                /*location:'113.27599,23.117'*/
               },
               success:function(res){
                 console.log(res)
@@ -134,11 +97,15 @@ Page({
               }
            })
 
-
-
-
          }
        })
+      
+     wx.getStorage({
+         key:'location',
+         success:function(res){
+             console.log(res);
+         }
+     })
 
 
        wx.login({
@@ -148,6 +115,7 @@ Page({
                console.log(code)
                wx.request({
                    url:"https://tobidto.cn/open/getOpenId.do?code="+code,
+                   // url:"https://tobidto.cn/wx/getOpenId.do?code="+code,
                    method:'post',
                    success:function(res){
                       console.log(res)
@@ -189,6 +157,8 @@ Page({
                               }
                        })
 
+
+                  
                    }
                })
               

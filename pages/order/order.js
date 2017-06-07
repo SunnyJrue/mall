@@ -69,6 +69,7 @@ Page({
                             totalPrice += datas[i].current_price*1*datas[i].productNumber
                         }
                         totalPrice += datas[0].freight;
+                        console.log(datas)
                         that.setData({
                             goodsdatas:datas,
                             orderType:1,
@@ -183,26 +184,29 @@ Page({
         });
 
         //获取商品的列表
-        wx.request({
-            url:'https://tobidto.cn/product/productList.do?id='+that.data.id+'&userAppName='+app.data.userAppName,
-            method:'post',
-            success:function(res){
-                if(res.data.code ==0){
-                    console.log(res);
-                    var data = res.data.data.product[0];
-                    that.setData({
-                        goodsdatas:data
-                    })
-                }else{
-                    wx.showToast({
-                        title:res.data.desc,
-                        icon:'loading',
-                        mask:true,
-                        duration:1000
-                    })
-                }
-            }
-        })
+        // if(orderType ==0){
+        //     wx.request({
+        //         url:'https://tobidto.cn/product/productList.do?id='+that.data.id+'&userAppName='+app.data.userAppName,
+        //         method:'post',
+        //         success:function(res){
+        //             if(res.data.code ==0){
+        //                 console.log(res);
+        //                 var data = res.data.data.product[0];
+        //                 that.setData({
+        //                     goodsdatas:data
+        //                 })
+        //             }else{
+        //                 wx.showToast({
+        //                     title:res.data.desc,
+        //                     icon:'loading',
+        //                     mask:true,
+        //                     duration:1000
+        //                 })
+        //             }
+        //         }
+        //     })
+            
+        // }
 
 
 
@@ -250,11 +254,18 @@ Page({
     submitOrder:function(){
         var that = this;
         var goodsdatas = that.data.goodsdatas;
-
+        console.log(goodsdatas)
         //商品名字
-        var productName = goodsdatas.product_name;
+        var productName = '',productId ='';
+        if(that.data.orderType ==0){
+            productName = goodsdatas.product_name;
+            productId = that.data.id;
+        }else{
+            productName = goodsdatas[0].product_name;
+            productId = that.data.somegoodNums;
+        }
         //商品id
-        var productId  = that.data.id;
+        
         //商家id
         var memberId = that.data.memberId;
         //地址id

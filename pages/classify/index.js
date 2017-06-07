@@ -239,7 +239,7 @@ function getClassifyGoods(that,id,itemId,type,startPrice,endPrice,page,brandId){
         url = 'https://tobidto.cn/product/productList.do?userAppName='+ app.data.userAppName+'&page='+page+'&pageSize=10&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice+'&brandId='+brandId;
         
     }else{
-        url = 'https://tobidto.cn/product/productList.do?userAppName='+ app.data.userAppName+'&id='+itemId+'&page='+page+'&pageSize=10&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice+'&brandId='+brandId;
+        url = 'https://tobidto.cn/product/productList.do?userAppName='+ app.data.userAppName+'&speciesId='+itemId+'&page='+page+'&pageSize=10&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice+'&brandId='+brandId;
     }
 
     wx.request({

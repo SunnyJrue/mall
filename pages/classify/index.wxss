@@ -167,6 +167,8 @@ page{
     /* background:url('../../images/down-color.png') no-repeat; */
     background-size:20rpx;
     background-position:right 18px;
+    overflow:hidden;
+
 }
 
 

@@ -87,7 +87,7 @@ swiper image{
     padding-bottom:10rpx;
     border-radius:40%;
 }
-.category .list{
+.category .list,.category navigator{
     text-align:center;
     width:25%;
     font-size:28rpx;
