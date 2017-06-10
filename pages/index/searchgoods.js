@@ -16,7 +16,8 @@ Page({
         type:'',
         startPrice:'',
         endPrice:'',
-        brandArr:''       
+        brandArr:'' ,
+        appUrl:app.data.url      
     },
     onLoad:function(e){
         console.log(e)
@@ -171,9 +172,9 @@ Page({
 function getList(that,id,page,productName,type,startPrice,endPrice,brandId){
     var productName = productName?productName:'';
     if(type){
-        var url='https://tobidto.cn/product/productList.do?'+type+'='+type+'&brandId='+brandId;
+        var url=app.data.url+'/product/productList.do?'+type+'='+type+'&brandId='+brandId;
     }else{
-        var url='https://tobidto.cn/product/productList.do?brandId='+brandId;
+        var url=app.data.url+'/product/productList.do?brandId='+brandId;
     }
     wx.request({
         url:url,
@@ -225,7 +226,7 @@ function getList(that,id,page,productName,type,startPrice,endPrice,brandId){
 
 function getBranList(that){
     wx.request({
-        url:'https://tobidto.cn/product/productList.do',
+        url:app.data.url+'/product/productList.do',
         method:'post',
         header:{
             'content-type':'application/x-www-form-urlencoded'

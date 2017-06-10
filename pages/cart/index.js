@@ -13,7 +13,8 @@ Page( {
     arrCheck:[],//列表保存checkbox是否选择
     arrIndex:[], //保存index
     productId:[],
-    productIdAll:[]
+    productIdAll:[],
+    appUrl:app.data.url,
 
 
   },
@@ -173,7 +174,7 @@ Page( {
         success:function(res){
           if(res.confirm){
               wx.request({
-                url:'https://tobidto.cn/cart/delete.do?id='+id,
+                url:app.data.url+'/cart/delete.do?id='+id,
                 method:'post',
                 success:function(res){
                   console.log(res)
@@ -223,7 +224,7 @@ Page( {
               var memberId = res.data.memberId;
 
               wx.request({
-                  url:'https://tobidto.cn/order/insert.do',
+                  url:app.data.url+'/order/insert.do',
                   method:'post',
                   header:{
                       'content-type':'application/x-www-form-urlencoded'
@@ -247,9 +248,9 @@ Page( {
     //        success:function(login){
     //           var code = login.code;
     //           console.log(code)
-    //           console.log('https://tobidto.cn/wx/prepay.do?code='+code)
+    //           console.log(app.data.url+'/wx/prepay.do?code='+code)
     //           wx.request({
-    //             // url:'https://tobidto.cn/wx/prepay.do?code='+code,
+    //             // url:app.data.url+'/wx/prepay.do?code='+code,
     //             url:'https://api.weixin.qq.com/sns/jscode2session?appid=wx230817054925923e&secret=dc0a266b44da135b99b39de620dfc751&js_code='+code+'&grant_type=authorization_code',
     //             method:'post',
     //             success:function(res){
@@ -357,7 +358,7 @@ Page( {
 function alterOrder(type,id,that,e){
   
   wx.request({
-    url:'https://tobidto.cn/cart/'+type+'.do?id='+id,
+    url:app.data.url+'/cart/'+type+'.do?id='+id,
     method:'post',
     success:function(res){
       console.log(res)
@@ -410,7 +411,7 @@ function getOrderList(that,type){
       success:function(res){
           var memberId = res.data.memberId;
           wx.request({
-              url:'https://tobidto.cn/cart/findCart.do?userAppName='+app.data.userAppName+'&memberId='+memberId,
+              url:app.data.url+'/cart/findCart.do?userAppName='+app.data.userAppName+'&memberId='+memberId,
               method:'post',
               success:function(res){
                   wx.hideToast();

@@ -2,7 +2,8 @@
 var app =getApp();
 Page({
     data:{
-        record:''
+        record:'',
+        appUrl:app.data.url
     },
     onLoad:function(e){
         var that = this;
@@ -20,7 +21,7 @@ Page({
             img_path:img_path
         })
         wx.request({
-            url:"https://tobidto.cn/logistics/logisticsInfo.do",
+            url:app.data.url+"/logistics/logisticsInfo.do",
             method:"post",
             header:{
                 'content-type':'application/x-www-form-urlencoded'

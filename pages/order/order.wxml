@@ -23,7 +23,7 @@
     <!-- 单个商品下单 -->
     <view  wx:if='{{!orderType}}'>
       <view class='good_msg'>
-        <image src='https://tobidto.cn/downloadFile.do?url={{goodsdatas.img_path}}'></image>
+        <image src='{{appUrl}}/downloadFile.do?url={{goodsdatas.img_path}}'></image>
         <view style='display:inline-block;width:80%;vertical-align:top;'>
             <view class='description'>
                 {{goodsdatas.product_name}}
@@ -45,7 +45,7 @@
     <!-- 多商品下单 -->
     <view wx:if='{{orderType}}' wx:for='{{goodsdatas}}'>
       <view class='good_msg'>
-        <image src='https://tobidto.cn/downloadFile.do?url={{item.img_path}}'></image>
+        <image src='{{appUrl}}/downloadFile.do?url={{item.img_path}}'></image>
         <view style='display:inline-block;width:80%;vertical-align:top;'>
             <view class='description'>
                 {{item.product_name}}

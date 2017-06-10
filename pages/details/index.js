@@ -8,6 +8,7 @@ Page({
         datas:'',
         goodtap:1,
         id:'', //商品的id
+        appUrl:app.data.url
     },
     onLoad: function(e) {
         console.log(e)
@@ -20,7 +21,7 @@ Page({
             duration:5000
         })
         wx.request({
-            url:'https://tobidto.cn/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
+            url:app.data.url+'/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
             method:'post',
             success:function(res){
                 console.log(res)
@@ -106,10 +107,10 @@ Page({
                 console.log(res)
                 var memberId = res.data.memberId;
                 var number = that.data.goodNums;
-                var url = 'https://tobidto.cn/cart/insert.do?userAppName='+app.data.userAppName+'&memberId='+memberId+'&id='+id+'&number='+number;
+                var url = app.data.url+'/cart/insert.do?userAppName='+app.data.userAppName+'&memberId='+memberId+'&id='+id+'&number='+number;
                 console.log(url)
                 wx.request({
-                    url:'https://tobidto.cn/cart/insert.do?userAppName='+app.data.userAppName+'&memberId='+memberId+'&id='+id+'&number='+number,
+                    url:app.data.url+'/cart/insert.do?userAppName='+app.data.userAppName+'&memberId='+memberId+'&id='+id+'&number='+number,
                     method:'post',
                     success:function(res){
                         console.log(res)

@@ -3,7 +3,7 @@
     <view>
          <swiper class="swiper_box" indicator-dots="true" autoplay='true' interval='4000'>
             <swiper-item >
-                <image src="https://tobidto.cn/downloadFile.do?url={{datas.product[0].img_path}}" class="slide-image"/>
+                <image src="{{appUrl}}/downloadFile.do?url={{datas.product[0].img_path}}" class="slide-image"/>
             </swiper-item>
         </swiper>
     </view>
@@ -103,7 +103,7 @@
             <block wx:for='{{datas.product[0].html_path}}'>
                 <block wx:if='{{datas.product[0].product_type==1}}'>
                     <view>
-                        <image src='https://tobidto.cn/downloadFile.do?url={{item}}'></image>
+                        <image src='{{appUrl}}/downloadFile.do?url={{item}}'></image>
                     </view>
                 </block>
                 <block  wx:if='{{datas.product[0].product_type==2}}'>
@@ -178,7 +178,7 @@
             </view>
 
             <view class='goods_msg'>
-                <image src='https://tobidto.cn/downloadFile.do?url={{datas.product[0].img_path}}'></image>
+                <image src='{{appUrl}}/downloadFile.do?url={{datas.product[0].img_path}}'></image>
             </view>
             <view class='good_text'>
                 <view class='good_title'>

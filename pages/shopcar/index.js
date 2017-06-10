@@ -10,6 +10,7 @@ Page( {
     page:1,//分页,
     orderList:'',
     arr:false,
+    appUrl:app.data.url
 
 
 
@@ -134,7 +135,7 @@ Page( {
         success:function(res){
           if(res.confirm){
               wx.request({
-                url:'https://tobidto.cn/cart/delete.do?id='+id,
+                url:app.data.url+'/cart/delete.do?id='+id,
                 method:'post',
                 success:function(res){
                   console.log(res)
@@ -194,7 +195,7 @@ Page( {
 function alterOrder(type,id,that){
   
   wx.request({
-    url:'https://tobidto.cn/cart/'+type+'.do?id='+id,
+    url:app.data.url+'/cart/'+type+'.do?id='+id,
     method:'post',
     success:function(res){
       console.log(res)
@@ -235,7 +236,7 @@ function getOrderList(that){
       success:function(res){
           var memberId = res.data.memberId;
           wx.request({
-              url:'https://tobidto.cn/cart/findCart.do?userAppName='+app.data.userAppName+'&memberId='+memberId,
+              url:app.data.url+'/cart/findCart.do?userAppName='+app.data.userAppName+'&memberId='+memberId,
               method:'post',
               success:function(res){
                   wx.hideToast();

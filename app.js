@@ -5,6 +5,7 @@ App({
         userMsg:{},
         userAppName:'吴填生',
         memberId:'',
+        url:'https://tobidto.cn'
     },
     onLoad:function(){
         

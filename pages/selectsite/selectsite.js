@@ -50,7 +50,7 @@ Page({
 
 
                 wx.request({
-                    url:'https://tobidto.cn/address/findList.do?userAppName='+userAppName+'&memberId='+memberId,
+                    url:app.data.url+'/address/findList.do?userAppName='+userAppName+'&memberId='+memberId,
                     method:'post',
                     success:function(res){
                         console.log(res)

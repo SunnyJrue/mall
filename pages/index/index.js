@@ -12,7 +12,8 @@ Page({
         page:1,
         payOrder:'',
         openid:'',
-        location:''
+        location:'',
+        appUrl:app.data.url,
 
 
 
@@ -70,7 +71,7 @@ Page({
            console.log('latitude='+latitude)
            console.log('longitude='+longitude)
            wx.request({
-              url:'https://tobidto.cn/region/getLocation.do',
+              url:app.data.url+'/region/getLocation.do',
               method:'post',
               header:{
                 'content-type':'application/x-www-form-urlencoded'
@@ -114,8 +115,8 @@ Page({
                var code = login.code;
                console.log(code)
                wx.request({
-                   url:"https://tobidto.cn/open/getOpenId.do?code="+code,
-                   // url:"https://tobidto.cn/wx/getOpenId.do?code="+code,
+                   url:app.data.url+"/open/getOpenId.do?code="+code,
+                   // url:app.data.url+"/wx/getOpenId.do?code="+code,
                    method:'post',
                    success:function(res){
                       console.log(res)
@@ -125,7 +126,7 @@ Page({
                        console.log(open)
                        console.log(app.data.userAppName)
                        wx.request({
-                           url:"https://tobidto.cn/member/insert.do?userAppName="+app.data.userAppName+"&wxOpenId="+open,
+                           url:app.data.url+"/member/insert.do?userAppName="+app.data.userAppName+"&wxOpenId="+open,
                            method:'post',
                            header: {
                                 'content-type':'application/x-www-form-urlencoded'
@@ -173,7 +174,7 @@ Page({
         
        //获取商品信息
        wx.request({
-          url:'https://tobidto.cn/product/homeInfo.do?userAppName='+app.data.userAppName+'&page=1&pageSize=6',
+          url:app.data.url+'/product/homeInfo.do?userAppName='+app.data.userAppName+'&page=1&pageSize=6',
           method:'post',
           success:function(res){
             console.log(res)
@@ -242,7 +243,7 @@ Page({
 function getGoodsList(that,page){
   
     wx.request({
-        url:'https://tobidto.cn/product/homeInfo.do?',
+        url:app.data.url+'/product/homeInfo.do?',
         header: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },

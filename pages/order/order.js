@@ -21,7 +21,8 @@ Page({
         goodNums:1,//商品数量
         goodsdatas:'', //商品的信息
         reason:'',
-        orderType:0 
+        orderType:0 ,
+        appUrl:app.data.url,
     },
     onLoad:function(e){
         var that = this;
@@ -51,7 +52,7 @@ Page({
         if(orderType==1){
             console.log(str)
             wx.request({
-                  url:'https://tobidto.cn/product/getManyProduct.do',
+                  url:app.data.url+'/product/getManyProduct.do',
                   method:'post',
                   header:{
                     'content-type':'application/x-www-form-urlencoded'
@@ -85,7 +86,7 @@ Page({
                 //获取单列表
                 //获取商品的列表
                 wx.request({
-                    url:'https://tobidto.cn/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
+                    url:app.data.url+'/product/productList.do?id='+id+'&userAppName='+app.data.userAppName,
                     method:'post',
                     success:function(res){
                         console.log(res)
@@ -120,7 +121,7 @@ Page({
 
                 //获取地址列表
                 wx.request({
-                    url:'https://tobidto.cn/address/findList.do?defaultFlag=1&userAppName='+app.data.userAppName+'&memberId='+res.data.memberId,
+                    url:app.data.url+'/address/findList.do?defaultFlag=1&userAppName='+app.data.userAppName+'&memberId='+res.data.memberId,
                     method:'post',
                     success:function(res){
                         console.log(res)
@@ -154,7 +155,7 @@ Page({
                  
                   if(id>=0){
                     wx.request({
-                        url:'https://tobidto.cn/address/findList.do?id='+id+'&userAppName='+app.data.userAppName+'&memberId='+that.data.memberId,
+                        url:app.data.url+'/address/findList.do?id='+id+'&userAppName='+app.data.userAppName+'&memberId='+that.data.memberId,
                         method:'post',
                         success:function(res){
                             console.log(res)
@@ -186,7 +187,7 @@ Page({
         //获取商品的列表
         // if(orderType ==0){
         //     wx.request({
-        //         url:'https://tobidto.cn/product/productList.do?id='+that.data.id+'&userAppName='+app.data.userAppName,
+        //         url:app.data.url+'/product/productList.do?id='+that.data.id+'&userAppName='+app.data.userAppName,
         //         method:'post',
         //         success:function(res){
         //             if(res.data.code ==0){
@@ -259,7 +260,7 @@ Page({
         var productName = '',productId ='';
         if(that.data.orderType ==0){
             productName = goodsdatas.product_name;
-            productId = that.data.id;
+            productId = that.data.id+'/'+that.data.goodNums*1;
         }else{
             productName = goodsdatas[0].product_name;
             productId = that.data.somegoodNums;
@@ -316,7 +317,7 @@ Page({
 
 
             wx.request({
-                url:'https://tobidto.cn/order/insert.do',
+                url:app.data.url+'/order/insert.do',
                 method:'post',
                 header:{
                     'content-type':'application/x-www-form-urlencoded'
@@ -347,7 +348,7 @@ Page({
                            success:function(res){
                              console.log(res);
                                 wx.request({
-                                    url:'https://tobidto.cn/order/wxnotify.do',
+                                    url:app.data.url+'/order/wxnotify.do',
                                     method:'post',
                                     header:{
                                         'content-type':'application/x-www-form-urlencoded'
@@ -362,7 +363,7 @@ Page({
                            fail:function(res){
                              console.log(res);
                                 wx.request({
-                                    url:'https://tobidto.cn/order/wxnotify.do',
+                                    url:app.data.url+'/order/wxnotify.do',
                                     method:'post',
                                     header:{
                                         'content-type':'application/x-www-form-urlencoded'
@@ -387,51 +388,6 @@ Page({
             })
           }
         })
-
-
-
-
-        // wx.login({
-        //     success:function(res){
-        //         console.log(res.code)
-        //         var code = res.code;
-        //         wx.request({
-        //             url:'https://tobidto.cn/order/insert.do',
-        //             method:'post',
-        //             header:{
-        //                 'content-type':'application/x-www-form-urlencoded'
-        //             },
-        //             data:{
-        //               userAppName:app.data.userAppName,
-        //               productName:productName,
-        //               productId:productId,
-        //               memberId:memberId,
-        //               addrId:addrId,
-        //               orderNumber:orderNumber,
-        //               totalPrice:totalPrice,
-        //               reason:reason,
-        //               code:code,
-        //             },
-        //             success:function(res){
-        //                 wx.hideToast()
-        //                 console.log(res)
-        //                 if(res.data.code == 0){
-
-        //                 }else{
-        //                     wx.showToast({
-        //                         title:res.data.desc,
-        //                         loading:'loading',
-        //                         mask:true,
-        //                         duration:1500
-        //                     })
-        //                 }
-        //             }
-        //         })
-        //     }
-        // })
-
-
-
 
 
     }

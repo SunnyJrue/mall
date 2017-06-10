@@ -25,7 +25,7 @@
 
             <view class='item_details'>
                 <navigator url='/pages/details/index?id={{item.productId}}'>
-                <image src='https://tobidto.cn/downloadFile.do?url={{item.img_path}}'></image>
+                <image src='{{appUrl}}/downloadFile.do?url={{item.img_path}}'></image>
                 <view class='item_text'>
                     <view class='item_title'>
                         {{item.product_name}}

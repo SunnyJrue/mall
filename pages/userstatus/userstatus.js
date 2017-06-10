@@ -4,7 +4,8 @@ Page({
         goodsStatus:'',
         msg:'',
         status:'',
-        datas:''
+        datas:'',
+        appUrl:app.data.url,
     },
     onLoad:function(e){
 
@@ -41,7 +42,7 @@ Page({
             success:function(res){
                 if(res.confirm){
                     wx.request({
-                        url:'https://tobidto.cn/order/confirm.do?id='+id,
+                        url:app.data.url+'/order/confirm.do?id='+id,
                         method:'post',
                         success:function(res){
                             console.log(res)
@@ -115,7 +116,7 @@ Page({
                 var memberId = res.data.memberId;
                 console.log(memberId)
                 wx.request({
-                    url:'https://tobidto.cn/order/findOrder.do',
+                    url:app.data.url+'/order/findOrder.do',
                     method:'post',
                     header:{
                         'content-type':'application/x-www-form-urlencoded'
@@ -129,11 +130,11 @@ Page({
                     },
                     success:function(res){
                         if(res.data.code == 0 ){
-                            console.log(res.data.data)
+                            console.log(res.data.data);
                             var datas = res.data.data;
                             that.setData({
                                 datas:datas
-                            })
+                            });
 
                         }else{
                             wx.showToast({

@@ -22,7 +22,8 @@ Page({
         startPrice:'', //开始价格
         endPrice:'',//结束价格
         type:'',//排序
-        locations:''
+        locations:'',
+        appUrl:app.data.url
     },
     onShareAppMessage: function () {
       return {
@@ -61,7 +62,7 @@ Page({
         var userAppName = app.data.userAppName
         console.log(userAppName);
         wx.request({
-            url:'https://tobidto.cn/product/productList.do?userAppName='+userAppName+'&page=1&pageSize=10',
+            url:app.data.url+'/product/productList.do?userAppName='+userAppName+'&page=1&pageSize=10',
             method:'post',
             success:function(res){
                 console.log(res)
@@ -236,10 +237,10 @@ function getClassifyGoods(that,id,itemId,type,startPrice,endPrice,page,brandId){
 
 
     if(id == -1){
-        url = 'https://tobidto.cn/product/productList.do?userAppName='+ app.data.userAppName+'&page='+page+'&pageSize=10&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice+'&brandId='+brandId;
+        url = app.data.url+'/product/productList.do?userAppName='+ app.data.userAppName+'&page='+page+'&pageSize=10&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice+'&brandId='+brandId;
         
     }else{
-        url = 'https://tobidto.cn/product/productList.do?userAppName='+ app.data.userAppName+'&speciesId='+itemId+'&page='+page+'&pageSize=10&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice+'&brandId='+brandId;
+        url = app.data.url+'/product/productList.do?userAppName='+ app.data.userAppName+'&speciesId='+itemId+'&page='+page+'&pageSize=10&'+type+'='+type+'&startPrice='+startPrice+'&endPrice='+endPrice+'&brandId='+brandId;
     }
 
     wx.request({
@@ -274,7 +275,7 @@ function getClassifyGoods(that,id,itemId,type,startPrice,endPrice,page,brandId){
 
 function getBranList(that){
     wx.request({
-        url:'https://tobidto.cn/product/productList.do',
+        url:app.data.url+'/product/productList.do',
         method:'post',
         header:{
             'content-type':'application/x-www-form-urlencoded'

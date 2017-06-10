@@ -21,39 +21,42 @@
 
             <view class='item_details'>
                 <!-- <navigator url='/pages/order/order?id={{item.productId}}&goodNums={{item.order_number}}&orderId={{item.id}}'>   --> <!-- 跳转到订单页 -->
-                <navigator url='/pages/details/index?id={{item.productId}}'>
-                    <image src='https://tobidto.cn/downloadFile.do?url={{item.img_path}}'></image>
-                    <view class='item_text'>
-                        <view class='item_title'>
-                            {{item.product_name}}
-                        </view>
-                        <view class='item_size'>
-                            原价
-                        </view>
-                        <view class='item_size'>
-                            商品数量
-                        </view>
-                        <!-- <view class='item_logo'>
-                            <image src='../../images/icon-seven.png'></image>
-                        </view> -->
+                <block wx:for='{{item.productInfo}}'>
+                    <navigator style='margin-bottom:20rpx;' url='/pages/details/index?id={{item.productId}}'>
+                        <image src='{{appUrl}}/downloadFile.do?url={{item.img_path}}'></image>
+                        <view class='item_text'>
+                            <view class='item_title'>
+                                {{item.product_name}}
+                            </view>
+                            <view class='item_size'>
+                                原价
+                            </view>
+                            <view class='item_size'>
+                                商品数量
+                            </view>
+                            <!-- <view class='item_logo'>
+                                <image src='../../images/icon-seven.png'></image>
+                            </view> -->
 
-                    </view>
-                    <view class='item_num'>
-                        <view class='dis_price'>￥{{item.current_price}}</view>
-                        <view class='old_price'>￥{{item.original_price}}</view>
-                        <view class='old_price'> 
-                            X{{item.order_number}}
                         </view>
-                    </view>
-                </navigator>
+                        <view class='item_num'>
+                            <view class='dis_price'>￥{{item.current_price}}</view>
+                            <view class='old_price'>￥{{item.original_price}}</view>
+                            <view class='old_price'> 
+                                X{{item.order_number}}
+                            </view>
+                        </view>
+                    </navigator>
+                    <view> </view>
+                </block>
 
                 <view class='total_price'>
-                    共{{item.order_number}}件商品 合计:<text class='price_bold'>￥{{item.current_price*item.order_number+item.freight}}</text>.00元（含运费￥{{item.freight}}）
+                    共{{item.order_number}}件商品 合计:<text class='price_bold'>￥{{item.orderTotal}}</text>.00元（含运费￥{{item.freight}}）
                 </view>
 
                 <view class='btn_item' wx:if="{{status==1}}">
                     <view bindtap='cancelOrder' data-id='{{item.id}}' >删除订单</view>
-                    <navigator url='/pages/order/order?id={{item.productId}}&orderId={{item.id}}&goodNums={{item.order_number}}'>付款</navigator>
+                    <navigator url='/pages/order/order?status=1&str={{item.productIds}}&orderType=1'>付款</navigator>
                 </view>
                 
                 <view class='btn_item' wx:if="{{status==3}}">

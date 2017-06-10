@@ -20,7 +20,7 @@
             </view>
 
             <navigator url='/pages/details/index?id={{item.productId}}' class='item_details'>
-                <image src='https://tobidto.cn/downloadFile.do?url={{item.img_path}}'></image>
+                <image src='{{appUrl}}/downloadFile.do?url={{item.img_path}}'></image>
                 <view class='item_text' >
                     <view class='item_title' style='height:70rpx'>
                         {{item.product_name}}

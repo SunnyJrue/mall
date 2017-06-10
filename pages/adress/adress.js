@@ -111,7 +111,7 @@ Page({
             success:function(res){
                 if(res.confirm){
                     wx.request({
-                        url:'https://tobidto.cn/address/delete.do?id='+id+'&userName='+userName+'&memberId='+memberId,
+                        url:app.data.url+'/address/delete.do?id='+id+'&userName='+userName+'&memberId='+memberId,
                         method:'post',
                         success:function(res){
                             console.log(res)
@@ -158,7 +158,7 @@ Page({
                 var userAppName = res.data.userAppName;
                
                 wx.request({
-                    url:'https://tobidto.cn/address/update.do?id='+datas.id+'&userAppName='+userAppName+'&memberId='+memberId+'&userName='+datas.userName+'&userMobile='+datas.userMobile+'&province='+datas.province+'&city='+datas.city+'&region='+datas.region+'&address='+datas.addres+'&defaultFlag=1',
+                    url:app.data.url+'/address/update.do?id='+datas.id+'&userAppName='+userAppName+'&memberId='+memberId+'&userName='+datas.userName+'&userMobile='+datas.userMobile+'&province='+datas.province+'&city='+datas.city+'&region='+datas.region+'&address='+datas.addres+'&defaultFlag=1',
                     method:'post',
                     success:function(res){
                         console.log(res)
@@ -187,7 +187,7 @@ function getAddress(that){
             var userAppName = res.data.userAppName;
 
             wx.request({
-                url:'https://tobidto.cn/address/findList.do?memberId='+memberId+'&userAppName='+userAppName,
+                url:app.data.url+'/address/findList.do?memberId='+memberId+'&userAppName='+userAppName,
                 method:'post',
                 success:function(res){
                     if(res.data.code == 0){

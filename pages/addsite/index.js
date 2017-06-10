@@ -25,7 +25,7 @@ Page({
         var that = this;
         //获取省市联动
         wx.request({
-            url:'https://tobidto.cn/region/regionInfos.do',
+            url:app.data.url+'/region/regionInfos.do',
             method:'post',
             success:function(res){
                 console.log(res)
@@ -56,7 +56,7 @@ Page({
                             var userAppName = res.data.userAppName;
                             var memberId = res.data.memberId;
                             wx.request({
-                                url:'https://tobidto.cn/address/findList.do?id='+that.data.id+'&userAppName='+userAppName+'&memberId='+memberId,
+                                url:app.data.url+'/address/findList.do?id='+that.data.id+'&userAppName='+userAppName+'&memberId='+memberId,
                                 method:'post',
                                 success:function(res){
                                     var userMsg = res.data.data[0];
@@ -93,14 +93,14 @@ Page({
 
 
                 wx.request({
-                    url:'https://tobidto.cn/region/regionInfos.do?regionId=110000',
+                    url:app.data.url+'/region/regionInfos.do?regionId=110000',
                     method:'post',
                     success:function(res){
                         that.setData({
                             city:res.data.data
                         })
                         wx.request({
-                            url:'https://tobidto.cn/region/regionInfos.do?regionId=110100',
+                            url:app.data.url+'/region/regionInfos.do?regionId=110100',
                             method:'post',
                             success:function(res){
                                 that.setData({
@@ -161,7 +161,7 @@ Page({
                    console.log(userAppName)
                 
                        wx.request({
-                           url:'https://tobidto.cn/address/insert.do?userAppName='+userAppName+'&memberId='+memberId+'&userName='+username+'&userMobile='+phonenum+'&province='+that.data.provices+'&city='+that.data.citys+'&region='+that.data.areas+'&address='+address_det,
+                           url:app.data.url+'/address/insert.do?userAppName='+userAppName+'&memberId='+memberId+'&userName='+username+'&userMobile='+phonenum+'&province='+that.data.provices+'&city='+that.data.citys+'&region='+that.data.areas+'&address='+address_det,
                            method:'post',
                            success:function(res){
                                if(res.data.code == 1){
@@ -217,7 +217,7 @@ Page({
                     var memberId = that.data.memberId;
                     console.log(memberId)
 
-                    var url = 'https://tobidto.cn/address/update.do?id='+that.data.id+'&userAppName='+userAppName+'&memberId='+memberId+'&userName='+username+'&userMobile='+phonenum+'&province='+that.data.provices+'&city='+that.data.citys+'&region='+that.data.areas+'&address='+address_det+'&defaultFlag='+that.data.defaultFlag;
+                    var url = app.data.url+'/address/update.do?id='+that.data.id+'&userAppName='+userAppName+'&memberId='+memberId+'&userName='+username+'&userMobile='+phonenum+'&province='+that.data.provices+'&city='+that.data.citys+'&region='+that.data.areas+'&address='+address_det+'&defaultFlag='+that.data.defaultFlag;
                     console.log(url)
 
 
@@ -235,7 +235,7 @@ Page({
                         return;
                     }else{
                         wx.request({
-                            url:'https://tobidto.cn/address/update.do?id='+that.data.id+'&userAppName='+userAppName+'&memberId='+memberId+'&userName='+username+'&userMobile='+phonenum+'&province='+that.data.provices+'&city='+that.data.citys+'&region='+that.data.areas+'&address='+address_det+'&defaultFlag='+that.data.defaultFlag,
+                            url:app.data.url+'/address/update.do?id='+that.data.id+'&userAppName='+userAppName+'&memberId='+memberId+'&userName='+username+'&userMobile='+phonenum+'&province='+that.data.provices+'&city='+that.data.citys+'&region='+that.data.areas+'&address='+address_det+'&defaultFlag='+that.data.defaultFlag,
                             method:'post',
                             success:function(res){
                                 console.log(res)
@@ -301,7 +301,7 @@ Page({
         
         var that = this;
         wx.request({
-            url:'https://tobidto.cn/region/regionInfos.do?regionId='+province_code,
+            url:app.data.url+'/region/regionInfos.do?regionId='+province_code,
             method:'post',
             success:function(res){
                 that.setData({
@@ -311,7 +311,7 @@ Page({
 
                 var city_code = that.data.city[val[1]].regionId;
                 wx.request({
-                    url:'https://tobidto.cn/region/regionInfos.do?regionId='+city_code,
+                    url:app.data.url+'/region/regionInfos.do?regionId='+city_code,
                     method:'post',
                     success:function(res){
                         that.setData({
@@ -358,7 +358,7 @@ function showMsg(msg){
 
 function   getAdress(num1,num2,num3,that){
     wx.request({
-        url:'https://tobidto.cn/region/regionInfos.do?regionId='+num1,
+        url:app.data.url+'/region/regionInfos.do?regionId='+num1,
         method:'post',
         success:function(res){
             that.setData({
@@ -366,7 +366,7 @@ function   getAdress(num1,num2,num3,that){
             });
 
             wx.request({
-                url:'https://tobidto.cn/region/regionInfos.do?regionId='+num2,
+                url:app.data.url+'/region/regionInfos.do?regionId='+num2,
                 method:'post',
                 success:function(res){
                     that.setData({

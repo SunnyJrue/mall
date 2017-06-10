@@ -5,7 +5,8 @@ Page({
         orderDatas:'',
         memberId:'',
         msg:'',
-        page:1
+        page:1,
+        appUrl:app.data.url,
     },
     onLoad:function(){
         var that = this;
@@ -36,7 +37,7 @@ Page({
             success:function(res){
                 if(res.confirm){
                     wx.request({
-                        url:'https://tobidto.cn/order/delete.do',
+                        url:app.data.url+'/order/delete.do',
                         header:{
                             'content-type':'application/x-www-form-urlencoded'
                         },
@@ -85,7 +86,7 @@ Page({
 function getOrderlist(that,memberId,page){
     
     wx.request({
-        url:'https://tobidto.cn/order/findOrder.do',
+        url:app.data.url+'/order/findOrder.do',
         method:'post',
         header:{
             'content-type':'application/x-www-form-urlencoded'
